@@ -14,3 +14,8 @@ export {
     setAuthRedirectPath,
     authCheckState
 } from './auth';
+export {
+    setManagementExperiments,
+    fetchManagementExperimentsFailed,
+    initManagementExpPanels
+} from './management';

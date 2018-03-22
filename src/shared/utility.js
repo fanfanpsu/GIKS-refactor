@@ -1,3 +1,4 @@
+// this method update json object
 export const updateObject = (oldObject, updatedProperties) => {
     return {
         ...oldObject,

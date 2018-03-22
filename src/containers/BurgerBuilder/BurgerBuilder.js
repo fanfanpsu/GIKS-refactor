@@ -86,11 +86,10 @@ class BurgerBuilder extends Component {
         // {salad: true, meat: false, ...}
         return (
             <Fragment>
-                {/*<Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>*/}
-                    {/*{orderSummary}*/}
-                {/*</Modal>*/}
-                {/*{burger}*/}
-                1231231323
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+                    {orderSummary}
+                </Modal>
+                {burger}
             </Fragment>
         );
     }

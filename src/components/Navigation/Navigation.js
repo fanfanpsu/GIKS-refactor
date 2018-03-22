@@ -1,10 +1,4 @@
 import React from 'react';
-
-// import classes from './Toolbar.css';
-// import Logo from '../../Logo/Logo';
-// import NavigationItems from '../NavigationItems/NavigationItems';
-// import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
-
 import {
     Collapse,
     Navbar,
@@ -18,8 +12,10 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
-
-export default class Navigation extends React.Component {
+/**
+ * this is a purely display only component
+ */
+export default class Example extends React.Component {
     constructor(props) {
         super(props);
 
@@ -35,32 +31,26 @@ export default class Navigation extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className={ "container"}>
                 <Navbar color="faded" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                    <NavbarBrand href="/">GIKS</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+                                <NavLink href="/management">OUR TEAM</NavLink>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
-                                    Options
+                                    OUR RESEARCH
                                 </DropdownToggle>
                                 <DropdownMenu >
                                     <DropdownItem>
-                                        Option 1
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Option 2
+                                        PROJECT
                                     </DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>
-                                        Reset
+                                        PUBLICATIONS
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>

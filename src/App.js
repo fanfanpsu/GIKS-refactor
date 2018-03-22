@@ -7,8 +7,8 @@ import Navigation from "./components/Navigation/Navigation";
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Home from './containers/Home/Home';
-
-import Logout from './containers/Auth/Logout/Logout';
+import Orders from './containers/Orders/Orders';
+import Management from './containers/Management/Management';
 import * as actions from './store/actions/index';
 
 const asyncCheckout = asyncComponent(() => {
@@ -33,7 +33,7 @@ class App extends Component {
             <Switch>
                 {/*<Route path="/auth" component={asyncAuth}/>*/}
                 <Route path="/" exact component={Home}/>
-                <Route path="/management" component={Home}/>
+                <Route path="/management" component={Management}/>
                 {/*<Route path="/burgerbuilder" component={BurgerBuilder}/>*/}
 
                 <Redirect to="/"/>
@@ -56,9 +56,9 @@ class App extends Component {
         return (
             <Fragment>
                 <Navigation />
-                {/*<Layout>*/}
-                {/*{routes}*/}
-                {/*</Layout>*/}
+                <Layout>
+                {routes}
+                </Layout>
             </Fragment>
 
         );
@@ -74,6 +74,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignup: () => dispatch(actions.authCheckState())
+
     };
 };
 
