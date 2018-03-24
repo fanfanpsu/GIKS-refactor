@@ -10,6 +10,7 @@ import * as actions from '../../store/actions/index';
 import axios from '../../axios-orders';
 import Navigation from "../../components/Navigation/Navigation";
 import Expcards from "../../components/Expcard/ExpCards";
+import classes from "./management.css"
 
 class Management extends Component {
     constructor(props) {
@@ -18,30 +19,23 @@ class Management extends Component {
     }
 
     state = {
-        expCards: [{title: "t1", subtitle: "st1", cardcontent: "cc1"}],
+        experiments: [{title: "t1", subtitle: "st1", cardcontent: "cc1"}],
         loading: true,
         didInvalidate: true,
         lastUpdated: 'xxxxxxx'
     }
 
     componentDidMount() {
-        //this.props.onManagementLoad();
+        this.props.onManagementLoad();
     }
 
 
     render() {
-        // let expCards = [
-        //     {title: "t1", subtitle: "st1", cardcontent: "cc1"},
-        //     {title: "t2", subtitle: "st2"},
-        //     {title: "t3", subtitle: "st3"}];
 
         return (
             <Fragment>
-                <Row>
-                    top bar
-                </Row>
-                <Row>
-                    <Expcards expCards={this.props.expCards}/>
+                <Row className={"row-eq-height"}>
+                    <Expcards experiments={this.props.experiments}/>
                 </Row>
             </Fragment>
         );
@@ -52,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         // username : state.nav.username
         // internal : external
-        expCards: state.managementBuilder.expCards,
+        experiments: state.managementBuilder.experiments,
         // ings: state.burgerBuilder.ingredients,
         // price: state.burgerBuilder.totalPrice,
         // error: state.burgerBuilder.error,
@@ -62,7 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // onManagementLoad: (user) => dispatch(actions.addIngredient(user)),
+        onManagementLoad: (experiments) => dispatch(actions.setManagementExperiments(experiments)),
         // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
         // onInitIngredients: () => dispatch(actions.initIngredients()),
         // onInitPurchase: () => dispatch(actions.purchaseInit()),

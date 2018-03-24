@@ -12,10 +12,12 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
+import classes from './Navigation.css'
 /**
  * this is a purely display only component
  */
 export default class Example extends React.Component {
+
     constructor(props) {
         super(props);
 
@@ -30,7 +32,34 @@ export default class Example extends React.Component {
         });
     }
     render() {
+        const classes1 = `d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom box-shadow`;
+        const classes2 = `my-0 mr-md-auto font-weight-normal`;
+        const classes3 = `my-2 my-md-0 mr-md-3`;
+        const classes4 = `p-2 text-dark`;
         return (
+            <div className={classes1}>
+                <h5 className={classes2}>GIKS</h5>
+                <Nav className={classes3}>
+                    <NavItem className={classes4}>
+                        <NavLink href="#">OUR TEAM</NavLink>
+                    </NavItem>
+                    <UncontrolledDropdown nav inNavbar className={classes4}>
+                        <DropdownToggle nav caret>
+                            OUR RESEARCH
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                            <DropdownItem>
+                                <NavLink href="#">Projects</NavLink>
+                            </DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem>
+                                <NavLink href="management">Publications</NavLink>
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </UncontrolledDropdown>
+                </Nav>
+            </div>
+            /*
             <div className={ "container"}>
                 <Navbar color="faded" light expand="md">
                     <NavbarBrand href="/">GIKS</NavbarBrand>
@@ -57,7 +86,7 @@ export default class Example extends React.Component {
                         </Nav>
                     </Collapse>
                 </Navbar>
-            </div>
+            </div>*/
         );
     }
 }

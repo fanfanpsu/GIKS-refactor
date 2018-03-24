@@ -1,11 +1,12 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
+import raw_experiments from '../rawdata/rawdata'
 
 // set exp panels after success retrieved exps
 export const setManagementExperiments = ( experiments ) => {
     return {
         type: actionTypes.SET_EXPERIMENTS,
-        experiments: experiments
+        experiments: raw_experiments
     };
 };
 

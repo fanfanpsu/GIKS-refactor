@@ -15,6 +15,7 @@ class BurgerBuilder extends Component {
     //     super(props);
     //     this.state = {...}
     // }
+    // this state is called initial state, or class property
     state = {
         purchasing: false
     }

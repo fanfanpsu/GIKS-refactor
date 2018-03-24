@@ -1,11 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import { connect } from 'react-redux';
 
-
-import classes from './Layout.css';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-
 class Layout extends Component {
     state = {
         showSideDrawer: false
@@ -22,16 +17,9 @@ class Layout extends Component {
     }
 
     render () {
+        // Note this is a high order component example.
         return (
             <Fragment>
-                {/*<Toolbar*/}
-                    {/*isAuth={this.props.isAuthenticated}*/}
-                    {/*drawerToggleClicked={this.sideDrawerToggleHandler} />*/}
-                {/*<SideDrawer*/}
-                    {/*isAuth={this.props.isAuthenticated}*/}
-                    {/*open={this.state.showSideDrawer}*/}
-                    {/*closed={this.sideDrawerClosedHandler} />*/}
-                {/*This is ugly for using manually added white space as separater*/}
                 <main className={"container" }>
                     {this.props.children}
                 </main>
