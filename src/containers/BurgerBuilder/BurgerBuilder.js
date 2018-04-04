@@ -96,6 +96,7 @@ class BurgerBuilder extends Component {
     }
 }
 
+// this is dual binding
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
