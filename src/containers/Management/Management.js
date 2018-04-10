@@ -31,7 +31,6 @@ class Management extends Component {
 
 
     render() {
-
         return (
             <Fragment>
                 <Row className={"row-eq-height"}>

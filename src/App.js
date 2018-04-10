@@ -2,12 +2,10 @@ import React, {Component, Fragment} from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
-
+import Logout from './containers/Auth/Logout/Logout';
 import Navigation from "./components/Navigation/Navigation";
 import Layout from './hoc/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Home from './containers/Home/Home';
-import Orders from './containers/Orders/Orders';
 import Management from './containers/Management/Management';
 import * as actions from './store/actions/index';
 
@@ -32,10 +30,23 @@ class App extends Component {
         let routes = (
             <Switch>
                 <Route path="/" exact component={Home}/>
+                <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Redirect to="/"/>
             </Switch>
         );
+
+
+        if ( this.props.isAuthenticated ) {
+            routes = (
+                <Switch>
+                    <Route path="/logout" component={Logout} />
+                    <Route path="/auth" component={asyncAuth} />
+                    <Route path="/" exact component={Home} />
+                    <Redirect to="/" />
+                </Switch>
+            );
+        }
 
         return (
             <Fragment>
