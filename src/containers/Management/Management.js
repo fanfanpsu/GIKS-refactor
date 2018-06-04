@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
-
+import {Redirect} from 'react-router-dom';
 
 import BurgerBuilder from '../BurgerBuilder/BurgerBuilder';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -28,11 +28,17 @@ class Management extends Component {
     componentDidMount() {
         this.props.onManagementLoad();
     }
-
-
+    
     render() {
+
+        let authRedirect = null;
+        if (!this.props.isAuthenticated) {
+            authRedirect = <Redirect to={this.props.authRedirectPath}/>
+        }
+
         return (
             <Fragment>
+                {authRedirect}
                 <Row className={"row-eq-height"}>
                     <Expcards experiments={this.props.experiments}/>
                 </Row>
@@ -41,11 +47,13 @@ class Management extends Component {
     }
 }
 
+
 const mapStateToProps = (state, ownProps) => {
     return {
         // username : state.nav.username
         // internal : external
         experiments: state.managementBuilder.experiments,
+        authRedirectPath: state.auth.authRedirectPath
         // ings: state.burgerBuilder.ingredients,
         // price: state.burgerBuilder.totalPrice,
         // error: state.burgerBuilder.error,

@@ -21,10 +21,7 @@ import {
     FormText
 } from 'reactstrap';
 
-// import Input from '../../components/UI/Input/Input';
-// import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
-// import classes from './Auth.css';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
 import classnames from 'classnames';
@@ -145,7 +142,7 @@ class Auth extends Component {
         }
 
         let authRedirect = null;
-        if (this.props.isAuthenticated) {
+        if (!this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
 
@@ -199,46 +196,24 @@ class Auth extends Component {
                         <TabPane tabId="signup">
                             <Form>
                                 <FormGroup row>
-                                    <Label for="exampleEmail" sm={2}>Email</Label>
-                                    <Col sm={10}>
+                                    <Label for="exampleEmail" sm={5}>Email</Label>
+                                    <Col sm={7}>
                                         <Input type="email" name="email" id="exampleEmail"
                                                placeholder="with a placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="examplePassword" sm={2}>Password</Label>
-                                    <Col sm={10}>
+                                    <Label for="examplePassword" sm={5}>Password</Label>
+                                    <Col sm={7}>
                                         <Input type="password" name="password" id="examplePassword"
                                                placeholder="password placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="examplePassword" sm={2}>Retype Password</Label>
-                                    <Col sm={10}>
+                                    <Label for="examplePassword" sm={5}>Retype Password</Label>
+                                    <Col sm={7}>
                                         <Input type="password" name="password" id="examplePassword"
                                                placeholder="password placeholder"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="exampleSelectMulti" sm={2}>Select Multiple</Label>
-                                    <Col sm={10}>
-                                        <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="exampleText" sm={2}>Text Area</Label>
-                                    <Col sm={10}>
-                                        <Input type="textarea" name="text" id="exampleText"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="exampleFile" sm={2}>File</Label>
-                                    <Col sm={10}>
-                                        <Input type="file" name="file" id="exampleFile"/>
-                                        <FormText color="muted">
-                                            This is some placeholder block-level help text for the above input.
-                                            It's a bit lighter and easily wraps to a new line.
-                                        </FormText>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup check row>

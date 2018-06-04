@@ -21,6 +21,7 @@ const composeEnhancers = compose;
 const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
     order: orderReducer,
+
     auth: authReducer,
     managementBuilder : managementReducer
 });

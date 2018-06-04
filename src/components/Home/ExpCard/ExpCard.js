@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 
-
+// this file could be useless and needs to be deleted
 
 class ExpCard extends Component {
 
