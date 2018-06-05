@@ -135,7 +135,7 @@ const raw_experiments = {
     ],
     loading: true,
     didInvalidate: true,
-    lastUpdated: 'xxxxxxx'
+    lastUpdated: ''
 };
 
 export default raw_experiments;

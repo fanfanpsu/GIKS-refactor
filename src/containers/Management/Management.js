@@ -10,7 +10,12 @@ import * as actions from '../../store/actions/index';
 import axios from '../../axios-orders';
 import Navigation from "../../components/Navigation/Navigation";
 import Expcards from "../../components/Expcard/ExpCards";
+
+// this css aligns the layout of all cards with same height
 import classes from "./management.css"
+
+import raw_experiments_fewer from '../../store/rawdata/rawdata_fewer.js';
+import {updateObject} from "../../shared/utility";
 
 class Management extends Component {
     constructor(props) {
@@ -19,26 +24,31 @@ class Management extends Component {
     }
 
     state = {
-        experiments: [{title: "t1", subtitle: "st1", cardcontent: "cc1"}],
+        experiments: [],
         loading: true,
         didInvalidate: true,
         lastUpdated: 'xxxxxxx'
     }
 
     componentDidMount() {
-        this.props.onManagementLoad();
+        this.state.experiments = raw_experiments_fewer;
     }
-    
+
+    componentWillMount(){
+        this.props.onManagementLoad(this.state.experiments);
+    }
+
     render() {
 
         let authRedirect = null;
         if (!this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
-
+        alert("setting up data: experiments");
+        console.log(this.state.experiments);
         return (
             <Fragment>
-                {authRedirect}
+                {/*{authRedirect}*/}
                 <Row className={"row-eq-height"}>
                     <Expcards experiments={this.props.experiments}/>
                 </Row>
@@ -52,7 +62,10 @@ const mapStateToProps = (state, ownProps) => {
     return {
         // username : state.nav.username
         // internal : external
-        experiments: state.managementBuilder.experiments,
+
+         experiments: state.managementBuilder.experiments,
+        // experiments: state.experiments,
+
         authRedirectPath: state.auth.authRedirectPath
         // ings: state.burgerBuilder.ingredients,
         // price: state.burgerBuilder.totalPrice,
@@ -63,7 +76,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onManagementLoad: (experiments) => dispatch(actions.setManagementExperiments(experiments)),
+        onManagementLoad: () => dispatch(actions.initManagementExpPanels())
+        // initManagementExpPanels:
         // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
         // onInitIngredients: () => dispatch(actions.initIngredients()),
         // onInitPurchase: () => dispatch(actions.purchaseInit()),
