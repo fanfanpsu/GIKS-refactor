@@ -1,9 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
 import raw_experiments from '../rawdata/rawdata'
+import raw_experiments_fewer from '../rawdata/rawdata_fewer'
+
 
 const initialState = {
-    experiments:raw_experiments.experiments,
+    experiments:[],
     loading: true,
     didInvalidate: true,
     lastUpdated: 'xxxxxxx'
@@ -30,9 +32,7 @@ const fetchExperimentsFail = ( state, action ) => {
 };
 
 const setExperiments = (state, action) => {
-    // alert("setting up data: experiments");
-    // console.log(updateObject( state, {experiments: action.experiments}));
-    return updateObject( state, {experiments: action.experiments});
+    return state;//updateObject( state, {experiments: action.experiments});
 };
 
 

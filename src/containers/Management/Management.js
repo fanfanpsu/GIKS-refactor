@@ -58,7 +58,7 @@ class Management extends Component {
 }
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         // username : state.nav.username
         // internal : external
@@ -67,9 +67,6 @@ const mapStateToProps = (state, ownProps) => {
         // experiments: state.experiments,
 
         authRedirectPath: state.auth.authRedirectPath
-        // ings: state.burgerBuilder.ingredients,
-        // price: state.burgerBuilder.totalPrice,
-        // error: state.burgerBuilder.error,
         // isAuthenticated: state.auth.token !== null
     };
 }
