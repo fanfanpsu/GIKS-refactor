@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
     order: orderReducer,
 
     auth: authReducer,
-    managementBuilder : managementReducer
+    managementReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

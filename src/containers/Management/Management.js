@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
         // username : state.nav.username
         // internal : external
 
-         experiments: state.managementBuilder.experiments,
+         experiments: state.experiments,
         // experiments: state.experiments,
 
         authRedirectPath: state.auth.authRedirectPath

@@ -32,7 +32,7 @@ const fetchExperimentsFail = ( state, action ) => {
 };
 
 const setExperiments = (state, action) => {
-    return state;//updateObject( state, {experiments: action.experiments});
+    return updateObject( state, {experiments: action.experiments});
 };
 
 
