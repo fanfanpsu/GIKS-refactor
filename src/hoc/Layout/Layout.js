@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Layout extends Component {
     state = {
 
-    }
+    };
 
     render () {
         // Note this is a high order component example.

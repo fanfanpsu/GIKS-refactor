@@ -23,7 +23,7 @@ class ExpCard extends Component {
             </Card>
         </Fragment>)
     }
-};
+}
 
 ExpCard.propTypes = {
     title: PropTypes.string.isRequired,
