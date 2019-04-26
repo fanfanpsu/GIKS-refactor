@@ -28,7 +28,7 @@ class Management extends Component {
         loading: true,
         didInvalidate: true,
         lastUpdated: 'xxxxxxx'
-    };
+    }
 
     componentDidMount() {
         this.state.experiments = raw_experiments_fewer;
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
         authRedirectPath: state.auth.authRedirectPath
         // isAuthenticated: state.auth.token !== null
     };
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -80,6 +80,6 @@ const mapDispatchToProps = dispatch => {
         // onInitPurchase: () => dispatch(actions.purchaseInit()),
         // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Management, axios));

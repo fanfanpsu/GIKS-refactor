@@ -69,7 +69,7 @@ class Auth extends Component {
             }
         },
         isSignup: true
-    };
+    }
 
     componentDidMount() {
         if (!this.props.buildingManagement && this.props.authRedirectPath !== '/') {
@@ -86,18 +86,18 @@ class Auth extends Component {
             })
         });
         this.setState({controls: updatedControls});
-    };
+    }
 
     submitHandler = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
-    };
+    }
 
     switchAuthModeHandler = () => {
         this.setState(prevState => {
             return {isSignup: !prevState.isSignup};
         });
-    };
+    }
 
 
     // added from reactstrap

@@ -18,7 +18,7 @@ class BurgerBuilder extends Component {
     // this state is called initial state, or class property
     state = {
         purchasing: false
-    };
+    }
 
     componentDidMount () {
         this.props.onInitIngredients();
@@ -43,16 +43,16 @@ class BurgerBuilder extends Component {
             this.props.onSetAuthRedirectPath('/checkout');
             this.props.history.push('/auth');
         }
-    };
+    }
 
     purchaseCancelHandler = () => {
         this.setState( { purchasing: false } );
-    };
+    }
 
     purchaseContinueHandler = () => {
         this.props.onInitPurchase();
         this.props.history.push('/checkout');
-    };
+    }
 
     render () {
         const disabledInfo = {
@@ -104,7 +104,7 @@ const mapStateToProps = state => {
         error: state.burgerBuilder.error,
         isAuthenticated: state.auth.token !== null
     };
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -114,6 +114,6 @@ const mapDispatchToProps = dispatch => {
         onInitPurchase: () => dispatch(actions.purchaseInit()),
         onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler( BurgerBuilder, axios ));

@@ -20,7 +20,7 @@ import Management from "../Management/Management";
 import classes from './Home.css'
 
 class Home extends Component {
-    state = {};
+    state = {}
 
     componentDidMount() {}
     render() {
@@ -87,7 +87,7 @@ const mapStateToProps = state => {
         // error: state.burgerBuilder.error,
         isAuthenticated: state.auth.token !== null
     };
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -97,6 +97,6 @@ const mapDispatchToProps = dispatch => {
         // onInitPurchase: () => dispatch(actions.purchaseInit()),
         // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Home, axios));

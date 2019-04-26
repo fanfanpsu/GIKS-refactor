@@ -96,7 +96,7 @@ class ContactData extends Component {
             }
         },
         formIsValid: false
-    };
+    }
 
     orderHandler = ( event ) => {
         event.preventDefault();
@@ -110,11 +110,11 @@ class ContactData extends Component {
             price: this.props.price,
             orderData: formData,
             userId: this.props.userId
-        };
+        }
 
         this.props.onOrderBurger(order, this.props.token);
         
-    };
+    }
 
     inputChangedHandler = (event, inputIdentifier) => {
         
@@ -132,7 +132,7 @@ class ContactData extends Component {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
         this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
-    };
+    }
 
     render () {
         const formElementsArray = [];

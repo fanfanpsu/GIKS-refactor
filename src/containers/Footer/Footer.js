@@ -10,7 +10,7 @@ class Footer extends Component {
         // this.state = {...};
     }
 
-    state = {};
+    state = {}
 
     componentDidMount() {
     }
@@ -44,10 +44,10 @@ class Footer extends Component {
 
 const mapStateToProps = state => {
     return {}
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {}
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Footer, axios));
