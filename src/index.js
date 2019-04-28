@@ -20,9 +20,8 @@ const composeEnhancers = compose;
 const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
     order: orderReducer,
-
     auth: authReducer,
-    // managementReducer
+    management: managementReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
