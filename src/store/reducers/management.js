@@ -5,7 +5,7 @@ import raw_experiments_fewer from '../rawdata/rawdata_fewer'
 
 
 const initialState = {
-    experiments:[],
+    experiments:raw_experiments_fewer,
     loading: true,
     didInvalidate: true,
     lastUpdated: 'xxxxxxx'
@@ -23,7 +23,7 @@ const fetchExperimentsSuccess = ( state, action ) => {
 
     return updateObject( state, {
         loading: false,
-        experiments:  action.newExperiments
+        //experiments:  action.experiments
     } );
 };
 
@@ -32,6 +32,7 @@ const fetchExperimentsFail = ( state, action ) => {
 };
 
 const setExperiments = (state, action) => {
+
     return updateObject( state, {experiments: action.experiments});
 };
 

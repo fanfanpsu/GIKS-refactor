@@ -5,7 +5,6 @@ import Expcard from "./ExpCard/ExpCard";
 
 class ExpCards extends Component {
     render() {
-        // console.log(this.props.expCards)
         const expCardList = Object.keys(this.props.experiments)
             .map(cardKey => {
                 // console.log(cardKey);

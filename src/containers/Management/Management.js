@@ -31,7 +31,7 @@ class Management extends Component {
     }
 
     componentDidMount() {
-        this.state.experiments = raw_experiments_fewer;
+        // this.state.experiments = raw_experiments_fewer;
     }
 
     componentWillMount(){
@@ -44,8 +44,7 @@ class Management extends Component {
         if (!this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
-        alert("setting up data: experiments");
-        console.log(this.state.experiments);
+
         return (
             <Fragment>
                 {/*{authRedirect}*/}
@@ -62,10 +61,7 @@ const mapStateToProps = (state) => {
     return {
         // username : state.nav.username
         // internal : external
-
-         experiments: state.experiments,
-        // experiments: state.experiments,
-
+        experiments: state.managementBuilder.experiments,
         authRedirectPath: state.auth.authRedirectPath
         // isAuthenticated: state.auth.token !== null
     };
@@ -74,7 +70,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         onManagementLoad: () => dispatch(actions.initManagementExpPanels())
-        // initManagementExpPanels:
         // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
         // onInitIngredients: () => dispatch(actions.initIngredients()),
         // onInitPurchase: () => dispatch(actions.purchaseInit()),

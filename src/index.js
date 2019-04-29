@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
     order: orderReducer,
     auth: authReducer,
-    management: managementReducer
+    managementBuilder: managementReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
