@@ -2,22 +2,86 @@ import React, {Component, Fragment} from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+
+// cytoscape experiment import
 import cytoscape from 'cytoscape';
+import { bindActionCreators } from 'redux';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios-orders';
-import Expcards from "../../components/Expcard/ExpCards";
-
-// this css aligns the layout of all cards with same height
-import classes from "./Demo.css"
 
 import {updateObject} from "../../shared/utility";
 
+// this css define the layout and size of the cy
+import classes from "./Demo.css"
+
 class Demo extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
-        // this.state = {...};
+        this.renderCytoscapeElement = this.renderCytoscapeElement.bind(this);
+    }
+    // code sample from https://stackoverflow.com/questions/38626167/cytoscape-and-reactjs-integration
+    renderCytoscapeElement(){
+
+        console.log('* Cytoscape.js is rendering the graph..');
+
+        this.cy = cytoscape(
+            {
+                container: document.getElementById('cy'),
+
+                boxSelectionEnabled: false,
+                autounselectify: true,
+
+                style: cytoscape.stylesheet()
+                    .selector('node')
+                    .css({
+                        'height': 80,
+                        'width': 80,
+                        'background-fit': 'cover',
+                        'border-color': '#000',
+                        'border-width': 3,
+                        'border-opacity': 0.5,
+                        'content': 'data(name)',
+                        'text-valign': 'center',
+                    })
+                    .selector('edge')
+                    .css({
+                        'width': 6,
+                        'target-arrow-shape': 'triangle',
+                        'line-color': '#ffaaaa',
+                        'target-arrow-color': '#ffaaaa',
+                        'curve-style': 'bezier'
+                    })
+                ,
+                elements: {
+                    nodes: [
+                        { data: { id: 'cat' } },
+                        { data: { id: 'bird' } },
+                        { data: { id: 'ladybug' } },
+                        { data: { id: 'aphid' } },
+                        { data: { id: 'rose' } },
+                        { data: { id: 'grasshopper' } },
+                        { data: { id: 'plant' } },
+                        { data: { id: 'wheat' } }
+                    ],
+                    edges: [
+                        { data: { source: 'cat', target: 'bird' } },
+                        { data: { source: 'bird', target: 'ladybug' } },
+                        { data: { source: 'bird', target: 'grasshopper' } },
+                        { data: { source: 'grasshopper', target: 'plant' } },
+                        { data: { source: 'grasshopper', target: 'wheat' } },
+                        { data: { source: 'ladybug', target: 'aphid' } },
+                        { data: { source: 'aphid', target: 'rose' } }
+                    ]
+                },
+
+                layout: {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 10
+                }
+            });
     }
 
     state = {}
@@ -33,48 +97,10 @@ class Demo extends Component {
 
     render() {
 
-        var cy = cytoscape({
-            // very commonly used options
-            container: undefined,
-            elements: [ /* ... */ ],
-            style: [ /* ... */ ],
-            layout: { name: 'grid' /* , ... */ },
-
-            // initial viewport state:
-            zoom: 1,
-            pan: { x: 0, y: 0 },
-
-            // interaction options:
-            minZoom: 1e-50,
-            maxZoom: 1e50,
-            zoomingEnabled: true,
-            userZoomingEnabled: true,
-            panningEnabled: true,
-            userPanningEnabled: true,
-            boxSelectionEnabled: false,
-            selectionType: 'single',
-            touchTapThreshold: 8,
-            desktopTapThreshold: 4,
-            autolock: false,
-            autoungrabify: false,
-            autounselectify: false,
-
-            // rendering options:
-            headless: false,
-            styleEnabled: true,
-            hideEdgesOnViewport: false,
-            hideLabelsOnViewport: false,
-            textureOnViewport: false,
-            motionBlur: false,
-            motionBlurOpacity: 0.2,
-            wheelSensitivity: 1,
-            pixelRatio: 'auto'
-        });
-
         return (
             <Fragment>
-                <Row className={"row-eq-height"}>
-                    {/*<Expcards experiments={this.props.experiments}/>*/}
+                <Row>
+
                 </Row>
             </Fragment>
         );
