@@ -89,18 +89,24 @@ class Demo extends Component {
 
 
     componentDidMount() {
+        this.renderCytoscapeElement();
     }
 
     componentWillMount(){
-        // this.props.onManagementLoad(this.state.experiments);
     }
 
     render() {
-
+        let cyStyle = {
+            height: '1000px',
+            width: '1000px',
+            margin: '20px 0px'
+        };
         return (
             <Fragment>
                 <Row>
-
+                    <div className="node_selected">
+                        <div style={cyStyle} id="cy"/>
+                    </div>
                 </Row>
             </Fragment>
         );
@@ -110,21 +116,14 @@ class Demo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // username : state.nav.username
-        // internal : external
-        experiments: state.managementBuilder.experiments,
-        authRedirectPath: state.auth.authRedirectPath
-        // isAuthenticated: state.auth.token !== null
+
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onManagementLoad: () => dispatch(actions.initManagementExpPanels())
+        // onManagementLoad: () => dispatch(actions.initManagementExpPanels())
         // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
-        // onInitIngredients: () => dispatch(actions.initIngredients()),
-        // onInitPurchase: () => dispatch(actions.purchaseInit()),
-        // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     }
 }
 

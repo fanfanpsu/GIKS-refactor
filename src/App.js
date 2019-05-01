@@ -39,7 +39,7 @@ class App extends Component {
                 <Route path="/" exact component={Home}/>
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
-                {/*<Route path="/demo" component={Demo}/>*/}
+                <Route path="/demo" component={Demo}/>
 
                 <Redirect to="/"/>
             </Switch>
