@@ -16,8 +16,7 @@ import {updateObject} from "../../shared/utility";
 // this css define the layout and size of the cy
 import classes from "./Demo.css"
 
-import Graph from "./Graph/Graph";
-
+import Graph from "../../components/Graph/Graph";
 
 class Demo extends Component {
     constructor(props){
