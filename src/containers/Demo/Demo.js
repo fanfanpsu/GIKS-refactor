@@ -81,7 +81,31 @@ class Demo extends Component {
                     name: 'grid',
                     directed: true,
                     padding: 10
-                }
+                },
+
+                // interaction options:
+                minZoom: 1e-50,
+                maxZoom: 1e50,
+                zoomingEnabled: false,
+                userZoomingEnabled: true,
+                panningEnabled: true,
+                userPanningEnabled: true,
+                selectionType: 'single',
+                touchTapThreshold: 8,
+                desktopTapThreshold: 4,
+                autolock: false,
+                autoungrabify: false,
+                
+                // rendering options:
+                headless: false,
+                styleEnabled: true,
+                hideEdgesOnViewport: false,
+                hideLabelsOnViewport: false,
+                textureOnViewport: false,
+                motionBlur: false,
+                motionBlurOpacity: 0.2,
+                wheelSensitivity: 1,
+                pixelRatio: 'auto'
             });
 
         this.cy2 = cytoscape(
