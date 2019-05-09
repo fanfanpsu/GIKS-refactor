@@ -1,10 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
 
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-} from 'reactstrap';
+import classes from './Graph.css';
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 class Graph extends Component {
 

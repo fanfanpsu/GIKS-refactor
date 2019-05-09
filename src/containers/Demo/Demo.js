@@ -15,7 +15,6 @@ import {updateObject} from "../../shared/utility";
 
 // this css define the layout and size of the cy
 import classes from "./Demo.css"
-
 import Graph from "../../components/Graph/Graph";
 
 class Demo extends Component {
@@ -26,8 +25,7 @@ class Demo extends Component {
     // code sample from https://stackoverflow.com/questions/38626167/cytoscape-and-reactjs-integration
     renderCytoscapeElement(){
 
-        console.log('* Cytoscape.js is rendering the graph..');
-        this.cy1 = cytoscape(
+        let cy1 = cytoscape(
             {
                 container: document.getElementById('cy1'),
 
@@ -95,7 +93,7 @@ class Demo extends Component {
                 desktopTapThreshold: 4,
                 autolock: false,
                 autoungrabify: false,
-                
+
                 // rendering options:
                 headless: false,
                 styleEnabled: true,
@@ -108,62 +106,12 @@ class Demo extends Component {
                 pixelRatio: 'auto'
             });
 
-        this.cy2 = cytoscape(
-            {
-                container: document.getElementById('cy2'),
 
-                boxSelectionEnabled: false,
-                autounselectify: true,
+        cy1.on('dragfree',  'node', (evt) => {
+            alert('DragFree Event');
 
-                style: cytoscape.stylesheet()
-                    .selector('node')
-                    .css({
-                        'height': 10,
-                        'width': 10,
-                        'background-fit': 'cover',
-                        'border-color': '#000',
-                        'border-width': 3,
-                        'border-opacity': 0.5,
-                        'content': 'data(name)',
-                        'text-valign': 'center',
-                    })
-                    .selector('edge')
-                    .css({
-                        'width': 6,
-                        'target-arrow-shape': 'triangle',
-                        'line-color': '#ffaaaa',
-                        'target-arrow-color': '#ffaaaa',
-                        'curve-style': 'bezier'
-                    })
-                ,
-                elements: {
-                    nodes: [
-                        { data: { id: 'cat' } },
-                        { data: { id: 'bird' } },
-                        { data: { id: 'ladybug' } },
-                        { data: { id: 'aphid' } },
-                        { data: { id: 'rose' } },
-                        { data: { id: 'grasshopper' } },
-                        { data: { id: 'plant' } },
-                        { data: { id: 'wheat' } }
-                    ],
-                    edges: [
-                        // { data: { source: 'cat', target: 'bird' } },
-                        // { data: { source: 'bird', target: 'ladybug' } },
-                        // { data: { source: 'bird', target: 'grasshopper' } },
-                        // { data: { source: 'grasshopper', target: 'plant' } },
-                        // { data: { source: 'grasshopper', target: 'wheat' } },
-                        // { data: { source: 'ladybug', target: 'aphid' } },
-                        // { data: { source: 'aphid', target: 'rose' } }
-                    ]
-                },
+        });
 
-                layout: {
-                    name: 'grid',
-                    directed: true,
-                    padding: 10
-                }
-            });
     }
 
     state = {}
@@ -178,30 +126,25 @@ class Demo extends Component {
     }
 
     render() {
-        let cyStyle = {
-            height: '600px',
-            width: '600px',
-            margin: '20px 0px'
-        };
-        return (
+        
+        // this.state.tasks.forEach ((t) => {
+        //     tasks[t.category].push(<div
+        //         key={t.name}
+        //         onDragStart={(e)=>this.onDragStart(e, t.name)}
+        //         draggable
+        //         className="draggable"
+        //         style={{backgroundColor: t.bgcolor}}>
+        //         {t.name}
+        //     </div>);
+
+            return (
             <Fragment>
                 <Row className={"row-eq-height"}>
-                    <Col xs="1" sm="1" md={"1"}>
-                    </Col>
-
                     <Col xs="5" sm="5" md={"5"}>
                         <div className="node_selected">
                             <div id="cy1" className={"graph"}/>
                         </div>
                     </Col>
-                    <Col xs="5" sm="5" md={"5"}>
-                        <div className="node_selected">
-                            <div id="cy2" className={"graph"}/>
-                        </div>
-                    </Col>
-                    <Col xs="1" sm="1" md={"1"}>
-                    </Col>
-
                 </Row>
             </Fragment>
         );
