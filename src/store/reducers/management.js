@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
-import raw_experiments from '../rawdata/rawdata'
-import raw_experiments_fewer from '../rawdata/rawdata_fewer'
+import raw_experiments from '../../assets/rawdata/rawdata'
+import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer'
 
 
 const initialState = {

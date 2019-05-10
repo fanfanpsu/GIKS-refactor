@@ -12,7 +12,7 @@ import Matrix from "../../components/Matrix/Matrix";
 // this css aligns the layout of all cards with same height
 import classes from "./Matrix.css"
 
-import raw_experiments_fewer from '../../store/rawdata/rawdata_fewer.js';
+import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
 import {updateObject} from "../../shared/utility";
 
 class Matrix extends Component {
