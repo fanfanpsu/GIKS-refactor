@@ -24,7 +24,7 @@ class Demo extends Component {
     }
     // code sample from https://stackoverflow.com/questions/38626167/cytoscape-and-reactjs-integration
     renderCytoscapeElement(){
-
+        //https://github.com/cytoscape/cytoscape.js/issues/2380
         let cy1 = cytoscape(
             {
                 container: document.getElementById('cy1'),
@@ -123,10 +123,11 @@ class Demo extends Component {
     }
 
     componentWillMount(){
+
     }
 
     render() {
-        
+
         // this.state.tasks.forEach ((t) => {
         //     tasks[t.category].push(<div
         //         key={t.name}
