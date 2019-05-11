@@ -15,7 +15,7 @@ import classes from "./Matrix.css"
 import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
 import {updateObject} from "../../shared/utility";
 
-class Matrix extends Component {
+class MatrixManagement extends Component {
     constructor(props) {
         super(props);
         // this.state = {...};
@@ -23,6 +23,7 @@ class Matrix extends Component {
 
     state = {
         experiments: [],
+        distances:[]
     }
 
     componentDidMount() {
@@ -30,6 +31,7 @@ class Matrix extends Component {
     }
 
     componentWillMount(){
+        //TODO
         this.props.onManagementLoad(this.state.experiments);
     }
 
@@ -37,7 +39,7 @@ class Matrix extends Component {
 
         return (
             <Fragment>
-                <Matrix experiments={this.props.experiments}/>
+                <Matrix distances={this.props.distances}/>
             </Fragment>
         );
     }
@@ -47,8 +49,8 @@ class Matrix extends Component {
 const mapStateToProps = (state) => {
     return {
 
-        experiments: state.managementBuilder.experiments,
-        authRedirectPath: state.auth.authRedirectPath
+        distances: state.managementBuilder.distances,
+        // authRedirectPath: state.auth.authRedirectPath
     };
 }
 
@@ -58,4 +60,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Matrix, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(MatrixManagement, axios));

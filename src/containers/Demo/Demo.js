@@ -16,6 +16,7 @@ import {updateObject} from "../../shared/utility";
 // this css define the layout and size of the cy
 import classes from "./Demo.css"
 import Graph from "../../components/Graph/Graph";
+import Matrix from "../Matrix/Matrix";
 
 class Demo extends Component {
     constructor(props){
@@ -146,6 +147,12 @@ class Demo extends Component {
                             <div id="cy1" className={"graph"}/>
                         </div>
                     </Col>
+                    <Col xs="5" sm="5" md={"5"}>
+                        <div className="">
+                            <Matrix></Matrix>
+                        </div>
+                    </Col>
+
                 </Row>
             </Fragment>
         );

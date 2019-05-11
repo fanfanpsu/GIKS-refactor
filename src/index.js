@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import burgerBuilderReducer from './store/reducers/burgerBuilder';
+import burgerBuilderReducer from './store/reducers/burgerReducer';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
 import managementReducer from './store/reducers/management';
