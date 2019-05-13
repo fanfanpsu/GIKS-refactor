@@ -13,6 +13,8 @@ import burgerBuilderReducer from './store/reducers/burgerReducer';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
 import managementReducer from './store/reducers/management';
+import graphReducer from './store/reducers/graphReducer';
+
 
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const composeEnhancers = compose;
@@ -21,7 +23,9 @@ const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
     order: orderReducer,
     auth: authReducer,
-    managementBuilder: managementReducer
+    managementBuilder: managementReducer,
+    graphReducer : graphReducer
+
 });
 
 const store = createStore(rootReducer, composeEnhancers(

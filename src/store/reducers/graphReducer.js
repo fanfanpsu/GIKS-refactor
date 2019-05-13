@@ -5,7 +5,9 @@ const initialState = {
     ingredients: null,
     totalPrice: 4,
     error: false,
-    building: false
+    building: false,
+    graphID: "testID"
+
 };
 
 const INGREDIENT_PRICES = {

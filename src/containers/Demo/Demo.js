@@ -1,11 +1,12 @@
 import React, {Component, Fragment} from 'react';
+import ReactDOM from 'react-dom';
 import {Col, Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 // cytoscape experiment import
 import cytoscape from 'cytoscape';
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -16,17 +17,20 @@ import {updateObject} from "../../shared/utility";
 // this css define the layout and size of the cy
 import classes from "./Demo.css"
 import Graph from "../../components/Graph/Graph";
-import Matrix from "../Matrix/Matrix";
+import Matrix from "../MatrixBuilder/MatrixBuilder";
+import "../../assets/rawdata/graph.json";
 
 class Demo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.renderCytoscapeElement = this.renderCytoscapeElement.bind(this);
     }
+
     // code sample from https://stackoverflow.com/questions/38626167/cytoscape-and-reactjs-integration
-    renderCytoscapeElement(){
+    renderCytoscapeElement() {
+
         //https://github.com/cytoscape/cytoscape.js/issues/2380
-        let cy1 = cytoscape(
+        /*let cy1 = cytoscape(
             {
                 container: document.getElementById('cy1'),
 
@@ -56,24 +60,16 @@ class Demo extends Component {
                 ,
                 elements: {
                     nodes: [
-                        { data: { id: 'cat' } },
-                        { data: { id: 'bird' } },
-                        { data: { id: 'ladybug' } },
-                        { data: { id: 'aphid' } },
-                        { data: { id: 'rose' } },
-                        { data: { id: 'grasshopper' } },
-                        { data: { id: 'plant' } },
-                        { data: { id: 'wheat' } }
+                        {data: {id: 'cat'}},
+                        {data: {id: 'bird'}},
+                        {data: {id: 'ladybug'}},
+                        {data: {id: 'aphid'}},
+                        {data: {id: 'rose'}},
+                        {data: {id: 'grasshopper'}},
+                        {data: {id: 'plant'}},
+                        {data: {id: 'wheat'}}
                     ],
-                    edges: [
-                        // { data: { source: 'cat', target: 'bird' } },
-                        // { data: { source: 'bird', target: 'ladybug' } },
-                        // { data: { source: 'bird', target: 'grasshopper' } },
-                        // { data: { source: 'grasshopper', target: 'plant' } },
-                        // { data: { source: 'grasshopper', target: 'wheat' } },
-                        // { data: { source: 'ladybug', target: 'aphid' } },
-                        // { data: { source: 'aphid', target: 'rose' } }
-                    ]
+                    edges: []
                 },
 
                 layout: {
@@ -105,46 +101,76 @@ class Demo extends Component {
                 motionBlurOpacity: 0.2,
                 wheelSensitivity: 1,
                 pixelRatio: 'auto'
-            });
+            });*/
 
 
-        cy1.on('dragfree',  'node', (evt) => {
+        /*cy1.on('dragfree', 'node', (evt) => {
             alert('DragFree Event');
 
-        });
+        });*/
 
     }
 
     state = {}
 
 
-
     componentDidMount() {
-        this.renderCytoscapeElement();
+        // this.renderCytoscapeElement();
+
+        // const mount_node = document.getElementById('cy-node');
+        // const data_source_node = document.getElementById('data-source-link');
+        //
+        // const filter_node = document.getElementById('graph-nodes');
+        // ReactDOM.render(
+        //     <Graph graphID={"cy-node"}></Graph>,
+        //     mount_node
+        // );
+
+        // axios.get(data_source_node.getAttribute('href'))
+        //     .then(function (response) {
+        //
+        //         const store = response.data; //new GraphModel(response.data);
+        //
+        //         const filter_node = document.getElementById('graph-nodes');
+        //
+        //         // ReactDOM.render(
+        //         //     <Filter store={store}></Filter>,
+        //         //     filter_node
+        //         // );
+        //
+        //         ReactDOM.render(
+        //             <Graph store={store}></Graph>,
+        //             mount_node
+        //         );
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //         ReactDOM.render(
+        //             <div className="alert alert-danger">
+        //                 <strong>:(</strong>
+        //                 <br/>
+        //                 <span>No data</span>
+        //             </div>,
+        //             mount_node
+        //         );
+        //     });
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
     }
 
     render() {
 
-        // this.state.tasks.forEach ((t) => {
-        //     tasks[t.category].push(<div
-        //         key={t.name}
-        //         onDragStart={(e)=>this.onDragStart(e, t.name)}
-        //         draggable
-        //         className="draggable"
-        //         style={{backgroundColor: t.bgcolor}}>
-        //         {t.name}
-        //     </div>);
-
-            return (
+        return (
             <Fragment>
                 <Row className={"row-eq-height"}>
                     <Col xs="5" sm="5" md={"5"}>
                         <div className="node_selected">
-                            <div id="cy1" className={"graph"}/>
+                            {/*<div id="cy1" className={"graph"}/>*/}
+                            <Graph graphID={"test graphID"}>
+
+                            </Graph>
                         </div>
                     </Col>
                     <Col xs="5" sm="5" md={"5"}>
@@ -161,9 +187,7 @@ class Demo extends Component {
 
 
 const mapStateToProps = (state) => {
-    return {
-
-    };
+    return {};
 }
 
 const mapDispatchToProps = dispatch => {

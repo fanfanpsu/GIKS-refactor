@@ -10,12 +10,12 @@ import Expcards from "../../components/Expcard/ExpCards";
 import Matrix from "../../components/Matrix/Matrix";
 
 // this css aligns the layout of all cards with same height
-import classes from "./Matrix.css"
+import classes from "./MatrixBuilder.css"
 
 import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
 import {updateObject} from "../../shared/utility";
 
-class MatrixManagement extends Component {
+class MatrixBuilder extends Component {
     constructor(props) {
         super(props);
         // this.state = {...};
@@ -60,4 +60,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(MatrixManagement, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(MatrixBuilder, axios));
