@@ -1,15 +1,18 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
 
-// import { observer } from "mobx-react";
-// import cycola from 'cytoscape-cola';
 import cytoscape from 'cytoscape';
-
 import {connect} from "react-redux";
 
 import {updateObject} from '../../shared/utility';
 import graph_config from './graph_config';
 import classes from './Graph.css';
+import * as actions from "../../store/actions";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import axios from "../../axios-orders";
+
+// import { observer } from "mobx-react";
+// import cycola from 'cytoscape-cola';
 // cytoscape.use(cycola);
 
 // @observer
@@ -26,17 +29,11 @@ class Graph extends React.Component {
     }
 
     componentDidMount() {
-        // const { graph } = this.props.store;
-        alert(this.props.graphID)
-        let cy_config = graph_config;
-        cy_config = updateObject(cy_config,
-            {container: document.getElementById(this.props.graphID)});
+        this.cy = cytoscape(updateObject(graph_config,
+            {container: document.getElementById(this.props.graphID)}));
 
-
-
-        this.cy = cytoscape(cy_config);
         this.cy.on('dragfree', 'node', (evt) => {
-            console.log('DragFree event triggered');
+            this.props.onGraphUpdated();
         });
     }
 
@@ -45,11 +42,10 @@ class Graph extends React.Component {
     }
 
     componentDidUpdate() {
-        const {filter, hiddenElements} = this.props.store;
+        // const {filter, hiddenElements} = this.props.store;
 
-        // TODO This might be useful
+        // TODO This might be useful?
         this.cy.elements('node:selected').unselect();
-
         //TODO Update the state data for matrix data
 
         // if(filter) {
@@ -82,14 +78,22 @@ class Graph extends React.Component {
     }
 }
 
-
 const mapStateToProps = state => {
     return {
-        // ings: state.burgerBuilder.ingredients
-        graphID: state.graphReducer.graphID
+        graphID: state.graphReducer.graphID,
+
     }
 };
 
-export default connect(mapStateToProps)(Graph);
+const mapDispatchToProps = dispatch => {
+    return {
+        // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
+        // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
+        // onInitIngredients: () => dispatch(actions.initIngredients()),
+        // onInitPurchase: () => dispatch(actions.purchaseInit()),
+        // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
+        onGraphUpdated:  () => alert("about to dispactch the graphupdate")//dispatch(actions.purchaseInit()),
+    }
+}
 
-// export default Graph;
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Graph, axios));
