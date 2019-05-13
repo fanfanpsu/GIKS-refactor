@@ -6,7 +6,7 @@ const initialState = {
     totalPrice: 4,
     error: false,
     building: false,
-    graphID: "testID"
+    graphID: "cytoscape"
 
 };
 

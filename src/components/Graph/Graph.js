@@ -2,22 +2,22 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
 
 // import { observer } from "mobx-react";
-
 // import cycola from 'cytoscape-cola';
 import cytoscape from 'cytoscape';
 
-
-import classes from './Graph.css';
 import {connect} from "react-redux";
 
+import {updateObject} from '../../shared/utility';
+import graph_config from './graph_config';
+import classes from './Graph.css';
 // cytoscape.use(cycola);
 
 // @observer
 class Graph extends React.Component {
     cy = null;
-    cyNode = 'cytoscape';
+
     cyStyle = {
-        height: 'calc(100vh - 100px)',
+        height: 'calc(100vh - 150px)',
         border: '1px solid #ddd'
     };
 
@@ -27,44 +27,16 @@ class Graph extends React.Component {
 
     componentDidMount() {
         // const { graph } = this.props.store;
-        alert(this.props.graphID);
+        alert(this.props.graphID)
+        let cy_config = graph_config;
+        cy_config = updateObject(cy_config,
+            {container: document.getElementById(this.props.graphID)});
 
-        let cy_config = {
-            container: document.getElementById(this.cyNode),
-            layout: {
-                name: 'grid',
-                directed: true,
-                padding: 10
-            },
-            elements: {
-                "nodes": [
-                    { "data": { "id": "n1" } },
-                    { "data": { "id": "n2" } },
-                    { "data": { "id": "n3" } },
-                    { "data": { "id": "n4" } },
-                    { "data": { "id": "n5" } },
-                    { "data": { "id": "n6" } },
-                    { "data": { "id": "n7" } },
-                    { "data": { "id": "n8" } },
-                    { "data": { "id": "n9" } },
-                    { "data": { "id": "n10" } }
-                ],
-                "edges": []
-            },
-            style: [
-                {
-                    selector: 'node',
-                    style: {
-                        'content': 'data(id)'
-                    }
-                }
-            ],
-        };
 
-        // self = this;
+
         this.cy = cytoscape(cy_config);
         this.cy.on('dragfree', 'node', (evt) => {
-            alert('DragFree event triggered');
+            console.log('DragFree event triggered');
         });
     }
 
@@ -73,7 +45,7 @@ class Graph extends React.Component {
     }
 
     componentDidUpdate() {
-        const { filter, hiddenElements } = this.props.store;
+        const {filter, hiddenElements} = this.props.store;
 
         // TODO This might be useful
         this.cy.elements('node:selected').unselect();
@@ -103,22 +75,21 @@ class Graph extends React.Component {
 
     render() {
         // const { filter } = this.props.store;
-        alert(this.props.graphID);
+        console.log(this.props.graphID);
         return (
-            <div id={this.cyNode} style={this.cyStyle}></div>
+            <div id={this.props.graphID} style={this.cyStyle}></div>
         );
     }
 }
 
 
-
 const mapStateToProps = state => {
     return {
         // ings: state.burgerBuilder.ingredients
-        graphID : state.graphReducer.graphID
+        graphID: state.graphReducer.graphID
     }
 };
 
-export default connect( mapStateToProps )( Graph );
+export default connect(mapStateToProps)(Graph);
 
 // export default Graph;

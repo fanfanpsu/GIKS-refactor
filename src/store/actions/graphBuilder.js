@@ -8,6 +8,16 @@ export const dragNodeEnd = ( nodeId ) => {
     };
 };
 
+//TODO
 export const setDragNodeEnd = () => {
+    return dispatch=>{dragNodeEnd("")};
+};
+
+//TODO
+export const initGraph = () => {
+    return dispatch=>{dragNodeEnd("")};
+};
+//TODO
+export const updateGraph = () => {
     return dispatch=>{dragNodeEnd("")};
 };

@@ -11,10 +11,10 @@ import * as actions from '../../store/actions/index';
 import axios from '../../axios-orders';
 
 class GraphBuilder extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {...}
-    // }
+    constructor(props) {
+        super(props);
+        // this.state = {...}
+    }
     // this state is called initial state, or class property
     state = {
         nodes: [
