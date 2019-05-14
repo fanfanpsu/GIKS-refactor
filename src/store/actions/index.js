@@ -25,7 +25,7 @@ export {
 
 export {
     initGraph,
-    updateGraph,
     dragNodeEnd,
-    setDragNodeEnd
+    setDragNodeEnd,
+    updateGraph
 } from './graphBuilder';

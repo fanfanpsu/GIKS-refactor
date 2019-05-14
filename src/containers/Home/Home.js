@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import axios from '../../axios-orders';
+import axios from '../../axios-address';
 import Footer from "../Footer/Footer";
 import researcher_logo from '../../assets/images/researcher.png'; // Import using relative path
 import student_logo from '../../assets/images/student.png'; // Import using relative path

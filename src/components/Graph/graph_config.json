@@ -10,11 +10,8 @@
     "nodes": [
       {
         "data": {
-          "id": "n1",
-          "name": "test-n1"
-        },
-        "selectable": false,
-        "grabbable": false
+          "id": "n1"
+        }
       },
       {
         "data": {

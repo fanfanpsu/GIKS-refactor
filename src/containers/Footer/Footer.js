@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Navbar} from 'reactstrap';
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import axios from "../../axios-orders";
+import axios from "../../axios-address";
 
 class Footer extends Component {
     constructor(props) {

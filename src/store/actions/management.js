@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-orders';
+import axios from '../../axios-address';
 
 
 // set exp panels after success retrieved exps

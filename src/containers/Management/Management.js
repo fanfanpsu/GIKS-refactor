@@ -7,7 +7,7 @@ import BurgerBuilder from '../BurgerBuilder/BurgerBuilder';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
-import axios from '../../axios-orders';
+import axios from '../../axios-address';
 import Navigation from "../../components/Navigation/Navigation";
 import Expcards from "../../components/Expcard/ExpCards";
 

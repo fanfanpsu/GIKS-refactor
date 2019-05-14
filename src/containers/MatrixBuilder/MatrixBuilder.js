@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
-import axios from '../../axios-orders';
+import axios from '../../axios-address';
 import Expcards from "../../components/Expcard/ExpCards";
 import Matrix from "../../components/Matrix/Matrix";
 

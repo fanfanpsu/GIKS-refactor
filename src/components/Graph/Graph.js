@@ -9,7 +9,7 @@ import graph_config from './graph_config';
 import classes from './Graph.css';
 import * as actions from "../../store/actions";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import axios from "../../axios-orders";
+import BurgerIngredient from "../Burger/BurgerIngredient/BurgerIngredient";
 
 // import { observer } from "mobx-react";
 // import cycola from 'cytoscape-cola';
@@ -34,20 +34,12 @@ class Graph extends React.Component {
 
         this.cy.on('dragfree', 'node', (evt) => {
             this.props.onGraphUpdated();
+            this.cy.elements('node:selected').unselect();
         });
-    }
-
-    updateFilter(filter) {
-        this.props.store.setFilter(filter);
     }
 
     componentDidUpdate() {
         // const {filter, hiddenElements} = this.props.store;
-
-        // TODO This might be useful?
-        this.cy.elements('node:selected').unselect();
-        //TODO Update the state data for matrix data
-
         // if(filter) {
         //     if(hiddenElements) {
         //         hiddenElements.restore();
@@ -70,30 +62,29 @@ class Graph extends React.Component {
     }
 
     render() {
-        // const { filter } = this.props.store;
-        console.log(this.props.graphID);
         return (
             <div id={this.props.graphID} style={this.cyStyle}></div>
         );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state,ownProps) => {
     return {
         graphID: state.graphReducer.graphID,
-
+        // mapStateToProps 通常用来map 属性，而非函数
+        // onGraphUpdated: state.graphReducer.onGraphUpdated
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-        // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
-        // onInitIngredients: () => dispatch(actions.initIngredients()),
-        // onInitPurchase: () => dispatch(actions.purchaseInit()),
-        // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
         onGraphUpdated:  () => alert("about to dispactch the graphupdate")//dispatch(actions.purchaseInit()),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Graph, axios));
+Graph.propTypes = {
+    graphID: PropTypes.string.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Graph);
