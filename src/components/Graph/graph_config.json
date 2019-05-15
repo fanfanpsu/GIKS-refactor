@@ -59,7 +59,9 @@
         }
       }
     ],
-    "edges": []
+    "edges": [
+      { "data": { "id": "a", "source": "n1", "target": "n2" } }
+    ]
   },
   "style": [
     {

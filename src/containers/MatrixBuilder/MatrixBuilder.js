@@ -6,7 +6,6 @@ import {Redirect} from 'react-router-dom';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios-address';
-import Expcards from "../../components/Expcard/ExpCards";
 import Matrix from "../../components/Matrix/Matrix";
 
 // this css aligns the layout of all cards with same height
@@ -22,7 +21,6 @@ class MatrixBuilder extends Component {
     }
 
     state = {
-        experiments: [],
         distances:[]
     }
 
@@ -32,11 +30,34 @@ class MatrixBuilder extends Component {
 
     componentWillMount(){
         //TODO
-        this.props.onManagementLoad(this.state.experiments);
+        // this.props.onManagementLoad(this.state.experiments);
+    }
+
+    componentDidUpdate() {
+        alert("graph updated, therefore matrix needs to be updated too");
+        // const {filter, hiddenElements} = this.props.store;
+        // if(filter) {
+        //     if(hiddenElements) {
+        //         hiddenElements.restore();
+        //         this.props.store.clearHiddenElements();
+        //     }
+        //
+        //     let node = this.cy.getElementById(filter);
+        //     let neighbours = node.neighborhood();
+        //     // Hide farest elements
+        //     this.props.store.setHiddenElements(self.cy.elements().difference(neighbours).not(node));
+        //     this.cy.nodes().difference(neighbours).not(node).remove();
+        //     node.select();
+        // }
+        // else if(hiddenElements) {
+        //     hiddenElements.restore();
+        //     this.props.store.clearHiddenElements();
+        // }
+        //
+        // this.cy.fit();
     }
 
     render() {
-
         return (
             <Fragment>
                 <Matrix distances={this.props.distances}/>
@@ -48,15 +69,14 @@ class MatrixBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-
-        distances: state.managementBuilder.distances,
-        // authRedirectPath: state.auth.authRedirectPath
+        distances: state.matrixReducer.distances,
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onManagementLoad: () => dispatch(actions.initManagementExpPanels())
+        // the matrix shouldn't be updated, it should be updated by the graph
+        // onManagementLoad: () => dispatch(actions.initManagementExpPanels()),
     }
 }
 

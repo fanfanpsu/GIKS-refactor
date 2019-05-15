@@ -10,33 +10,53 @@ class Matrix extends Component {
         return (
             <Table>
                 <thead>
-                <tr>
-                    <th>DISTANCE</th>
-                    <th>Node 1</th>
-                    <th>Node 2</th>
-                    <th>Node 3</th>
 
-                </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th>N/A</th>
+                    <th>N1</th>
+                    <th>N2</th>
+                    <th>N3</th>
+                    <th>N4</th>
+                    <th>N5</th>
+                    <th>N6</th>
+                    <th>N7</th>
+                    <th>N8</th>
+                    <th>N9</th>
+                    <th>N10</th>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                    <tr>
+                        <th scope="row">N1</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N2</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N3</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N4</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N5</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N6</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N7</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N8</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N9</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">N10</th>
+                    </tr>
+
                 </tbody>
             </Table>
         );

@@ -17,7 +17,7 @@ import {updateObject} from "../../shared/utility";
 // this css define the layout and size of the cy
 import classes from "./Demo.css"
 import Graph from "../../components/Graph/Graph";
-import Matrix from "../MatrixBuilder/MatrixBuilder";
+import MatrixBuilder from "../MatrixBuilder/MatrixBuilder";
 import "../../assets/rawdata/graph.json";
 import GraphBuilder from "../Graph/GraphBuilder";
 
@@ -40,14 +40,14 @@ class Demo extends Component {
         return (
             <Fragment>
                 <Row className={"row-eq-height"}>
-                    <Col xs="5" sm="5" md={"5"}>
+                    <Col xs="4" sm="4" md={"4"}>
                         <div className="node_selected">
                             <GraphBuilder> </GraphBuilder>
                         </div>
                     </Col>
-                    <Col xs="5" sm="5" md={"5"}>
+                    <Col xs="8" sm="8" md={"8x"}>
                         <div className="">
-                            <Matrix></Matrix>
+                            <MatrixBuilder></MatrixBuilder>
                         </div>
                     </Col>
 

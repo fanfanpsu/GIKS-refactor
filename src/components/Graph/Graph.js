@@ -17,8 +17,6 @@ import BurgerIngredient from "../Burger/BurgerIngredient/BurgerIngredient";
 
 // @observer
 class Graph extends React.Component {
-    cy = null;
-
     cyStyle = {
         height: 'calc(100vh - 150px)',
         border: '1px solid #ddd'
@@ -29,13 +27,20 @@ class Graph extends React.Component {
     }
 
     componentDidMount() {
-        this.cy = cytoscape(updateObject(graph_config,
-            {container: document.getElementById(this.props.graphID)}));
+        this.props.initGraph(this.props.graphID, graph_config);
 
-        this.cy.on('dragfree', 'node', (evt) => {
-            this.props.onGraphUpdated();
-            this.cy.elements('node:selected').unselect();
-        });
+        // this.cy = cytoscape(updateObject(graph_config,
+        //     {container: document.getElementById(this.props.graphID)}));
+        //
+        // this.cy.on('dragfree', 'node', (evt) => {
+        //     this.props.onGraphUpdated();
+        //     //console.log(this.cy.json( ).elements.nodes);
+        //     // console.log(this.cy.elements().jsons());
+        //     // console.log(this.cy.nodes()[0].position());
+        //     console.log(this.cy.elements().kruskal().jsons());
+        //     this.cy.elements('node:selected').unselect();
+        //     //this.setState(this.state); this will trigger the componentDidUpdate
+        // });
     }
 
     componentDidUpdate() {
@@ -71,6 +76,7 @@ class Graph extends React.Component {
 const mapStateToProps = (state,ownProps) => {
     return {
         graphID: state.graphReducer.graphID,
+        // cy: state.graphReducer.cy
         // mapStateToProps 通常用来map 属性，而非函数
         // onGraphUpdated: state.graphReducer.onGraphUpdated
     }
@@ -78,8 +84,9 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-        onGraphUpdated:  () => alert("about to dispactch the graphupdate")//dispatch(actions.purchaseInit()),
+        // onGraphUpdated:  (graph_data) => dispatch(actions.updateGraph()),
+        initGraph : (graphID, graph_config) => dispatch(actions.initGraph(graphID, graph_config)),
+
     }
 }
 

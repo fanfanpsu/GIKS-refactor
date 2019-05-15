@@ -1,35 +1,39 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../../shared/utility';
+import {updateObject} from '../../shared/utility';
+import cytoscape from 'cytoscape';
+import graph_config from '../../components/Graph/Graph.js';
 
 const initialState = {
-    graphID: "cytoscape"
-
+    graphID: "cytoscape",
+    cy: null
 };
 
-const updateMatrix = ( state, action ) => {
-    //TODO Edit the methods
-    const updatedNodePosition = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
-    //TODO Edit the node position
-    const updatedNodePositions = updateObject( state.ingredients, updatedNodePosition );
-    const updatedState = {
-        nodes: updatedNodePositions
+const init_cy = (state, action) => {
+
+    let cytoscape_graph = cytoscape(updateObject(action.graph_config,
+        {container: document.getElementById(action.graphID)}));
+
+    const updatedCy = {
+        cy: cytoscape_graph
     }
-    return updateObject( state, updatedState );
+
+    return updateObject(state, updatedCy);
 };
 
-const onGraphUpdated = ( state, action ) => {
+const onGraphUpdated = (state, action) => {
     alert("onGraphUpdated 1");
-    return updateObject( state, state );
+
+    return updateObject(state, state);
 };
 
-
-const graphReducer = ( state = initialState, action ) => {
-    switch ( action.type ) {
-        case actionTypes.UPDATE_MATRIX: return updateMatrix( state, action );
-        // case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action);
-        // case actionTypes.SET_INGREDIENTS: return setIngredients(state, action);
-        // case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action);
-        default: return state;
+const graphReducer = (state = initialState, action) => {
+    switch (action.type) {
+        // case actionTypes.UPDATE_MATRIX:
+        //     return updateMatrix(state, action);
+        case actionTypes.INIT_CY:
+            return init_cy(state, action);
+        default:
+            return state;
     }
 };
 

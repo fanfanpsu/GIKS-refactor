@@ -25,7 +25,10 @@ export {
 
 export {
     initGraph,
-    dragNodeEnd,
-    setDragNodeEnd,
-    updateGraph
+    updateGraph,
+    graphUpdated
 } from './graphBuilder';
+
+export {
+
+} from './matrixBuilder';

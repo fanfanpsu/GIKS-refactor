@@ -1,23 +1,31 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-address';
+import {updateMatrix} from "./matrixBuilder";
 
-export const dragNodeEnd = ( nodeId ) => {
+
+export const graphUpdated = (nodeId) => {
+    alert("graphUpdated");
+    // return {
+    //     type: actionTypes.GRAPH_UPDATED,
+    //     nodeID: nodeId
+    // };
+
+    return dispatch => {
+        dispatch(updateMatrix(""));
+    };
+
+};
+
+export const initGraph = (graphID, graph_config) => {
     return {
-        type: actionTypes.DRAG_NODE_END,
-        nodeID: nodeId
+        type: actionTypes.INIT_CY,
+        graphID: graphID,
+        graph_config: graph_config
     };
 };
 
-//TODO
-export const setDragNodeEnd = () => {
-    return dispatch=>{dragNodeEnd("")};
-};
-
-//TODO
-export const initGraph = () => {
-    return dispatch=>{dragNodeEnd("")};
-};
-//TODO
 export const updateGraph = () => {
-    return dispatch=>{dragNodeEnd("")};
+    return dispatch => {
+        graphUpdated("")
+    };
 };

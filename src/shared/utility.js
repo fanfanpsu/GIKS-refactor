@@ -36,3 +36,11 @@ export const checkValidity = ( value, rules ) => {
 
     return isValid;
 }
+
+// this method connect all the nodes in graph, for the purpose of constructing the MST
+export const connectAllNodes = (graph) => {
+
+
+    return graph;
+};
+

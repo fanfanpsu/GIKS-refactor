@@ -13,6 +13,7 @@ import burgerBuilderReducer from './store/reducers/burgerReducer';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
 import managementReducer from './store/reducers/management';
+import matrixReducer from './store/reducers/matrixReducer';
 import graphReducer from './store/reducers/graphReducer';
 
 
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     order: orderReducer,
     auth: authReducer,
     managementBuilder: managementReducer,
+    matrixReducer : matrixReducer,
     graphReducer : graphReducer
 
 });

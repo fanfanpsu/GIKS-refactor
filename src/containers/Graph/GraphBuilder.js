@@ -49,28 +49,44 @@ class GraphBuilder extends Component {
         //             mount_node
         //         );
         //     });
-    }
 
+
+    }
+    componentDidUpdate() {
+        this.props.cy.on('dragfree', 'node', (evt) => {
+            //console.log(this.cy.json( ).elements.nodes);
+            console.log(this.props.cy.elements().jsons());
+            // console.log(this.cy.nodes()[0].position());
+            // console.log(this.cy.elements().kruskal().jsons());
+            //alert("trigger dragfree event binding in graphbuilder");
+            // cytoscape_graph.elements('node:selected').unselect();
+            this.props.onGraphUpdated();
+            //this.setState(this.state); this will trigger the componentDidUpdate
+        });
+    }
     render() {
         return (
             <Fragment>
+                {/*TODO OPTIMIZE this code? and move the event binding to the graphBuildControl*/}
+                {/*TODO Add the graphId at the graph builder instead of from reducer, because we need to */}
+                {/*handle multiple graph*/}
                 <Graph graphData = {{}}> </Graph>
+                {/*TODO Refactor to graphBuildControl*/}
+                {/*<BuildControls></BuildControls>*/}
             </Fragment>
-
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        onGraphUpdated: state.graphReducer.onGraphUpdated,
+        cy: state.graphReducer.cy,
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGraphUpdated: () => dispatch(actions.purchaseInit())
-        // onGraphUpdated: () => alert("about to dispactch the graphupdate")//dispatch(actions.purchaseInit())
+        onGraphUpdated: () => dispatch(actions.graphUpdated())
     }
 }
 
