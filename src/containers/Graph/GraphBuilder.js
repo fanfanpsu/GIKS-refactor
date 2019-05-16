@@ -8,6 +8,7 @@ import * as actions from '../../store/actions/index';
 import axios from '../../axios-address';
 import Graph from "../../components/Graph/Graph";
 import Burger from "../../components/Burger/Burger";
+import {nodePairing} from "../../shared/algorithm";
 
 class GraphBuilder extends Component {
     constructor(props) {
@@ -21,46 +22,29 @@ class GraphBuilder extends Component {
     componentDidMount() {
         //TODO Figure out how to restfully get the graph data
 
-        // axios.get(data_source_node.getAttribute('href'))
-        //     .then(function (response) {
-        //
-        //         const store = response.data; //new GraphModel(response.data);
-        //
-        //         const filter_node = document.getElementById('graph-nodes');
-        //
-        //         // ReactDOM.render(
-        //         //     <Filter store={store}></Filter>,
-        //         //     filter_node
-        //         // );
-        //
-        //         ReactDOM.render(
-        //             <Graph store={store}></Graph>,
-        //             mount_node
-        //         );
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         ReactDOM.render(
-        //             <div className="alert alert-danger">
-        //                 <strong>:(</strong>
-        //                 <br/>
-        //                 <span>No data</span>
-        //             </div>,
-        //             mount_node
-        //         );
-        //     });
-
-
     }
     componentDidUpdate() {
         this.props.cy.on('dragfree', 'node', (evt) => {
-            //console.log(this.cy.json( ).elements.nodes);
-            console.log(this.props.cy.elements().jsons());
-            // console.log(this.cy.nodes()[0].position());
-            // console.log(this.cy.elements().kruskal().jsons());
-            //alert("trigger dragfree event binding in graphbuilder");
-            // cytoscape_graph.elements('node:selected').unselect();
+            console.log(
+                this.props.cy.elements().kruskal((edge)=>{
+                    let xs = this.props.cy.getElementById(edge.data().source).position('x')
+                        - this.props.cy.getElementById(edge.data().target).position('x');
+
+                    let ys = this.props.cy.getElementById(edge.data().source).position('y')
+                        - this.props.cy.getElementById(edge.data().target).position('y');
+
+                    return Math.sqrt( xs*xs + ys*ys );
+                }).jsons()
+                    .filter(function(element){
+                    return (element.group == "edges");
+                }).map(function(element){
+                    return element.data.id;
+                })
+            );
+
+            this.props.cy.elements('node:selected').unselect();
             this.props.onGraphUpdated();
+
             //this.setState(this.state); this will trigger the componentDidUpdate
         });
     }

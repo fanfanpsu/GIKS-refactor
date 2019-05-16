@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const updateMatrix = ( state, action ) => {
-    alert("updateMatrix 2");
+    // alert("updateMatrix 2");
 
     // const updatedNodePosition = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
     // const updatedNodePositions = updateObject( state.ingredients, updatedNodePosition );

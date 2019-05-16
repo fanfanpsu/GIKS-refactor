@@ -4,12 +4,7 @@ import {updateMatrix} from "./matrixBuilder";
 
 
 export const graphUpdated = (nodeId) => {
-    alert("graphUpdated");
-    // return {
-    //     type: actionTypes.GRAPH_UPDATED,
-    //     nodeID: nodeId
-    // };
-
+    //alert("graphUpdated");
     return dispatch => {
         dispatch(updateMatrix(""));
     };

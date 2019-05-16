@@ -8,8 +8,6 @@ import {updateObject} from '../../shared/utility';
 import graph_config from './graph_config';
 import classes from './Graph.css';
 import * as actions from "../../store/actions";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import BurgerIngredient from "../Burger/BurgerIngredient/BurgerIngredient";
 
 // import { observer } from "mobx-react";
 // import cycola from 'cytoscape-cola';

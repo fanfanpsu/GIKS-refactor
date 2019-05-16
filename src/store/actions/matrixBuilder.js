@@ -4,7 +4,7 @@ import {updateObject} from "../../shared/utility";
 
 export const updateMatrix = (graph) => {
     //TODO Do we really need this graph parameter?
-    alert("updateMatrix 1");
+    // alert("updateMatrix 1");
 
     // const updateMatrix = (state, action) => {
     //     //TODO Edit the methods

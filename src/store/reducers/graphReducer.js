@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 import cytoscape from 'cytoscape';
 import graph_config from '../../components/Graph/Graph.js';
-
+import {nodePairing} from "../../shared/algorithm"
 const initialState = {
     graphID: "cytoscape",
     cy: null
@@ -12,6 +12,9 @@ const init_cy = (state, action) => {
 
     let cytoscape_graph = cytoscape(updateObject(action.graph_config,
         {container: document.getElementById(action.graphID)}));
+
+
+    cytoscape_graph.add(nodePairing(cytoscape_graph.json().elements.nodes));
 
     const updatedCy = {
         cy: cytoscape_graph

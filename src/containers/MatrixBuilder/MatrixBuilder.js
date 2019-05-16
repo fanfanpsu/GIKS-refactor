@@ -34,7 +34,7 @@ class MatrixBuilder extends Component {
     }
 
     componentDidUpdate() {
-        alert("graph updated, therefore matrix needs to be updated too");
+        //alert("graph updated, therefore matrix needs to be updated too");
         // const {filter, hiddenElements} = this.props.store;
         // if(filter) {
         //     if(hiddenElements) {
