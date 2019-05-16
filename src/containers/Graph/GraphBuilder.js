@@ -25,6 +25,7 @@ class GraphBuilder extends Component {
     }
     componentDidUpdate() {
         this.props.cy.on('dragfree', 'node', (evt) => {
+            this.props.cy.edges().style('opacity', 0);
             console.log(
                 this.props.cy.elements().kruskal((edge)=>{
                     let xs = this.props.cy.getElementById(edge.data().source).position('x')
@@ -35,9 +36,10 @@ class GraphBuilder extends Component {
 
                     return Math.sqrt( xs*xs + ys*ys );
                 }).jsons()
-                    .filter(function(element){
+                    .filter((element)=>{
                     return (element.group == "edges");
-                }).map(function(element){
+                }).map((element)=>{
+                    this.props.cy.edges('[id = "'+ element.data.id +'"]').style('opacity', 1);
                     return element.data.id;
                 })
             );

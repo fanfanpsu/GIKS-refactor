@@ -67,6 +67,12 @@
       "style": {
         "content": "data(id)"
       }
+    },
+    {
+      "selector": "edge",
+      "style": {
+        "opacity": 0
+      }
     }
   ]
 }
