@@ -21,14 +21,14 @@ class MatrixBuilder extends Component {
     }
 
     state = {
-        distances:[]
+        distances: []
     }
 
     componentDidMount() {
         // this.state.experiments = raw_experiments_fewer;
     }
 
-    componentWillMount(){
+    componentWillMount() {
         //TODO
         // this.props.onManagementLoad(this.state.experiments);
     }
@@ -60,7 +60,10 @@ class MatrixBuilder extends Component {
     render() {
         return (
             <Fragment>
-                <Matrix distances={this.props.distances}/>
+                <Matrix
+                    nodes = {this.props.nodes}
+                    matrixCellValues = {this.props.matrixCellValues}>
+                </Matrix>
             </Fragment>
         );
     }
@@ -69,14 +72,14 @@ class MatrixBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        distances: state.matrixReducer.distances,
+        matrixCellValues: state.matrixReducer.matrixCellValues,
+        nodes: state.graphReducer.cy.nodes(),
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // the matrix shouldn't be updated, it should be updated by the graph
-        // onManagementLoad: () => dispatch(actions.initManagementExpPanels()),
+
     }
 }
 

@@ -1,12 +1,11 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-address';
-import {updateMatrix} from "./matrixBuilder";
+import {updateMatrix} from "./matrixDispatcher";
 
 
 export const graphUpdated = (nodeId) => {
-    //alert("graphUpdated");
     return dispatch => {
-        dispatch(updateMatrix(""));
+        dispatch(updateMatrix());
     };
 
 };

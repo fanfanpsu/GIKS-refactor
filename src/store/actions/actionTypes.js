@@ -26,4 +26,8 @@ export const FETCH_EXPERIMENTS_FAIL = 'FETCH_EXPERIMENTS_FAIL';
 
 export const GRAPH_UPDATED = 'GRAPH_UPDATED';
 export const INIT_CY = 'INIT_CY';
+
 export const UPDATE_MATRIX = 'UPDATE_MATRIX';
+export const INIT_MATRIX = 'INIT_MATRIX';
+
+export const UPDATE_CELL = 'UPDATE_CELL';

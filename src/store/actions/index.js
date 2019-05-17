@@ -21,14 +21,14 @@ export {
     setManagementExperiments,
     fetchManagementExperimentsFailed,
     initManagementExpPanels
-} from './management';
+} from './managementDispatcher';
 
 export {
     initGraph,
     updateGraph,
     graphUpdated
-} from './graphBuilder';
+} from './graphDispatcher';
 
 export {
 
-} from './matrixBuilder';
+} from './matrixDispatcher';

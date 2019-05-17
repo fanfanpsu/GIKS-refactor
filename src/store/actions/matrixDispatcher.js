@@ -2,10 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from '../../axios-address';
 import {updateObject} from "../../shared/utility";
 
-export const updateMatrix = (graph) => {
-    //TODO Do we really need this graph parameter?
-    // alert("updateMatrix 1");
-
+export const updateMatrix = () => {
     // const updateMatrix = (state, action) => {
     //     //TODO Edit the methods
     //     const updatedNodePosition = {[action.ingredientName]: state.ingredients[action.ingredientName] + 1}
@@ -19,6 +16,13 @@ export const updateMatrix = (graph) => {
     //
     return {
         type: actionTypes.UPDATE_MATRIX,
-        graph: graph
+    };
+};
+
+
+
+export const initMatrix = () => {
+    return {
+        type: actionTypes.INIT_MATRIX,
     };
 };

@@ -15,6 +15,7 @@ import authReducer from './store/reducers/auth';
 import managementReducer from './store/reducers/management';
 import matrixReducer from './store/reducers/matrixReducer';
 import graphReducer from './store/reducers/graphReducer';
+import cellReducer from "./store/reducers/cellReducer";
 
 
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     managementBuilder: managementReducer,
     matrixReducer : matrixReducer,
-    graphReducer : graphReducer
+    graphReducer : graphReducer,
+    cellReducer:cellReducer
 
 });
 

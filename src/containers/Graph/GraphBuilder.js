@@ -1,14 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-
 import BuildControls from '../../components/Graph/BuildControls/BuildControls';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios-address';
 import Graph from "../../components/Graph/Graph";
-import Burger from "../../components/Burger/Burger";
-import {nodePairing} from "../../shared/algorithm";
 
 class GraphBuilder extends Component {
     constructor(props) {
@@ -23,6 +20,7 @@ class GraphBuilder extends Component {
         //TODO Figure out how to restfully get the graph data
 
     }
+
     componentDidUpdate() {
         this.props.cy.on('dragfree', 'node', (evt) => {
             this.props.cy.edges().style('opacity', 0);
@@ -46,8 +44,6 @@ class GraphBuilder extends Component {
 
             this.props.cy.elements('node:selected').unselect();
             this.props.onGraphUpdated();
-
-            //this.setState(this.state); this will trigger the componentDidUpdate
         });
     }
     render() {

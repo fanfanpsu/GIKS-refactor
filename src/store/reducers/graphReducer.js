@@ -3,16 +3,19 @@ import {updateObject} from '../../shared/utility';
 import cytoscape from 'cytoscape';
 import graph_config from '../../components/Graph/Graph.js';
 import {nodePairing} from "../../shared/algorithm"
+import initMatrix from "../../store/reducers/matrixReducer"
+import {purchaseBurgerSuccess} from "../actions/order";
 const initialState = {
     graphID: "cytoscape",
-    cy: null
+    cy: cytoscape({ /* options */ })
 };
 
 const init_cy = (state, action) => {
 
     let cytoscape_graph = cytoscape(updateObject(action.graph_config,
-        {container: document.getElementById(action.graphID)}));
-
+        {
+            container: document.getElementById(action.graphID)
+        }));
 
     cytoscape_graph.add(nodePairing(cytoscape_graph.json().elements.nodes));
 
@@ -34,7 +37,15 @@ const graphReducer = (state = initialState, action) => {
         // case actionTypes.UPDATE_MATRIX:
         //     return updateMatrix(state, action);
         case actionTypes.INIT_CY:
-            return init_cy(state, action);
+            return init_cy(state, action).then(()=>{
+                //TODO not sure if this works
+                alert("rendering matrix");
+                dispatch => {
+                    dispatch(
+                    {type:actionTypes.INIT_MATRIX}
+                    )};
+                });
+
         default:
             return state;
     }

@@ -17,3 +17,12 @@ export const nodePairing = (nodes) => {
     }
     return edges;
 }
+
+export const matrixHeaderBuilder = (nodes) =>{
+
+    let headers = [];
+    for (let i = 0; i < nodes.length; i++) {
+        headers.push(nodes[i].data.id);
+    }
+    return headers;
+}
