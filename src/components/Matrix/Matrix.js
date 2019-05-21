@@ -1,7 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {Table, Container, Row, Col, CardDeck} from 'reactstrap';
+import { useReactTable } from 'react-table'
 
+import Header from "./Cell/Header";
 import Cell from "./Cell/Cell";
+
 import graph_config from "../Graph/graph_config";
 import {connect} from "react-redux";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
@@ -16,6 +19,11 @@ class Matrix extends Component {
     }
 
     componentDidMount() {
+
+    }
+
+    componentWillMount() {
+
     }
 
     componentDidUpdate() {
@@ -42,12 +50,12 @@ class Matrix extends Component {
     };
 
     renderHeadingRow = (_cell, cellIndex) => {
-        const {headings} = this.props;
+        const {matrixColumnHeaders} = this.props;
 
         return (
-            <Cell
+            <Header
                 key={`heading-${cellIndex}`}
-                content={headings[cellIndex]}
+                content={matrixColumnHeaders[cellIndex]}
                 header={true}
             />
         )
@@ -71,56 +79,41 @@ class Matrix extends Component {
     };
 
     render() {
-        console.log(this.props.nodes);
-
-        const {headings, rows} = this.props;
-
+        const {matrixColumnHeaders} = this.props;
         this.renderHeadingRow = this.renderHeadingRow.bind(this);
-        this.renderRow = this.renderRow.bind(this);
-
+        // this.renderRow = this.renderRow.bind(this);
+        // alert("renderHeadingRow with data 1: " +JSON.stringify());
+        // alert("renderHeadingRow with data 2: " +JSON.stringify());
+        //
         const theadMarkup = (
             <tr key="heading">
-                {headings.map(this.renderHeadingRow)}
+                <Header
+                    key={-1}
+                    content={""}
+                    header={true}
+                />
+                {matrixColumnHeaders.map(this.renderHeadingRow)}
             </tr>
         );
 
-        const tbodyMarkup = rows.map(this.renderRow);
+        // const tbodyMarkup = rows.map(this.renderRow);
 
         return (
-            <table className="Table">
-                <thead>{theadMarkup}</thead>
-                <tbody>{tbodyMarkup}</tbody>
-            </table>
+            <Table>
+                <thead>
+                    {theadMarkup}
+                </thead>
+                {/*<tbody>{tbodyMarkup}</tbody>*/}
+            </Table>
         );
-
-        // const expCardList = Object.keys(this.props.experiments)
-        //     .map(cardKey => {
-        //         return (
-        //             <Col xs="6" sm="3" md={"3"} key={this.props.experiments[cardKey]._id}>
-        //                 <Expcard
-        //                     title={this.props.experiments[cardKey].title}
-        //                     subtitle={this.props.experiments[cardKey].subtitle}
-        //                     cardcontent={this.props.experiments[cardKey].cardcontent}
-        //                 />
-        //             </Col>);
-        //     });
-        //
-        // return (
-        //     <Fragment>
-        //         <CardDeck>
-        //             <Col xs="6" sm="3" md={"3"}>
-        //                 <Expcard title="New Experiment" key={-1}/>
-        //             </Col>
-        //             {expCardList}
-        //         </CardDeck>
-        //     </Fragment>
-        // );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         matrixCellValues: state.matrixReducer.matrixCellValues,
         nodes: state.graphReducer.cy.nodes(),
+        // matrixColumnHeaders: state.matrixColumnHeaders
     };
 }
 

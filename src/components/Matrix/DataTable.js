@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Cell from './Cell/Cell';
+import Cell from './Cell/Header';
 import './DataTable.css';
 
 export default class DataTable extends Component {
@@ -22,7 +22,7 @@ export default class DataTable extends Component {
             <tr key={`row-${rowIndex}`}>
                 {rows[rowIndex].map((_cell, cellIndex) => {
                     return (
-                        <Cell
+                        <Header
                             key={`${rowIndex}-${cellIndex}`}
                             content={rows[rowIndex][cellIndex]}
                         />
@@ -37,6 +37,7 @@ export default class DataTable extends Component {
 
         this.renderHeadingRow = this.renderHeadingRow.bind(this);
         this.renderRow = this.renderRow.bind(this);
+
 
         const theadMarkup = (
             <tr key="heading">

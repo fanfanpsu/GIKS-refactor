@@ -21,8 +21,9 @@ export const updateMatrix = () => {
 
 
 
-export const initMatrix = () => {
+export const initMatrix = (nodes) => {
     return {
         type: actionTypes.INIT_MATRIX,
+        nodes: nodes
     };
 };

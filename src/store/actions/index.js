@@ -30,5 +30,6 @@ export {
 } from './graphDispatcher';
 
 export {
-
+    updateMatrix,
+    initMatrix
 } from './matrixDispatcher';
