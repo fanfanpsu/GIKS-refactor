@@ -26,6 +26,7 @@ class Graph extends React.Component {
 
     componentDidMount() {
         this.props.initGraph(this.props.graphID, graph_config);
+        // this.props.initMatrix(this.props.cy.json().elements.nodes);
     }
 
     componentDidUpdate() {
@@ -61,6 +62,7 @@ class Graph extends React.Component {
 const mapStateToProps = (state,ownProps) => {
     return {
         graphID: state.graphReducer.graphID,
+        cy:state.graphReducer.cy
         // mapStateToProps 通常用来map 属性，而非函数
         // onGraphUpdated: state.graphReducer.onGraphUpdated
     }
@@ -69,6 +71,7 @@ const mapStateToProps = (state,ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         initGraph : (graphID, graph_config) => dispatch(actions.initGraph(graphID, graph_config)),
+        initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
     }
 }
 

@@ -57,7 +57,8 @@
     "webpack-manifest-plugin": "1.2.1",
     "whatwg-fetch": "2.0.3",
     "kruskal": "0.0.5",
-    "cytoscape": "3.5.4"
+    "cytoscape": "3.5.4",
+    "react-table": "6.10.0"
   },
   "scripts": {
     "start": "node scripts/start.js",

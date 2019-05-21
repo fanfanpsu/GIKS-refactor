@@ -17,8 +17,8 @@ class GraphBuilder extends Component {
     state = {}
 
     componentDidMount() {
-        //TODO Figure out how to restfully get the graph data
-
+        // alert("GraphBuilder componentDidMount: " + this.props.cy.json());
+        // this.props.initMatrix(this.props.cy.json().elements.nodes);
     }
 
     componentDidUpdate() {
@@ -45,7 +45,7 @@ class GraphBuilder extends Component {
             this.props.cy.elements('node:selected').unselect();
             this.props.onGraphUpdated();
         });
-    }
+     }
     render() {
         return (
             <Fragment>
@@ -68,7 +68,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGraphUpdated: () => dispatch(actions.graphUpdated())
+        onGraphUpdated: () => dispatch(actions.graphUpdated()),
+        initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
+
     }
 }
 

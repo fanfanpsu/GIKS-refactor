@@ -10,52 +10,42 @@
     "nodes": [
       {
         "data": {
-          "id": "n1"
+          "id": "cat"
         }
       },
       {
         "data": {
-          "id": "n2"
+          "id": "bird"
         }
       },
       {
         "data": {
-          "id": "n3"
+          "id": "ladybug"
         }
       },
       {
         "data": {
-          "id": "n4"
+          "id": "aphid"
         }
       },
       {
         "data": {
-          "id": "n5"
+          "id": "rose"
         }
       },
       {
         "data": {
-          "id": "n6"
+          "id": "grasshopper"
         }
       },
       {
         "data": {
-          "id": "n7"
+          "id": "plant"
         }
       },
       {
         "data": {
-          "id": "n8"
-        }
-      },
-      {
-        "data": {
-          "id": "n9"
-        }
-      },
-      {
-        "data": {
-          "id": "n10"
+          "id": "wheat"
         }
       }
     ],
