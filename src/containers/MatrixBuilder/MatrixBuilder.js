@@ -21,8 +21,8 @@ class MatrixBuilder extends Component {
     }
 
     componentDidMount() {
-        // this.props.initMatrix();
         this.props.initMatrix(graph_config.elements.nodes);
+
     }
 
     componentWillMount() {
@@ -36,7 +36,7 @@ class MatrixBuilder extends Component {
             <Fragment>
                 <Matrix
                     matrixColumnHeaders = {this.props.matrixColumnHeaders}
-                    matrixCellValues = {this.props.matrixCellValues}>
+                    matrixRowValues = {this.props.matrixRowValues}>
                 </Matrix>
             </Fragment>
         );
@@ -45,7 +45,7 @@ class MatrixBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        matrixCellValues: state.matrixReducer.matrixCellValues,
+        matrixRowValues: state.matrixReducer.matrixRowValues,
         matrixColumnHeaders: state.matrixReducer.matrixColumnHeaders,
     };
 }

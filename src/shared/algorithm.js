@@ -26,3 +26,27 @@ export const matrixHeaderBuilder = (nodes) =>{
     }
     return headers;
 }
+
+export const nodeMatrixRowGeneration = ( nodes ) =>{
+    const data = [{
+        name: 'Tanner Linsley',
+        age: 26,
+        friend: {
+            name: 'Jason Maurer',
+            age: 23,
+        }
+    }];
+    // alert("nodeMatrixRowGeneration nodes: " + nodes);
+    let rows = [];
+    for (let i = 0; i < nodes.length; i++) {
+
+        let currentRow = {};
+        currentRow["node"] = nodes[i].data.id.charAt(0).toUpperCase() + nodes[i].data.id.slice(1); ;
+
+        for (let j = 0; j < nodes.length; j++) {
+            currentRow[nodes[j].data.id] = 0;
+        }
+        rows.push(currentRow);
+    }
+    return rows;
+}
