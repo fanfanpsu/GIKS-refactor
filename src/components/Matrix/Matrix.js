@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Table, Container, Row, Col, CardDeck} from 'reactstrap';
-import { useReactTable } from 'react-table'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
 
 import Header from "./Cell/Header";
 import Cell from "./Cell/Cell";
@@ -80,32 +81,62 @@ class Matrix extends Component {
 
     render() {
         const {matrixColumnHeaders} = this.props;
-        this.renderHeadingRow = this.renderHeadingRow.bind(this);
+        // this.renderHeadingRow = this.renderHeadingRow.bind(this);
         // this.renderRow = this.renderRow.bind(this);
         // alert("renderHeadingRow with data 1: " +JSON.stringify());
         // alert("renderHeadingRow with data 2: " +JSON.stringify());
         //
-        const theadMarkup = (
-            <tr key="heading">
-                <Header
-                    key={-1}
-                    content={""}
-                    header={true}
-                />
-                {matrixColumnHeaders.map(this.renderHeadingRow)}
-            </tr>
-        );
+        // const theadMarkup = (
+        //     <tr key="heading">
+        //         <Header
+        //             key={-1}
+        //             content={""}
+        //             header={true}
+        //         />
+        //         {matrixColumnHeaders.map(this.renderHeadingRow)}
+        //     </tr>
+        // );
 
-        // const tbodyMarkup = rows.map(this.renderRow);
+        // const data = [{
+        //     name: 'Tanner Linsley',
+        //     age: 26,
+        //     friend: {
+        //         name: 'Jason Maurer',
+        //         age: 23,
+        //     }
+        // },]
+        //
+        // const columns = [{
+        //     Header: 'Name',
+        //     accessor: 'name' // String-based value accessors!
+        // }, {
+        //     Header: 'Age',
+        //     accessor: 'age',
+        //     Cell: props => <span className='number'>{props.value /2}</span> // Custom cell components!
+        // }, {
+        //     id: 'friendName', // Required because our accessor is not a string
+        //     Header: 'Friend Name',
+        //     accessor: d => d.friend.name // Custom value accessors!
+        // }, {
+        //     Header: props => <span>Friend Age</span>, // Custom header components!
+        //     accessor: 'friend.age'
+        // }]
+        //
 
-        return (
-            <Table>
-                <thead>
-                    {theadMarkup}
-                </thead>
-                {/*<tbody>{tbodyMarkup}</tbody>*/}
-            </Table>
-        );
+        if(this.props.matrixColumnHeaders !== undefined) {
+            return <ReactTable columns={this.props.matrixColumnHeaders} />;
+        }  else {
+            return <Table></Table>;
+        }
+        
+        // return (
+        //     <Table>
+        //         <thead>
+        //             {theadMarkup}
+        //         </thead>
+        //
+        //     </Table>
+        // );
     }
 }
 

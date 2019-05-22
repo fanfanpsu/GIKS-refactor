@@ -22,10 +22,10 @@ class MatrixBuilder extends Component {
 
     componentDidMount() {
         // this.props.initMatrix();
+        this.props.initMatrix(graph_config.elements.nodes);
     }
 
     componentWillMount() {
-        this.props.initMatrix(graph_config.elements.nodes);
     }
 
     componentDidUpdate() {
@@ -42,7 +42,6 @@ class MatrixBuilder extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
