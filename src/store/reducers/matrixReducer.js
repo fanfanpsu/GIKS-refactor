@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import {nodeMatrixRowGeneration} from "../../shared/algorithm";
+import {nodeMatrixheaderGeneration, nodeMatrixRowGeneration} from "../../shared/algorithm";
 
 const initialState = {
     matrixID: "matrixID",
@@ -12,33 +12,7 @@ const initialState = {
 
 const initMatrix = (state, action) => {
 
-    let headers = Object.values(action.nodes)
-        .map(node => {
-            return node.data.id;
-        }).reduce((arr, el,index) => {
-
-            let header = {};
-            header["Header"] = el.charAt(0).toUpperCase() + el.slice(1);
-            header["accessor"] = el.toString() + ".value";
-            header["getProps"] = (state, rowInfo) => {
-                console.log()
-                return {
-                    style: {
-                        background: rowInfo && rowInfo.row
-                            && rowInfo.row[el.toString() + ".value"] === 1 ? '#85cc00' : '#ffbf00',
-                        transition: 'all .2s ease-out'
-                    },
-                };
-            }
-
-            return arr.concat(header);
-        }, []);
-
-    headers.splice(0, 0, {
-        Header : "",
-        accessor : "node"
-    });
-
+    let headers = nodeMatrixheaderGeneration(action.nodes);
     let rows = nodeMatrixRowGeneration(action.nodes);
 
     const updatedState = {
@@ -80,7 +54,6 @@ const updateMatrix = (state, action) => {
     if(updateArray == undefined || updateArray == null){
         return state;
     }
-
 
     return updateObject(state, updatedState);
 };

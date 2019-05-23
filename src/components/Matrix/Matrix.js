@@ -58,7 +58,9 @@ class Matrix extends Component {
             && this.props.matrixRowValues !== undefined) {
             return <ReactTable
                 columns={this.props.matrixColumnHeaders}
-                data = {this.props.matrixRowValues}/>;
+                data = {this.props.matrixRowValues}
+                showPagination = {false}
+                minRows = {0} />;
         }  else {
             return <Table></Table>;
         }

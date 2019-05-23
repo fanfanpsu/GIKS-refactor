@@ -36,7 +36,7 @@ export const nodeMatrixRowGeneration = ( nodes ) =>{
             age: 23,
         }
     }];
-    // alert("nodeMatrixRowGeneration nodes: " + nodes);
+
     let rows = [];
     for (let i = 0; i < nodes.length; i++) {
 
@@ -52,4 +52,35 @@ export const nodeMatrixRowGeneration = ( nodes ) =>{
         rows.push(currentRow);
     }
     return rows;
+}
+
+
+export const nodeMatrixheaderGeneration = ( nodes ) =>{
+    let headers = Object.values(nodes)
+        .map(node => {
+            return node.data.id;
+        }).reduce((arr, el,index) => {
+
+        let header = {};
+        header["Header"] = el.charAt(0).toUpperCase() + el.slice(1);
+        header["accessor"] = el.toString() + ".value";
+        header["getProps"] = (state, rowInfo) => {
+            console.log()
+            return {
+                style: {
+                    background: rowInfo && rowInfo.row
+                    && rowInfo.row[el.toString() + ".value"] === 1 ? '#85cc00' : '#ffbf00',
+                    transition: 'all .5s ease-out'
+                },
+            };
+        }
+
+        return arr.concat(header);
+    }, []);
+
+    headers.splice(0, 0, {
+        Header : "",
+        accessor : "node"
+    });
+    return headers;
 }

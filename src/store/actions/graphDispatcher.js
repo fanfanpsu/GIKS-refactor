@@ -7,7 +7,6 @@ export const graphUpdated = (updatedEdges) => {
     return dispatch => {
         dispatch(updateMatrix(updatedEdges));
     };
-
 };
 
 export const initGraph = (graphID, graph_config) => {

@@ -1,19 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
-
-import cytoscape from 'cytoscape';
 import {connect} from "react-redux";
 
-import {updateObject} from '../../shared/utility';
 import graph_config from './graph_config';
-import classes from './Graph.css';
 import * as actions from "../../store/actions";
 
+// import cyStyle from './Graph.css';
+//TODO clean these imports
 // import { observer } from "mobx-react";
 // import cycola from 'cytoscape-cola';
-// cytoscape.use(cycola);
 
-// @observer
 class Graph extends React.Component {
     cyStyle = {
         height: 'calc(100vh - 150px)',
@@ -26,7 +22,6 @@ class Graph extends React.Component {
 
     componentDidMount() {
         this.props.initGraph(this.props.graphID, graph_config);
-        // this.props.initMatrix(this.props.cy.json().elements.nodes);
     }
 
     componentDidUpdate() {
@@ -63,8 +58,6 @@ const mapStateToProps = (state,ownProps) => {
     return {
         graphID: state.graphReducer.graphID,
         cy:state.graphReducer.cy
-        // mapStateToProps 通常用来map 属性，而非函数
-        // onGraphUpdated: state.graphReducer.onGraphUpdated
     }
 };
 

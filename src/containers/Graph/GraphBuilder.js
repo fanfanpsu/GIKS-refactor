@@ -10,15 +10,11 @@ import Graph from "../../components/Graph/Graph";
 class GraphBuilder extends Component {
     constructor(props) {
         super(props);
-        // this.state = {...}
     }
 
-    // this state is called initial state, or class property
     state = {}
 
     componentDidMount() {
-        // alert("GraphBuilder componentDidMount: " + this.props.cy.json());
-        // this.props.initMatrix(this.props.cy.json().elements.nodes);
     }
 
     componentDidUpdate() {
@@ -70,7 +66,6 @@ const mapDispatchToProps = dispatch => {
     return {
         graphUpdated: (updatedEdges) => dispatch(actions.graphUpdated(updatedEdges)),
         initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
-
     }
 }
 
