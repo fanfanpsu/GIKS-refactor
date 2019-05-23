@@ -52,7 +52,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onMatrixUpdated: () => dispatch(actions.updateMatrix()),
         initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
     }
 }

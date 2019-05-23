@@ -19,20 +19,14 @@ const initMatrix = (state, action) => {
 
             let header = {};
             header["Header"] = el.charAt(0).toUpperCase() + el.slice(1);
-            header["accessor"] = el;
-            // header["Cell"] = row => (
-            //     <div
-            //         style={{
-            //             backgroundColor:
-            //                 row.value > 1 ? '#85cc00' : '#ffbf00',
-            //             transition: 'all .2s ease-out'
-            //         }}
-            //     />);
-
-            header["getProps"] = (state, rowInfo, column) => {
+            header["accessor"] = el.toString() + ".value";
+            header["getProps"] = (state, rowInfo) => {
+                console.log()
                 return {
                     style: {
-                        background: rowInfo && rowInfo.row.el > 1 ? '#85cc00' : '#ffbf00',
+                        background: rowInfo && rowInfo.row
+                            && rowInfo.row[el.toString() + ".value"] === 1 ? '#85cc00' : '#ffbf00',
+                        transition: 'all .2s ease-out'
                     },
                 };
             }
@@ -46,8 +40,6 @@ const initMatrix = (state, action) => {
     });
 
     let rows = nodeMatrixRowGeneration(action.nodes);
-    console.log("headers: " + JSON.stringify(headers));
-    console.log("initMatrix: " + JSON.stringify(rows));
 
     const updatedState = {
         matrixColumnHeaders: headers,
@@ -60,9 +52,36 @@ const initMatrix = (state, action) => {
 
 const updateMatrix = (state, action) => {
 
-    const updatedState = {
-        matrix: null
+    const array = state.matrixRowValues;
+    const target = action.updatedEdges;
+
+    const updateArray = (array, target) => {
+        return array.map((a, i) => {
+            const entries = Object.entries(a);
+            for (const [name, object] of entries) {
+                if (typeof object === 'object') {
+                    if (target.find(e => e === object['edge'])) {
+                        object['value'] = 1;
+                        a[name] = object;
+                    } else {
+                        object['value'] = 0;
+                        a[name] = object;
+                    }
+                }
+            }
+            return a;
+        })
     }
+
+    const updatedState = {
+        matrixRowValues: updateArray(array, target)
+    }
+
+    if(updateArray == undefined || updateArray == null){
+        return state;
+    }
+
+
     return updateObject(state, updatedState);
 };
 

@@ -44,7 +44,10 @@ export const nodeMatrixRowGeneration = ( nodes ) =>{
         currentRow["node"] = nodes[i].data.id.charAt(0).toUpperCase() + nodes[i].data.id.slice(1); ;
 
         for (let j = 0; j < nodes.length; j++) {
-            currentRow[nodes[j].data.id] = 0;
+            currentRow[nodes[j].data.id] = {
+                edge: nodes[i].data.id + "-" + nodes[j].data.id,
+                value:0
+            };
         }
         rows.push(currentRow);
     }

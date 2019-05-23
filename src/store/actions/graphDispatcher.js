@@ -3,9 +3,9 @@ import axios from '../../axios-address';
 import {updateMatrix} from "./matrixDispatcher";
 
 
-export const graphUpdated = (nodeId) => {
+export const graphUpdated = (updatedEdges) => {
     return dispatch => {
-        dispatch(updateMatrix());
+        dispatch(updateMatrix(updatedEdges));
     };
 
 };
@@ -15,11 +15,5 @@ export const initGraph = (graphID, graph_config) => {
         type: actionTypes.INIT_CY,
         graphID: graphID,
         graph_config: graph_config
-    };
-};
-
-export const updateGraph = () => {
-    return dispatch => {
-        graphUpdated("")
     };
 };

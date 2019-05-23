@@ -24,7 +24,10 @@ class GraphBuilder extends Component {
     componentDidUpdate() {
         this.props.cy.on('dragfree', 'node', (evt) => {
             this.props.cy.edges().style('opacity', 0);
-            console.log(
+
+            this.props.cy.elements('node:selected').unselect();
+
+            this.props.graphUpdated(
                 this.props.cy.elements().kruskal((edge)=>{
                     let xs = this.props.cy.getElementById(edge.data().source).position('x')
                         - this.props.cy.getElementById(edge.data().target).position('x');
@@ -35,15 +38,12 @@ class GraphBuilder extends Component {
                     return Math.sqrt( xs*xs + ys*ys );
                 }).jsons()
                     .filter((element)=>{
-                    return (element.group == "edges");
-                }).map((element)=>{
+                        return (element.group == "edges");
+                    }).map((element)=>{
                     this.props.cy.edges('[id = "'+ element.data.id +'"]').style('opacity', 1);
                     return element.data.id;
                 })
             );
-
-            this.props.cy.elements('node:selected').unselect();
-            this.props.onGraphUpdated();
         });
      }
     render() {
@@ -68,7 +68,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGraphUpdated: () => dispatch(actions.graphUpdated()),
+        graphUpdated: (updatedEdges) => dispatch(actions.graphUpdated(updatedEdges)),
         initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
 
     }
