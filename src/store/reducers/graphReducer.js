@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const init_cy = (state, action) => {
-
+    //TODO: optimize this css style
     let cytoscape_graph = cytoscape(updateObject(action.graph_config,
         {
             container: document.getElementById(action.graphID),
