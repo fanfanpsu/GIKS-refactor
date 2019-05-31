@@ -5,13 +5,6 @@ import {connect} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 
-// import {
-//     CardDeck, Card, CardImg, CardText, CardBody,
-// } from 'reactstrap';
-
-import Container from 'react-bootstrap/Container'
-// import Button from 'react-bootstrap/Button';
-
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-address';
 
@@ -23,12 +16,17 @@ import demo_logo from '../../assets/images/demo.png'; // Import using relative p
 import Management from "../Management/Management";
 import classes from './Home.css'
 import Demo from "../Demo/Demo";
+import {Container, Card, CardDeck, CardImg, FormControl, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 class Home extends Component {
     state = {}
 
-    componentDidMount() {}
+    // componentDidMount() {}
     render() {
+        const classes1 = `home-header`;
+        const classes2 = `home-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center`;
 
         let routes = (
             <Switch>
@@ -38,52 +36,54 @@ class Home extends Component {
         );
         return (
             <Fragment>
+                <Jumbotron className = {"text-center"}>
+                    <Container>
+                        <h1 className={"display-4"}>Graphical Interface of Knowledge Structure</h1>
+                        <p className={"lead"}>GIKS is designed to caputre, visually represent, and compare the
+                            "knowledge structure" inherent in a text, which can be used to identify individual learner's
+                            knowledge gaps and/or misconceptions</p>
+                    </Container>
+                </Jumbotron>
+
                 <Container>
-                    {/*<h1 className={"display-4"}>Graphical Interface of Knowledge Structure</h1>*/}
-                    {/*<p className={"lead"}>GIKS is designed to caputre, visually represent, and compare the*/}
-                    {/*    "knowledge structure" inherent in a text, which can be used to identify individual learner's*/}
-                    {/*    knowledge gaps and/or misconceptions</p>*/}
-                <div> test</div>
+                    <CardDeck>
+
+                        <Card>
+                            <Link to="/management">
+                                <CardImg top width="100%"
+                                         src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
+                                         alt="Card image cap"/>
+                            </Link>
+                            <Card.Body>
+                                <Card.Text>This is a wider card with supporting text below as a natural lead-in to
+                                    additional
+                                    content. This content is a little bit longer.</Card.Text>
+                            </Card.Body>
+
+                        </Card>
+
+                        <Card>
+                            <CardImg top width="100%"
+                                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
+                                     alt="Card image cap"/>
+                            <Card.Body>
+                                <Card.Text>This card has supporting text below as a natural lead-in to additional
+                                    content.</Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card>
+                            <CardImg top width="100%"
+                                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
+                                     alt="Card image cap"/>
+                            <Card.Body>
+                                <Card.Text>This is a wider card with supporting text below as a natural lead-in to
+                                    additional
+                                    content. This card has even longer content than the first to show that equal height
+                                    action.</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </CardDeck>
                 </Container>
-                {/*<Container>*/}
-                {/*    <CardDeck>*/}
-
-                {/*        <Card>*/}
-                {/*            <Link to="/management">*/}
-                {/*                <CardImg top width="100%"*/}
-                {/*                         src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                         alt="Card image cap"/>*/}
-                {/*            </Link>*/}
-                {/*            <CardBody>*/}
-                {/*                <CardText>This is a wider card with supporting text below as a natural lead-in to*/}
-                {/*                    additional*/}
-                {/*                    content. This content is a little bit longer.</CardText>*/}
-                {/*            </CardBody>*/}
-
-                {/*        </Card>*/}
-
-                {/*        <Card>*/}
-                {/*            <CardImg top width="100%"*/}
-                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                     alt="Card image cap"/>*/}
-                {/*            <CardBody>*/}
-                {/*                <CardText>This card has supporting text below as a natural lead-in to additional*/}
-                {/*                    content.</CardText>*/}
-                {/*            </CardBody>*/}
-                {/*        </Card>*/}
-                {/*        <Card>*/}
-                {/*            <CardImg top width="100%"*/}
-                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                     alt="Card image cap"/>*/}
-                {/*            <CardBody>*/}
-                {/*                <CardText>This is a wider card with supporting text below as a natural lead-in to*/}
-                {/*                    additional*/}
-                {/*                    content. This card has even longer content than the first to show that equal height*/}
-                {/*                    action.</CardText>*/}
-                {/*            </CardBody>*/}
-                {/*        </Card>*/}
-                {/*    </CardDeck>*/}
-                {/*</Container>*/}
                 {/*/!*<Footer/>*!/*/}
 
             </Fragment>
@@ -103,4 +103,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Home, axios));
+export default Home;
+
+// export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Home, axios));
