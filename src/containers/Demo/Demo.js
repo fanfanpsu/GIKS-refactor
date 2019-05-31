@@ -36,16 +36,17 @@ class Demo extends Component {
     }
 
     render() {
-
         return (
             <Fragment>
                 <Row className={"row-eq-height"}>
+                    <Col xs="1" sm="1" md={"1"}>
+                    </Col>
                     <Col xs="4" sm="4" md={"4"}>
                         <div className="node_selected">
                             <GraphBuilder> </GraphBuilder>
                         </div>
                     </Col>
-                    <Col xs="8" sm="8" md={"8x"}>
+                    <Col xs="6" sm="6" md={"6"}>
                         <div className="">
                             <MatrixBuilder></MatrixBuilder>
                         </div>
@@ -56,7 +57,6 @@ class Demo extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {};

@@ -38,7 +38,7 @@ class GraphBuilder extends Component {
                     }).map((element)=>{
                     this.props.cy.edges('[id = "'+ element.data.id +'"]').style('opacity', 1);
                     return element.data.id;
-                })
+                }), true
             );
         });
      }
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        graphUpdated: (updatedEdges) => dispatch(actions.graphUpdated(updatedEdges)),
+        graphUpdated: (updatedEdges, updateMatrix) => dispatch(actions.graphUpdated(updatedEdges,updateMatrix)),
         initMatrix : (nodes) => dispatch(actions.initMatrix(nodes))
     }
 }

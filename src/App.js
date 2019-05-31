@@ -33,6 +33,28 @@ class App extends Component {
         this.props.onTryAutoSignup();
     }
 
+    // componentWillMount() {
+    // }
+    //
+    // componentDidCatch(error, errorInfo) {
+    // }
+    //
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    // }
+    //
+    // componentWillReceiveProps(nextProps, nextContext) {
+    // }
+    //
+    // componentWillUnmount() {
+    // }
+    //
+    // componentWillUpdate(nextProps, nextState, nextContext) {
+    // }
+    //
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return true;
+    }
+
     render() {
         let routes = (
             <Switch>
@@ -40,13 +62,12 @@ class App extends Component {
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Route path="/demo" component={Demo}/>
-
                 <Redirect to="/"/>
             </Switch>
         );
 
 
-        if ( this.props.isAuthenticated ) {
+        if (this.props.isAuthenticated) {
             routes = (
                 <Switch>
                     <Route path="/logout" component={Logout} />
