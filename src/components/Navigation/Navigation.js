@@ -1,17 +1,18 @@
 import React from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+// import {
+//     Collapse,
+//     Navbar,
+//     NavbarToggler,
+//     NavbarBrand,
+//     Nav,
+//     NavItem,
+//     NavLink,
+//     UncontrolledDropdown,
+//     DropdownToggle,
+//     DropdownMenu,
+//     DropdownItem } from 'reactstrap';
 
+import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import classes from './Navigation.css'
 /**
  * this is a purely display only component
@@ -39,54 +40,45 @@ export default class Example extends React.Component {
         return (
             <div className={classes1}>
                 <h5 className={classes2}>GIKS</h5>
-                <Nav className={classes3}>
-                    <NavItem className={classes4}>
-                        <NavLink href="#">OUR TEAM</NavLink>
-                    </NavItem>
-                    <UncontrolledDropdown nav inNavbar className={classes4}>
-                        <DropdownToggle nav caret>
-                            OUR RESEARCH
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                <NavLink href="#">Projects</NavLink>
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                <NavLink href="management">Publications</NavLink>
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
+                <Nav
+                    activeKey="/home"
+                    onSelect={selectedKey => alert(`selected ${selectedKey}`)}
+                >
+                    <Nav.Item>
+                        <Nav.Link href="/home">Active</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1">Link</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-2">Link</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="disabled" disabled>
+                            Disabled
+                        </Nav.Link>
+                    </Nav.Item>
                 </Nav>
+                {/*<Nav className={classes3}>*/}
+                {/*    <NavItem className={classes4}>*/}
+                {/*        <NavLink href="#">OUR TEAM</NavLink>*/}
+                {/*    </NavItem>*/}
+                {/*    <UncontrolledDropdown nav inNavbar className={classes4}>*/}
+                {/*        <DropdownToggle nav caret>*/}
+                {/*            OUR RESEARCH*/}
+                {/*        </DropdownToggle>*/}
+                {/*        <DropdownMenu right>*/}
+                {/*            <DropdownItem>*/}
+                {/*                <NavLink href="#">Projects</NavLink>*/}
+                {/*            </DropdownItem>*/}
+                {/*            <DropdownItem divider />*/}
+                {/*            <DropdownItem>*/}
+                {/*                <NavLink href="management">Publications</NavLink>*/}
+                {/*            </DropdownItem>*/}
+                {/*        </DropdownMenu>*/}
+                {/*    </UncontrolledDropdown>*/}
+                {/*</Nav>*/}
             </div>
-            /*
-            <div className={ "container"}>
-                <Navbar color="faded" light expand="md">
-                    <NavbarBrand href="/">GIKS</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/management">OUR TEAM</NavLink>
-                            </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    OUR RESEARCH
-                                </DropdownToggle>
-                                <DropdownMenu >
-                                    <DropdownItem>
-                                        PROJECT
-                                    </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        PUBLICATIONS
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>*/
         );
     }
 }
