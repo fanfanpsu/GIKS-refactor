@@ -1,16 +1,5 @@
 import React from 'react';
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     NavbarBrand,
-//     Nav,
-//     NavItem,
-//     NavLink,
-//     UncontrolledDropdown,
-//     DropdownToggle,
-//     DropdownMenu,
-//     DropdownItem } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import classes from './Navigation.css'
@@ -33,13 +22,10 @@ export default class Example extends React.Component {
         });
     }
     render() {
-        const classes1 = `d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom box-shadow`;
-        const classes2 = `my-0 mr-md-auto font-weight-normal`;
-        const classes3 = `my-2 my-md-0 mr-md-3`;
-        const classes4 = `p-2 text-dark`;
+        const nav = `d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom box-shadow`;
         return (
-            <div className={classes1}>
-                <h5 className={classes2}>GIKS</h5>
+            <div className={nav}>
+                <Navbar.Brand><Link to="/">GIKS</Link></Navbar.Brand>
                 <Nav
                     activeKey="/home"
                     onSelect={selectedKey => alert(`selected ${selectedKey}`)}

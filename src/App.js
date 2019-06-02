@@ -14,6 +14,8 @@ import Management from './containers/Management/Management';
 import Demo from './containers/Demo/Demo';
 
 import * as actions from './store/actions/index';
+import Login from "./containers/Auth/Login";
+import NotFound from "./containers/NotFound/NotFound";
 
 const asyncCheckout = asyncComponent(() => {
     return import('./containers/Checkout/Checkout');
@@ -33,24 +35,24 @@ class App extends Component {
         this.props.onTryAutoSignup();
     }
 
-    // componentWillMount() {
-    // }
-    //
-    // componentDidCatch(error, errorInfo) {
-    // }
-    //
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    // }
-    //
-    // componentWillReceiveProps(nextProps, nextContext) {
-    // }
-    //
-    // componentWillUnmount() {
-    // }
-    //
-    // componentWillUpdate(nextProps, nextState, nextContext) {
-    // }
-    //
+    componentWillMount() {
+    }
+
+    componentDidCatch(error, errorInfo) {
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+    }
+
+    componentWillUnmount() {
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+    }
+
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return true;
     }
@@ -58,21 +60,25 @@ class App extends Component {
     render() {
         let routes = (
             <Switch>
-                <Route path="/" exact component={Home}/>
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Route path="/demo" component={Demo}/>
+                <Route path="/login" exact component={Login}/>
+
+                <Route path="/" exact component={Home}/>
+                <Route component={NotFound} />
                 <Redirect to="/"/>
             </Switch>
         );
-
 
         if (this.props.isAuthenticated) {
             routes = (
                 <Switch>
                     <Route path="/logout" component={Logout} />
                     <Route path="/auth" component={asyncAuth} />
+
                     <Route path="/" exact component={Home} />
+                    <Route component={NotFound} />
                     <Redirect to="/" />
                 </Switch>
             );

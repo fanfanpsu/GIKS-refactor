@@ -10,7 +10,7 @@ class Layout extends Component {
         // Note this is a high order component example.
         return (
             <Fragment>
-                <main className={"container-fluid" }>
+                <main className={"container-fluid"}>
                     {this.props.children}
                 </main>
             </Fragment>
