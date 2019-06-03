@@ -4,18 +4,15 @@ import {connect} from 'react-redux';
 
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import Layout from './hoc/Layout/Layout';
-
 import Navigation from "./components/Navigation/Navigation";
-
 import Logout from './containers/Auth/Logout/Logout';
 import Home from './containers/Home/Home';
 import Management from './containers/Management/Management';
-
 import Demo from './containers/Demo/Demo';
-
-import * as actions from './store/actions/index';
 import Login from "./containers/Auth/Login";
 import NotFound from "./containers/NotFound/NotFound";
+
+import * as actions from './store/actions/index';
 
 const asyncCheckout = asyncComponent(() => {
     return import('./containers/Checkout/Checkout');
@@ -31,6 +28,20 @@ const asyncAuth = asyncComponent(() => {
 });
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isAuthenticated: false
+        };
+    }
+
+    userHasAuthenticated = authenticated => {
+        this.setState({ isAuthenticated: authenticated });
+    }
+
+
     componentDidMount() {
         this.props.onTryAutoSignup();
     }
@@ -58,8 +69,14 @@ class App extends Component {
     }
 
     render() {
+
+        const childProps = {
+            isAuthenticated: this.state.isAuthenticated,
+            userHasAuthenticated: this.userHasAuthenticated
+        };
+
         let routes = (
-            <Switch>
+            <Switch childProps={childProps}>
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Route path="/demo" component={Demo}/>
@@ -94,6 +111,8 @@ class App extends Component {
 
         );
     }
+
+
 }
 
 const mapStateToProps = state => {
