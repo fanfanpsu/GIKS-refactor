@@ -31,3 +31,8 @@ export const UPDATE_MATRIX = 'UPDATE_MATRIX';
 export const INIT_MATRIX = 'INIT_MATRIX';
 
 export const UPDATE_CELL = 'UPDATE_CELL';
+
+
+//AUTH part
+// file: src/actions/types.js
+export const SET_TOKEN = "SET_TOKEN";

@@ -31,6 +31,7 @@ class Login extends Component {
         try {
             // TODO: adjust this to django 2.0 version
             await Auth.signIn(this.state.email, this.state.password);
+            this.props.userHasAuthenticated(true);
             alert("Logged in");
         } catch (e) {
             alert(e.message);
