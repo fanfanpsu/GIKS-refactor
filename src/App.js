@@ -33,7 +33,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            isAuthenticated: false
+            isAuthenticated: false,
+            isAuthenticating: true
         };
     }
 
@@ -41,31 +42,8 @@ class App extends Component {
         this.setState({ isAuthenticated: authenticated });
     }
 
-
     componentDidMount() {
         this.props.onTryAutoSignup();
-    }
-
-    componentWillMount() {
-    }
-
-    componentDidCatch(error, errorInfo) {
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    }
-
-    componentWillReceiveProps(nextProps, nextContext) {
-    }
-
-    componentWillUnmount() {
-    }
-
-    componentWillUpdate(nextProps, nextState, nextContext) {
-    }
-
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return true;
     }
 
     render() {
@@ -75,6 +53,9 @@ class App extends Component {
             userHasAuthenticated: this.userHasAuthenticated
         };
 
+        //  TODO rewrite route with
+        //  https://stackoverflow.com/questions/53654379/how-to-pass-props-into-component-from-react-router-switch-statement
+        //  with consider this: https://serverless-stack.com/chapters/add-the-session-to-the-state.html
         let routes = (
             <Switch childProps={childProps}>
                 <Route path="/auth" component={asyncAuth} />
@@ -106,6 +87,7 @@ class App extends Component {
                 <Navigation />
                 <Layout>
                 {routes}
+                    {/*<Routes childProps={childProps} />*/}
                 </Layout>
             </Fragment>
 

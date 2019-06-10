@@ -32,8 +32,27 @@ class Demo extends Component {
     }
 
     componentWillMount() {
-
     }
+
+    componentDidCatch(error, errorInfo) {
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+    }
+
+    componentWillUnmount() {
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return true;
+    }
+
 
     render() {
         return (
@@ -59,7 +78,8 @@ class Demo extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+    };
 }
 
 const mapDispatchToProps = dispatch => {

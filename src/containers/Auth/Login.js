@@ -10,6 +10,7 @@ class Login extends Component {
         super(props);
 
         this.state = {
+            isLoading: false,
             email: "",
             password: ""
         };
@@ -32,12 +33,16 @@ class Login extends Component {
             // TODO: adjust this to django 2.0 version
             await Auth.signIn(this.state.email, this.state.password);
             this.props.userHasAuthenticated(true);
-            alert("Logged in");
+            // alert("Logged in");
         } catch (e) {
             alert(e.message);
         }
     }
 
+    handleLogout = event => {
+        this.userHasAuthenticated(false);
+        this.props.history.push("/login");
+    }
 
     render() {
         return (
