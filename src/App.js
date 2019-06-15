@@ -74,7 +74,6 @@ class App extends Component {
                 <Switch>
                     <Route path="/logout" component={Logout} />
                     <Route path="/auth" component={asyncAuth} />
-
                     <Route path="/" exact component={Home} />
                     <Route component={NotFound} />
                     <Redirect to="/" />
