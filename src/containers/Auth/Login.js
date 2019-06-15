@@ -29,7 +29,6 @@ class Login extends Component {
         event.preventDefault();
 
         try {
-            // TODO: adjust this to django 2.0 version
             await Auth.signIn(this.state.email, this.state.password);
             alert("Logged in");
         } catch (e) {
