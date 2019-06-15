@@ -25,6 +25,7 @@ let routes = (
         <Route path="/management" component={Management}/>
         <Route path="/demo" component={Demo}/>
         <Route path="/login" exact component={Login}/>
+
         <Route path="/" exact component={Home}/>
         <Route component={NotFound} />
         <Redirect to="/"/>
