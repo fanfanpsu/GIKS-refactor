@@ -33,7 +33,3 @@ export {
     updateMatrix,
     initMatrix
 } from './matrixDispatcher';
-
-export {
-    setToken
-} from './token';
