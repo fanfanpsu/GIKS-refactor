@@ -8,17 +8,12 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Card,
-    CardTitle,
-    CardText,
-    Row,
     Col,
     Button,
     Form,
     FormGroup,
     Label,
-    Input,
-    FormText
+    Input
 } from 'reactstrap';
 
 import Spinner from '../../components/UI/Spinner/Spinner';

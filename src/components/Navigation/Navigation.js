@@ -48,7 +48,7 @@ export default class Example extends React.Component {
                         <Nav.Link href="/home">Active</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-1">Link</Nav.Link>
+                        <Nav.Link eventKey="link-1">Hello, {"user"}</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-2">Link</Nav.Link>
