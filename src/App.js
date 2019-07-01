@@ -33,24 +33,6 @@ class App extends Component {
         this.props.onTryAutoSignup();
     }
 
-    // componentWillMount() {
-    // }
-    //
-    // componentDidCatch(error, errorInfo) {
-    // }
-    //
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    // }
-    //
-    // componentWillReceiveProps(nextProps, nextContext) {
-    // }
-    //
-    // componentWillUnmount() {
-    // }
-    //
-    // componentWillUpdate(nextProps, nextState, nextContext) {
-    // }
-    //
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return true;
     }

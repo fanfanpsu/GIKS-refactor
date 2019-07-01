@@ -67,9 +67,9 @@ class Auth extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.buildingManagement && this.props.authRedirectPath !== '/') {
-            this.props.onSetAuthRedirectPath();
-        }
+        // if (!this.props.buildingManagement && this.props.authRedirectPath !== '/') {
+        //     this.props.onSetAuthRedirectPath();
+        // }
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -85,6 +85,7 @@ class Auth extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
+        // TODO: update this with separate the sign up and sign on functions.
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
 
@@ -137,7 +138,7 @@ class Auth extends Component {
         }
 
         let authRedirect = null;
-        if (!this.props.isAuthenticated) {
+        if (this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
 
@@ -223,13 +224,13 @@ class Auth extends Component {
 
                 {authRedirect}
                 {errorMessage}
-                {/*<form onSubmit={this.submitHandler}>*/}
-                {/*{form}*/}
-                {/*<Button btnType="Success">SUBMIT</Button>*/}
-                {/*</form>*/}
-                {/*<Button*/}
-                {/*clicked={this.switchAuthModeHandler}*/}
-                {/*btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>*/}
+                <form onSubmit={this.submitHandler}>
+                {form}
+                <Button btnType="Success">SUBMIT</Button>
+                </form>
+                <Button
+                clicked={this.switchAuthModeHandler}
+                btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
 
             </Fragment>
         );

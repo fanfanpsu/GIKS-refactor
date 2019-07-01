@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 let signup_url = `/api/auth/register/`;
-let signon_url = `/api/auth/login/`;
+let signin_url = `/api/auth/login/`;
 let signout_url = `/api/auth/logout/`;
 
 
@@ -98,8 +98,8 @@ export const authCheckState = () => {
 };
 
 
-/////
-
+/////added 06.26.19
+/*
 export const loadUser = () => {
     return (dispatch, getState) => {
         dispatch({type: "USER_LOADING"});
@@ -227,4 +227,4 @@ export const logout = () => {
             })
     }
 }
-
+*/
