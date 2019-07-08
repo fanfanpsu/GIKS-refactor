@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
 
-let signup_url = `/api/auth/register/`;
-let signin_url = `/api/auth/login/`;
-let signout_url = `/api/auth/logout/`;
+let register_url = `/api/auth/register/`;
+let login_url = `/api/auth/login/`;
+let logou_url = `/api/auth/logout/`;
 
 
 export const authStart = () => {
@@ -53,9 +53,9 @@ export const auth = (email, password, isSignup) => {
             password: password,
             returnSecureToken: true
         };
-        let url = signup_url;
+        let url = register_url;
         if (!isSignup) {
-            url = signin_url;
+            url = login_url;
         }
         axios.post(url, authData)
             .then(response => {
@@ -99,7 +99,7 @@ export const authCheckState = () => {
 
 
 /////added 06.26.19
-/*
+
 export const loadUser = () => {
     return (dispatch, getState) => {
         dispatch({type: "USER_LOADING"});
@@ -137,7 +137,7 @@ export const loadUser = () => {
     }
 }
 
-export const login = (username, password) => {
+export const loginUser = (username, password) => {
     return (dispatch, getState) => {
         let headers = {"Content-Type": "application/json"};
         let body = JSON.stringify({username, password});
@@ -199,7 +199,7 @@ export const register = (username, password) => {
     }
 }
 
-export const logout = () => {
+export const logoutUser = () => {
     return (dispatch, getState) => {
         let headers = {"Content-Type": "application/json"};
 
@@ -227,4 +227,3 @@ export const logout = () => {
             })
     }
 }
-*/

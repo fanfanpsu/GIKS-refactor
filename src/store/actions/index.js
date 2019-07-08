@@ -14,7 +14,13 @@ export {
     auth,
     logout,
     setAuthRedirectPath,
-    authCheckState
+    authCheckState,
+
+    // added 06.26.19
+    logoutUser,
+    register,
+    loginUser,
+    loadUser
 } from './auth';
 
 export {

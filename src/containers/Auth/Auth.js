@@ -19,17 +19,14 @@ import {
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
+import { updateObject } from '../../shared/utility';
 import classnames from 'classnames';
 
 class Auth extends Component {
     constructor(props) {
         super(props);
-
         this.toggle = this.toggle.bind(this);
-        this.state = {
-            ...this.state,
-            activeTab: 'signup'
-        };
+        this.state = updateObject( this.state, { activeTab: 'signup'});
     }
 
     state = {
@@ -67,9 +64,17 @@ class Auth extends Component {
     }
 
     componentDidMount() {
-        // if (!this.props.buildingManagement && this.props.authRedirectPath !== '/') {
-        //     this.props.onSetAuthRedirectPath();
-        // }
+
+        if (/*!this.props.buildingManagement && */ this.props.authRedirectPath !== '/') {
+            this.props.onSetAuthRedirectPath();
+        }
+
+
+        console.log(this.props.isLoading);
+        console.log(this.props.error);
+        console.log(this.props.isAuthenticated);
+        console.log(this.props.authRedirectPath);
+        console.log(this.props.testing);
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -144,83 +149,83 @@ class Auth extends Component {
 
         return (
             <Fragment>
-                <Jumbotron>
-                    <Nav tabs className={"d-flex justify-content-center"}>
-                        <NavItem>
-                            <NavLink
-                                className={classnames({active: this.state.activeTab === 'signup'})}
-                                onClick={() => {
-                                    this.toggle('signup');
-                                }}
-                            >Sign Up
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                className={classnames({active: this.state.activeTab === 'signin'})}
-                                onClick={() => {
-                                    this.toggle('signin');
-                                }}
-                            >Sign In</NavLink>
-                        </NavItem>
-                    </Nav>
-                    <TabContent activeTab={this.state.activeTab} className={"d-flex justify-content-center"}>
-                        <TabPane tabId="signin">
-                            <Form>
-                                <FormGroup row>
-                                    <Label for="exampleEmail" sm={4}>Email</Label>
-                                    <Col sm={8}>
-                                        <Input type="email" name="email" id="exampleEmail"
-                                               placeholder="with a placeholder"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="examplePassword" sm={4}>Password</Label>
-                                    <Col sm={8}>
-                                        <Input type="password" name="password" id="examplePassword"
-                                               placeholder="password placeholder"/>
-                                    </Col>
-                                </FormGroup>
+                {/*<Jumbotron>*/}
+                {/*    <Nav tabs className={"d-flex justify-content-center"}>*/}
+                {/*        <NavItem>*/}
+                {/*            <NavLink*/}
+                {/*                className={classnames({active: this.state.activeTab === 'signup'})}*/}
+                {/*                onClick={() => {*/}
+                {/*                    this.toggle('signup');*/}
+                {/*                }}*/}
+                {/*            >Sign Up*/}
+                {/*            </NavLink>*/}
+                {/*        </NavItem>*/}
+                {/*        <NavItem>*/}
+                {/*            <NavLink*/}
+                {/*                className={classnames({active: this.state.activeTab === 'signin'})}*/}
+                {/*                onClick={() => {*/}
+                {/*                    this.toggle('signin');*/}
+                {/*                }}*/}
+                {/*            >Sign In</NavLink>*/}
+                {/*        </NavItem>*/}
+                {/*    </Nav>*/}
+                {/*    <TabContent activeTab={this.state.activeTab} className={"d-flex justify-content-center"}>*/}
+                {/*        <TabPane tabId="signin">*/}
+                {/*            <Form>*/}
+                {/*                <FormGroup row>*/}
+                {/*                    <Label for="exampleEmail" sm={4}>Email</Label>*/}
+                {/*                    <Col sm={8}>*/}
+                {/*                        <Input type="email" name="email" id="exampleEmail"*/}
+                {/*                               placeholder="with a placeholder"/>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*                <FormGroup row>*/}
+                {/*                    <Label for="examplePassword" sm={4}>Password</Label>*/}
+                {/*                    <Col sm={8}>*/}
+                {/*                        <Input type="password" name="password" id="examplePassword"*/}
+                {/*                               placeholder="password placeholder"/>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
 
-                                <FormGroup check row>
-                                    <Col sm={{size: 12}}>
-                                        <Button>Submit</Button>
-                                    </Col>
-                                </FormGroup>
-                            </Form>
-                        </TabPane>
-                        <TabPane tabId="signup">
-                            <Form>
-                                <FormGroup row>
-                                    <Label for="exampleEmail" sm={5}>Email</Label>
-                                    <Col sm={7}>
-                                        <Input type="email" name="email" id="exampleEmail"
-                                               placeholder="with a placeholder"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="examplePassword" sm={5}>Password</Label>
-                                    <Col sm={7}>
-                                        <Input type="password" name="password" id="examplePassword"
-                                               placeholder="password placeholder"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="examplePassword" sm={5}>Retype Password</Label>
-                                    <Col sm={7}>
-                                        <Input type="password" name="password" id="examplePassword"
-                                               placeholder="password placeholder"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup check row>
-                                    <Col sm={{size: 10, offset: 2}}>
-                                        <Button>Submit</Button>
-                                    </Col>
-                                </FormGroup>
-                            </Form>
-                        </TabPane>
-                    </TabContent>
-                </Jumbotron>
+                {/*                <FormGroup check row>*/}
+                {/*                    <Col sm={{size: 12}}>*/}
+                {/*                        <Button>Submit</Button>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*            </Form>*/}
+                {/*        </TabPane>*/}
+                {/*        <TabPane tabId="signup">*/}
+                {/*            <Form>*/}
+                {/*                <FormGroup row>*/}
+                {/*                    <Label for="exampleEmail" sm={5}>Email</Label>*/}
+                {/*                    <Col sm={7}>*/}
+                {/*                        <Input type="email" name="email" id="exampleEmail"*/}
+                {/*                               placeholder="with a placeholder"/>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*                <FormGroup row>*/}
+                {/*                    <Label for="examplePassword" sm={5}>Password</Label>*/}
+                {/*                    <Col sm={7}>*/}
+                {/*                        <Input type="password" name="password" id="examplePassword"*/}
+                {/*                               placeholder="password placeholder"/>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*                <FormGroup row>*/}
+                {/*                    <Label for="examplePassword" sm={5}>Retype Password</Label>*/}
+                {/*                    <Col sm={7}>*/}
+                {/*                        <Input type="password" name="password" id="examplePassword"*/}
+                {/*                               placeholder="password placeholder"/>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*                <FormGroup check row>*/}
+                {/*                    <Col sm={{size: 10, offset: 2}}>*/}
+                {/*                        <Button>Submit</Button>*/}
+                {/*                    </Col>*/}
+                {/*                </FormGroup>*/}
+                {/*            </Form>*/}
+                {/*        </TabPane>*/}
+                {/*    </TabContent>*/}
+                {/*</Jumbotron>*/}
 
                 {authRedirect}
                 {errorMessage}
@@ -239,19 +244,24 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.auth.loading,
+        isLoading: state.auth.isLoading,
         error: state.auth.error,
-        isAuthenticated: state.auth.token !== null,
-        buildingBurger: state.burgerBuilder.building,
-        buildingManagement: state.managementBuilder.loading,
-        authRedirectPath: state.auth.authRedirectPath
+        isAuthenticated: state.auth.isAuthenticated, //state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath,
+        token: localStorage.getItem("token"),
+        testing: state.auth.testing
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
-        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
+
+        onLoadUser:  () => dispatch(actions.loadUser()),
+        onLogoutUser:  () => dispatch(actions.logoutUser()),
+        onRegister:   (email, password) => dispatch(actions.register(email, password)),
+        onLoginUser:  (email, password) => dispatch(actions.loginUser(email, password))
     };
 };
 

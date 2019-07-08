@@ -74,7 +74,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
+        // the state.auth.token is from the reducer mapping, the auth is the authReducer
         isAuthenticated: state.auth.token !== null
+
     };
 };
 
