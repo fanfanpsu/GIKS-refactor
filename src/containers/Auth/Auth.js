@@ -19,7 +19,6 @@ import {
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
-import { updateObject } from '../../shared/utility';
 import classnames from 'classnames';
 
 class Auth extends Component {
@@ -59,8 +58,7 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        },
-        isSignup: true
+        }
     }
 
     componentDidMount() {
@@ -68,13 +66,6 @@ class Auth extends Component {
         if (/*!this.props.buildingManagement && */ this.props.authRedirectPath !== '/') {
             this.props.onSetAuthRedirectPath();
         }
-
-
-        console.log(this.props.isLoading);
-        console.log(this.props.error);
-        console.log(this.props.isAuthenticated);
-        console.log(this.props.authRedirectPath);
-        console.log(this.props.testing);
     }
 
     inputChangedHandler = (event, controlName) => {
