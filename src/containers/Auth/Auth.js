@@ -62,7 +62,6 @@ class Auth extends Component {
     }
 
     componentDidMount() {
-
         if (/*!this.props.buildingManagement && */ this.props.authRedirectPath !== '/') {
             this.props.onSetAuthRedirectPath();
         }
@@ -82,6 +81,7 @@ class Auth extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         // TODO: update this with separate the sign up and sign on functions.
+        alert("submitHandler");
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
 
@@ -140,94 +140,85 @@ class Auth extends Component {
 
         return (
             <Fragment>
-                {/*<Jumbotron>*/}
-                {/*    <Nav tabs className={"d-flex justify-content-center"}>*/}
-                {/*        <NavItem>*/}
-                {/*            <NavLink*/}
-                {/*                className={classnames({active: this.state.activeTab === 'signup'})}*/}
-                {/*                onClick={() => {*/}
-                {/*                    this.toggle('signup');*/}
-                {/*                }}*/}
-                {/*            >Sign Up*/}
-                {/*            </NavLink>*/}
-                {/*        </NavItem>*/}
-                {/*        <NavItem>*/}
-                {/*            <NavLink*/}
-                {/*                className={classnames({active: this.state.activeTab === 'signin'})}*/}
-                {/*                onClick={() => {*/}
-                {/*                    this.toggle('signin');*/}
-                {/*                }}*/}
-                {/*            >Sign In</NavLink>*/}
-                {/*        </NavItem>*/}
-                {/*    </Nav>*/}
-                {/*    <TabContent activeTab={this.state.activeTab} className={"d-flex justify-content-center"}>*/}
-                {/*        <TabPane tabId="signin">*/}
-                {/*            <Form>*/}
-                {/*                <FormGroup row>*/}
-                {/*                    <Label for="exampleEmail" sm={4}>Email</Label>*/}
-                {/*                    <Col sm={8}>*/}
-                {/*                        <Input type="email" name="email" id="exampleEmail"*/}
-                {/*                               placeholder="with a placeholder"/>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*                <FormGroup row>*/}
-                {/*                    <Label for="examplePassword" sm={4}>Password</Label>*/}
-                {/*                    <Col sm={8}>*/}
-                {/*                        <Input type="password" name="password" id="examplePassword"*/}
-                {/*                               placeholder="password placeholder"/>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
+                <Jumbotron>
+                    <Nav tabs className={"d-flex justify-content-center"}>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({active: this.state.activeTab === 'signup'})}
+                                onClick={() => {
+                                    this.toggle('signup');
+                                }}
+                            >Sign Up
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({active: this.state.activeTab === 'signin'})}
+                                onClick={() => {
+                                    this.toggle('signin');
+                                }}
+                            >Sign In</NavLink>
+                        </NavItem>
+                    </Nav>
+                    <TabContent activeTab={this.state.activeTab} className={"d-flex justify-content-center"}>
+                        <TabPane tabId="signin">
+                            <Form>
+                                <FormGroup row>
+                                    <Label for="exampleEmail" sm={4}>Email</Label>
+                                    <Col sm={8}>
+                                        <Input type="email" name="email" id="exampleEmail"
+                                               placeholder="with a placeholder"/>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="examplePassword" sm={4}>Password</Label>
+                                    <Col sm={8}>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
+                                    </Col>
+                                </FormGroup>
 
-                {/*                <FormGroup check row>*/}
-                {/*                    <Col sm={{size: 12}}>*/}
-                {/*                        <Button>Submit</Button>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*            </Form>*/}
-                {/*        </TabPane>*/}
-                {/*        <TabPane tabId="signup">*/}
-                {/*            <Form>*/}
-                {/*                <FormGroup row>*/}
-                {/*                    <Label for="exampleEmail" sm={5}>Email</Label>*/}
-                {/*                    <Col sm={7}>*/}
-                {/*                        <Input type="email" name="email" id="exampleEmail"*/}
-                {/*                               placeholder="with a placeholder"/>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*                <FormGroup row>*/}
-                {/*                    <Label for="examplePassword" sm={5}>Password</Label>*/}
-                {/*                    <Col sm={7}>*/}
-                {/*                        <Input type="password" name="password" id="examplePassword"*/}
-                {/*                               placeholder="password placeholder"/>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*                <FormGroup row>*/}
-                {/*                    <Label for="examplePassword" sm={5}>Retype Password</Label>*/}
-                {/*                    <Col sm={7}>*/}
-                {/*                        <Input type="password" name="password" id="examplePassword"*/}
-                {/*                               placeholder="password placeholder"/>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*                <FormGroup check row>*/}
-                {/*                    <Col sm={{size: 10, offset: 2}}>*/}
-                {/*                        <Button>Submit</Button>*/}
-                {/*                    </Col>*/}
-                {/*                </FormGroup>*/}
-                {/*            </Form>*/}
-                {/*        </TabPane>*/}
-                {/*    </TabContent>*/}
-                {/*</Jumbotron>*/}
-
+                                <FormGroup check row>
+                                    <Col sm={{size: 12}}>
+                                        <Button>Submit</Button>
+                                    </Col>
+                                </FormGroup>
+                            </Form>
+                        </TabPane>
+                        <TabPane tabId="signup">
+                            <Form  onSubmit={this.submitHandler}>
+                                <FormGroup row>
+                                    <Label for="exampleEmail" sm={5}>Email</Label>
+                                    <Col sm={7}>
+                                        <Input type="email" name="email" id="exampleEmail"
+                                               placeholder="with a placeholder"/>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="examplePassword" sm={5}>Password</Label>
+                                    <Col sm={7}>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="examplePassword" sm={5}>Retype Password</Label>
+                                    <Col sm={7}>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup check row>
+                                    <Col sm={{size: 10, offset: 2}}>
+                                        <Button>Submit</Button>
+                                    </Col>
+                                </FormGroup>
+                            </Form>
+                        </TabPane>
+                    </TabContent>
+                </Jumbotron>
                 {authRedirect}
                 {errorMessage}
-                <form onSubmit={this.submitHandler}>
-                {form}
-                <Button btnType="Success">SUBMIT</Button>
-                </form>
-                <Button
-                clicked={this.switchAuthModeHandler}
-                btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
-
             </Fragment>
         );
     }
@@ -248,7 +239,6 @@ const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
         onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
-
         onLoadUser:  () => dispatch(actions.loadUser()),
         onLogoutUser:  () => dispatch(actions.logoutUser()),
         onRegister:   (email, password) => dispatch(actions.register(email, password)),
