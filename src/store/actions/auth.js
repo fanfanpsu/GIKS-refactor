@@ -99,7 +99,7 @@ export const authCheckState = () => {
 
 
 /////added 06.26.19
-
+// Pony App
 export const loadUser = () => {
     return (dispatch, getState) => {
         dispatch({type: "USER_LOADING"});

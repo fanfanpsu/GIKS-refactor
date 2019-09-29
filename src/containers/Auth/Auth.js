@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {
     Jumbotron,
     TabContent,
@@ -21,11 +21,28 @@ import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
 import classnames from 'classnames';
 
+import Home from "../Home/Home";
+import Management from "../Management/Management";
+import Demo from "../Demo/Demo";
+import Login from "./Login/Login"
+import Register from "./Register/Register"
+
+
+let AuthRoutes = (
+    <Switch>
+        <Switch>
+            {/*<PrivateRoute exact path="/" component={PonyNote} />*/}
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+        </Switch>
+    </Switch>
+);
+
 class Auth extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = updateObject( this.state, { activeTab: 'signup'});
+        this.state = updateObject(this.state, {activeTab: 'signup'});
     }
 
     state = {
@@ -34,7 +51,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'email',
-                    placeholder: 'Mail Address'
+                    placeholder: 'Email Address'
                 },
                 value: '',
                 validation: {
@@ -68,6 +85,7 @@ class Auth extends Component {
     }
 
     inputChangedHandler = (event, controlName) => {
+        // once anything changed in the input field, this method is triggered
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
                 value: event.target.value,
@@ -78,10 +96,17 @@ class Auth extends Component {
         this.setState({controls: updatedControls});
     }
 
-    submitHandler = (event) => {
+    submitSignInHandler = (event) => {
         event.preventDefault();
         // TODO: update this with separate the sign up and sign on functions.
-        alert("submitHandler");
+        alert("submitSignInHandler");
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
+    }
+
+    submitSignUpHandler = (event) => {
+        event.preventDefault();
+        // TODO: update this with separate the sign up and sign on functions.
+        alert("submitSignUpHandler");
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
 
@@ -91,8 +116,6 @@ class Auth extends Component {
         });
     }
 
-
-    // added from reactstrap
     toggle(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
@@ -162,7 +185,7 @@ class Auth extends Component {
                     </Nav>
                     <TabContent activeTab={this.state.activeTab} className={"d-flex justify-content-center"}>
                         <TabPane tabId="signin">
-                            <Form>
+                            <Form onSubmit={this.submitSignInHandler}>
                                 <FormGroup row>
                                     <Label for="exampleEmail" sm={4}>Email</Label>
                                     <Col sm={8}>
@@ -186,7 +209,7 @@ class Auth extends Component {
                             </Form>
                         </TabPane>
                         <TabPane tabId="signup">
-                            <Form  onSubmit={this.submitHandler}>
+                            <Form onSubmit={this.submitSignUpHandler}>
                                 <FormGroup row>
                                     <Label for="exampleEmail" sm={5}>Email</Label>
                                     <Col sm={7}>
@@ -239,10 +262,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
         onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
-        onLoadUser:  () => dispatch(actions.loadUser()),
-        onLogoutUser:  () => dispatch(actions.logoutUser()),
-        onRegister:   (email, password) => dispatch(actions.register(email, password)),
-        onLoginUser:  (email, password) => dispatch(actions.loginUser(email, password))
+        onLoadUser: () => dispatch(actions.loadUser()),
+        onLogoutUser: () => dispatch(actions.logoutUser()),
+        onRegister: (email, password) => dispatch(actions.register(email, password)),
+        onLoginUser: (email, password) => dispatch(actions.loginUser(email, password))
     };
 };
 

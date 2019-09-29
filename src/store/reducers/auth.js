@@ -3,18 +3,18 @@ import { updateObject } from '../../shared/utility';
 
 
 const initialState = {
-    token: localStorage.getItem("token"),
+    token: localStorage.getItem("token"), // ponynote
     isAuthenticated: false,
     isLoading: true,
     user: null,
     errors: {},
-    testing: "Testing reading from auth reducer"
+     testing: "Testing reading from auth reducer"
 };
 
 const authReducer = (state=initialState, action) => {
 
     switch (action.type) {
-
+        // from ponynote
         case 'USER_LOADING':
             // TODO: is this sort of advanced object updating term?
             return {...state, isLoading: true};

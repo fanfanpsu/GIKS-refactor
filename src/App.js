@@ -38,6 +38,9 @@ class App extends Component {
     }
 
     render() {
+
+        // TODO consider implemente the private route from [Restricting unauthorized access]
+        // http://v1k45.com/blog/modern-django-part-4-adding-authentication-to-react-spa-using-drf/
         let routes = (
             <Switch>
                 <Route path="/" exact component={Home}/>

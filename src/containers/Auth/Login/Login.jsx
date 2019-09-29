@@ -3,8 +3,9 @@ import {connect} from "react-redux";
 
 import {Link, Redirect} from "react-router-dom";
 
-import {auth} from "../actions";
+import {auth} from "../../../store/actions";
 
+// not really used anywhere
 class Login extends Component {
 
     state = {
@@ -73,7 +74,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         login: (username, password) => {
-            return dispatch(auth.login(username, password));
+            return dispatch(auth.loginUser(username, password));
         }
     };
 }
