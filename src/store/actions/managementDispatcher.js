@@ -3,14 +3,12 @@ import axios from '../../axios-address';
 
 
 // set exp panels after success retrieved exps
-export const setManagementExperiments = ( experiments ) => {
-
+export const setManagementExperiments = (experiments) => {
     return {
         type: actionTypes.SET_EXPERIMENTS,
         experiments: experiments
     };
 };
-
 
 export const fetchManagementExperimentsFailed = () => {
     return {
@@ -20,12 +18,12 @@ export const fetchManagementExperimentsFailed = () => {
 
 export const initManagementExpPanels = () => {
     return dispatch => {
-        axios.get( 'https://giks-firebase.firebaseio.com/experiments.json' )
-            .then( response => {
+        axios.get('https://giks-firebase.firebaseio.com/experiments.json')
+            .then(response => {
                 dispatch(setManagementExperiments(response.data));
-            } )
-            .catch( error => {
+            })
+            .catch(error => {
                 dispatch(fetchManagementExperimentsFailed());
-            } );
+            });
     };
 };

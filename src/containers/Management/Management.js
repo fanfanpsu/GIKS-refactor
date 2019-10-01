@@ -45,7 +45,7 @@ class Management extends Component {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
 
-        return (
+        return (web
             <Fragment>
                 {/*{authRedirect}*/}
                 <Row className={"row-eq-height"}>

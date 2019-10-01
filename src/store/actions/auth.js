@@ -3,9 +3,13 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 let register_url = `/api/auth/register/`;
-let login_url = `/api/auth/login/`;
-let logou_url = `/api/auth/logout/`;
+let REGISTER_URL = `/api/auth/register/`;
 
+let login_url = `/api/auth/login/`; // TODO convert this to nested URL
+let SIGNIN_URL = `/api/auth/login/`;
+
+let logout_url = `/api/auth/logout/`;
+let SIGNOUT_URL = `/api/auth/logout/`;
 
 export const authStart = () => {
     return {

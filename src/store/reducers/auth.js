@@ -41,6 +41,8 @@ const authReducer = (state=initialState, action) => {
 }
 
 export default authReducer;
+
+
 // old implementation 07.07.19
 /*
 const initialState = {

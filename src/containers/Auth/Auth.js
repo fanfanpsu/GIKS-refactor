@@ -30,11 +30,9 @@ import Register from "./Register/Register"
 
 let AuthRoutes = (
     <Switch>
-        <Switch>
-            {/*<PrivateRoute exact path="/" component={PonyNote} />*/}
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-        </Switch>
+        {/*<PrivateRoute exact path="/" component={PonyNote} />*/}
+        <Route exact path="/register" component={Register}/>
+        <Route exact path="/login" component={Login}/>
     </Switch>
 );
 
