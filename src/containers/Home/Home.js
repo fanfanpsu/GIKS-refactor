@@ -13,7 +13,7 @@ import researcher_logo from '../../assets/images/researcher.png'; // Import usin
 import student_logo from '../../assets/images/student.png'; // Import using relative path
 import demo_logo from '../../assets/images/demo.png'; // Import using relative path
 
-import Management from "../Management/Management";
+import Management from "../ManagementBuilder/Management";
 import classes from './Home.css'
 import {Container, Card, CardDeck, CardImg, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";

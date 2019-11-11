@@ -9,8 +9,12 @@ import Navigation from "./components/Navigation/Navigation";
 
 import Logout from './containers/Auth/Logout/Logout';
 import Home from './containers/Home/Home';
-import Management from './containers/Management/Management';
+import Management from './containers/ManagementBuilder/Management';
+import Experiment from './containers/Experiment/ExpermentBuilder'
+import Article from './containers/ArticleBuilder/ArticleBuilder'
+import Graph from './containers/GraphBuilder/GraphBuilder'
 
+// TODO refactor this this to graph
 import Demo from './containers/Demo/Demo';
 
 import * as actions from './store/actions/index';
@@ -46,12 +50,16 @@ class App extends Component {
                 <Route path="/" exact component={Home}/>
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
+                <Route path="/experiment" component={Experiment}/>
+                <Route path="/article" component={Article}/>
+                <Route path="/graph" component={Graph}/>
+
                 <Route path="/demo" component={Demo}/>
                 <Redirect to="/"/>
             </Switch>
         );
 
-
+        // TODO update this two routes into one
         if (this.props.isAuthenticated) {
             routes = (
                 <Switch>

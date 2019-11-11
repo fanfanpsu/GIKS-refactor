@@ -22,7 +22,7 @@ import {updateObject, checkValidity} from '../../shared/utility';
 import classnames from 'classnames';
 
 import Home from "../Home/Home";
-import Management from "../Management/Management";
+import Management from "../ManagementBuilder/Management";
 import Demo from "../Demo/Demo";
 import Login from "./Login/Login"
 import Register from "./Register/Register"

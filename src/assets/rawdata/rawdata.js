@@ -138,4 +138,11 @@ const raw_experiments = {
     lastUpdated: ''
 };
 
-export default raw_experiments;
+const raw_article = {
+    title: "no title"
+};
+
+export default {
+    raw_experiments,
+    raw_article
+};

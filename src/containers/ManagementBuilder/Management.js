@@ -2,20 +2,16 @@ import React, {Component, Fragment} from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import {updateObject} from "../../shared/utility";
 
-import BurgerBuilder from '../BurgerBuilder/BurgerBuilder';
-import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios-address';
-import Navigation from "../../components/Navigation/Navigation";
 import Expcards from "../../components/Expcard/ExpCards";
 
 // this css aligns the layout of all cards with same height
 import classes from "./management.css"
-
 import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
-import {updateObject} from "../../shared/utility";
 
 class Management extends Component {
     constructor(props) {
@@ -45,9 +41,8 @@ class Management extends Component {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
 
-        return (web
+        return (
             <Fragment>
-                {/*{authRedirect}*/}
                 <Row className={"row-eq-height"}>
                     <Expcards experiments={this.props.experiments}/>
                 </Row>

@@ -19,7 +19,7 @@ import classes from "./Demo.css"
 import Graph from "../../components/Graph/Graph";
 import MatrixBuilder from "../MatrixBuilder/MatrixBuilder";
 import "../../assets/rawdata/graph.json";
-import GraphBuilder from "../Graph/GraphBuilder";
+import GraphBuilder from "../GraphBuilder/GraphBuilder";
 
 class Demo extends Component {
     constructor(props) {
