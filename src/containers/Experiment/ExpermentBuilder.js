@@ -10,9 +10,7 @@ import axios from '../../axios-address';
 import Expcards from "../../components/Expcard/ExpCards";
 
 // this css aligns the layout of all cards with same height
-import classes from "./management.css"
 import ExperimentForm from "../../components/Experiment/experimentCreationForm"
-import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
 
 class ExpermentBuilder extends Component {
     constructor(props) {

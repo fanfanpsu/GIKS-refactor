@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 const ExperimentForm = (props) => {
+
     return (
         <Form>
             <Form.Group controlId="experiment.title">
@@ -13,7 +14,7 @@ const ExperimentForm = (props) => {
                 <Form.Control as="textarea" rows="3" />
             </Form.Group>
 
-            <Form.Group controlId="formGroupPassword">
+            <Form.Group controlId="experiment.numberOfParticipants">
                 {/*TODO this needs to be type number */}
                 <Form.Control type="number" placeholder="Number of participants" />
             </Form.Group>
