@@ -1,17 +1,4 @@
 import React, {Fragment} from 'react';
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     NavbarBrand,
-//     Nav,
-//     NavItem,
-//     NavLink,
-//     UncontrolledDropdown,
-//     DropdownToggle,
-//     DropdownMenu,
-//     DropdownItem } from 'reactstrap';
-
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from "react-bootstrap";
 import classes from './Navigation.css'
 
@@ -28,11 +15,13 @@ function GuestGreeting(props) {
 }
 
 function Greeting(props) {
-    // TODO: Update this
-    const isLoggedIn = props.isLoggedIn;
+    // TODO: Update this for a proper condition
+    const isLoggedIn = props.isAuthenticated;
+
     if (isLoggedIn) {
         return <UserGreeting />;
     }
+
     return <GuestGreeting />;
 }
 
@@ -61,7 +50,7 @@ export default class NavBar extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                            <Greeting isLoggedIn={false} />
+                            <Greeting />
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar.Collapse>

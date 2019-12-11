@@ -12,6 +12,7 @@ let logout_url = `/api/auth/logout/`;
 let SIGNOUT_URL = `/api/auth/logout/`;
 
 export const authStart = () => {
+    alert("auth started")
     return {
         type: actionTypes.AUTH_START
     };
@@ -57,10 +58,12 @@ export const auth = (email, password, isSignup) => {
             password: password,
             returnSecureToken: true
         };
+
         let url = register_url;
         if (!isSignup) {
             url = login_url;
         }
+
         axios.post(url, authData)
             .then(response => {
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);

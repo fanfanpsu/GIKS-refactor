@@ -26,6 +26,7 @@ import Management from "../ManagementBuilder/Management";
 import Demo from "../Demo/Demo";
 import Login from "./Login/Login"
 import Register from "./Register/Register"
+import AuthTable from "../../components/AuthTemplate/AuthTemplate";
 
 
 let AuthRoutes = (
@@ -43,7 +44,38 @@ class Auth extends Component {
         this.state = updateObject(this.state, {activeTab: 'signup'});
     }
 
-    state = { }
+    state = {
+        controls: {
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Email Address'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                },
+                valid: false,
+                touched: false
+            },
+            password: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'password',
+                    placeholder: 'Password'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 6
+                },
+                valid: false,
+                touched: false
+            }
+        }
+    }
 
     componentDidMount() {
         if (/*!this.props.buildingManagement && */ this.props.authRedirectPath !== '/') {
@@ -77,7 +109,6 @@ class Auth extends Component {
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
 
-    // TODO figure out how to use this method
     switchAuthModeHandler = () => {
         this.setState(prevState => {
             return {isSignup: !prevState.isSignup};
@@ -130,9 +161,7 @@ class Auth extends Component {
         }
 
         return (
-
             <Fragment>
-                {authRedirect}
                 <Jumbotron>
                     <Nav tabs className={"d-flex justify-content-center"}>
                         <NavItem>
@@ -141,7 +170,8 @@ class Auth extends Component {
                                 onClick={() => {
                                     this.toggle('signup');
                                 }}
-                            >Sign Up</NavLink>
+                            >Sign Up
+                            </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink
@@ -156,17 +186,17 @@ class Auth extends Component {
                         <TabPane tabId="signin">
                             <Form onSubmit={this.submitSignInHandler}>
                                 <FormGroup row>
-                                    <Label for="authEmail" sm={4}>Email</Label>
+                                    <Label for="exampleEmail" sm={4}>Email</Label>
                                     <Col sm={8}>
-                                        <Input type="email" name="email" id="authEmail"
-                                               placeholder="Please enter email as username"/>
+                                        <Input type="email" name="email" id="exampleEmail"
+                                               placeholder="with a placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="authPassword" sm={4}>Password</Label>
+                                    <Label for="examplePassword" sm={4}>Password</Label>
                                     <Col sm={8}>
-                                        <Input type="password" name="password" id="authPassword"
-                                               placeholder=""/>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
                                     </Col>
                                 </FormGroup>
 
@@ -180,28 +210,28 @@ class Auth extends Component {
                         <TabPane tabId="signup">
                             <Form onSubmit={this.submitSignUpHandler}>
                                 <FormGroup row>
-                                    <Label for="signupEmail" sm={5}>Email</Label>
+                                    <Label for="exampleEmail" sm={5}>Email</Label>
                                     <Col sm={7}>
-                                        <Input type="email" name="email" id="signupEmail"
-                                               placeholder="Email as user name"/>
+                                        <Input type="email" name="email" id="exampleEmail"
+                                               placeholder="with a placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="signupPassword" sm={5}>Password</Label>
+                                    <Label for="examplePassword" sm={5}>Password</Label>
                                     <Col sm={7}>
-                                        <Input type="password" name="password" id="signupPassword"
-                                               placeholder="Enter your password"/>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="signupPasswordConfirm" sm={5}>Retype Password</Label>
+                                    <Label for="examplePassword" sm={5}>Retype Password</Label>
                                     <Col sm={7}>
-                                        <Input type="password" name="password" id="signupPasswordConfirm"
-                                               placeholder="Confirm your password"/>
+                                        <Input type="password" name="password" id="examplePassword"
+                                               placeholder="password placeholder"/>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup check row>
-                                    <Col sm={{size: 12}}>
+                                    <Col sm={{size: 10, offset: 2}}>
                                         <Button>Submit</Button>
                                     </Col>
                                 </FormGroup>
@@ -209,6 +239,7 @@ class Auth extends Component {
                         </TabPane>
                     </TabContent>
                 </Jumbotron>
+                {authRedirect}
                 {errorMessage}
             </Fragment>
         );
