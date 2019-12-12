@@ -38,6 +38,7 @@ const setExperiments = (state, action) => {
 export const fetchExperiments = () => {
     return (dispatch, getState) => {
         let headers = {"Content-Type": "application/json"};
+        // TODO This could be the issue for failed management experiment fetching
         let {token} = getState().auth;
 
         if (token) {

@@ -11,6 +11,8 @@ let SIGNIN_URL = `/api/auth/login/`;
 let logout_url = `/api/auth/logout/`;
 let SIGNOUT_URL = `/api/auth/logout/`;
 
+const localmock = true
+
 export const authStart = () => {
     alert("auth started")
     return {
@@ -18,11 +20,14 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (authToken, authUserId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        idToken: token,
-        userId: userId
+        data: {
+            authToken: authToken,
+            authUserId: authUserId
+        }
+
     };
 };
 
@@ -34,9 +39,9 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationDate');
-    localStorage.removeItem('userId');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('authExpirationDate');
+    localStorage.removeItem('authUserId');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -63,19 +68,29 @@ export const auth = (email, password, isSignup) => {
         if (!isSignup) {
             url = login_url;
         }
+        if (localmock) {
+            dispatch(authSuccess("localmockup-token", "localmockup-id"));
+            dispatch(checkAuthTimeout("localmockup-exp-time"));
 
-        axios.post(url, authData)
-            .then(response => {
-                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-                localStorage.setItem('token', response.data.idToken);
-                localStorage.setItem('expirationDate', expirationDate);
-                localStorage.setItem('userId', response.data.localId);
-                dispatch(authSuccess(response.data.idToken, response.data.localId));
-                dispatch(checkAuthTimeout(response.data.expiresIn));
-            })
-            .catch(err => {
-                dispatch(authFail(err.response.data.error));
-            });
+        } else {
+
+            axios.post(url, authData)
+                .then(response => {
+                    const authExpirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+
+                    localStorage.setItem('authToken', response.data.idToken);
+                    localStorage.setItem('authExpirationDate', authExpirationDate);
+                    localStorage.setItem('authUserId', response.data.localId);
+
+                    dispatch(authSuccess(response.data.idToken, response.data.localId));
+                    dispatch(checkAuthTimeout(response.data.expiresIn));
+
+                })
+                .catch(err => {
+                    dispatch(authFail(err.response.data.error));
+                });
+        }
+
     };
 };
 
@@ -88,37 +103,35 @@ export const setAuthRedirectPath = (path) => {
 
 export const authCheckState = () => {
     return dispatch => {
-        const token = localStorage.getItem('token');
-        if (!token) {
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken) {
             dispatch(logout());
         } else {
-            const expirationDate = new Date(localStorage.getItem('expirationDate'));
-            if (expirationDate <= new Date()) {
+            const authExpirationDate = new Date(localStorage.getItem('authExpirationDate'));
+            if (authExpirationDate <= new Date()) {
                 dispatch(logout());
             } else {
-                const userId = localStorage.getItem('userId');
-                dispatch(authSuccess(token, userId));
-                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+                const authUserId = localStorage.getItem('authUserId');
+                dispatch(authSuccess(authToken, authUserId));
+                dispatch(checkAuthTimeout((authExpirationDate.getTime() - new Date().getTime()) / 1000));
             }
         }
     };
 };
 
-
-/////added 06.26.19
-// Pony App
 export const loadUser = () => {
     return (dispatch, getState) => {
         dispatch({type: "USER_LOADING"});
 
-        const token = getState().auth.token;
+        const authToken = getState().auth.authToken;
 
         let headers = {
             "Content-Type": "application/json",
         };
 
-        if (token) {
-            headers["Authorization"] = `Token ${token}`;
+        if (authToken) {
+            // This header's setup cannot be changed.
+            headers["Authorization"] = `Token ${authToken}`;
         }
 
         return fetch("/api/auth/user/", {headers,})
@@ -187,7 +200,6 @@ export const register = (username, password) => {
                         return {status: res.status, data};
                     })
                 } else {
-                    console.log("Server Error!");
                     throw res;
                 }
             })

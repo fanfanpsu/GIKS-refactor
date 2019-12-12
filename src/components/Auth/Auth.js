@@ -250,10 +250,9 @@ const mapStateToProps = state => {
     return {
         isLoading: state.auth.isLoading,
         error: state.auth.error,
-        isAuthenticated: state.auth.isAuthenticated, //state.auth.token !== null,
+        isAuthenticated: state.auth.isAuthenticated,
         authRedirectPath: state.auth.authRedirectPath,
-        token: localStorage.getItem("token"),
-        testing: state.auth.testing
+        authToken: localStorage.getItem("authToken"),
     };
 };
 

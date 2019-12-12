@@ -43,45 +43,45 @@ class Home extends Component {
                     </Container>
                 </Jumbotron>
 
-                <Container>
-                    <CardDeck>
+                {/*<Container>*/}
+                {/*    <CardDeck>*/}
 
-                        <Card>
-                            <Link to="/management">
-                                <CardImg top width="100%"
-                                         src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
-                                         alt="Card image cap"/>
-                            </Link>
-                            <Card.Body>
-                                <Card.Text>This is a wider card with supporting text below as a natural lead-in to
-                                    additional
-                                    content. This content is a little bit longer.</Card.Text>
-                            </Card.Body>
+                {/*        <Card>*/}
+                {/*            <Link to="/management">*/}
+                {/*                <CardImg top width="100%"*/}
+                {/*                         src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
+                {/*                         alt="Card image cap"/>*/}
+                {/*            </Link>*/}
+                {/*            <Card.Body>*/}
+                {/*                <Card.Text>This is a wider card with supporting text below as a natural lead-in to*/}
+                {/*                    additional*/}
+                {/*                    content. This content is a little bit longer.</Card.Text>*/}
+                {/*            </Card.Body>*/}
 
-                        </Card>
+                {/*        </Card>*/}
 
-                        <Card>
-                            <CardImg top width="100%"
-                                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
-                                     alt="Card image cap"/>
-                            <Card.Body>
-                                <Card.Text>This card has supporting text below as a natural lead-in to additional
-                                    content.</Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card>
-                            <CardImg top width="100%"
-                                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
-                                     alt="Card image cap"/>
-                            <Card.Body>
-                                <Card.Text>This is a wider card with supporting text below as a natural lead-in to
-                                    additional
-                                    content. This card has even longer content than the first to show that equal height
-                                    action.</Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </CardDeck>
-                </Container>
+                {/*        <Card>*/}
+                {/*            <CardImg top width="100%"*/}
+                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
+                {/*                     alt="Card image cap"/>*/}
+                {/*            <Card.Body>*/}
+                {/*                <Card.Text>This card has supporting text below as a natural lead-in to additional*/}
+                {/*                    content.</Card.Text>*/}
+                {/*            </Card.Body>*/}
+                {/*        </Card>*/}
+                {/*        <Card>*/}
+                {/*            <CardImg top width="100%"*/}
+                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
+                {/*                     alt="Card image cap"/>*/}
+                {/*            <Card.Body>*/}
+                {/*                <Card.Text>This is a wider card with supporting text below as a natural lead-in to*/}
+                {/*                    additional*/}
+                {/*                    content. This card has even longer content than the first to show that equal height*/}
+                {/*                    action.</Card.Text>*/}
+                {/*            </Card.Body>*/}
+                {/*        </Card>*/}
+                {/*    </CardDeck>*/}
+                {/*</Container>*/}
                 {/*/!*<Footer/>*!/*/}
 
             </Fragment>
@@ -91,7 +91,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.isAuthenticated
     };
 }
 

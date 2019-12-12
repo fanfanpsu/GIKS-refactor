@@ -34,7 +34,8 @@ const asyncAuth = asyncComponent(() => {
 
 class App extends Component {
     componentDidMount() {
-        this.props.onTryAutoSignup();
+        // TODO This works fine, remove it from comment
+        //this.props.onTryAutoSignup();
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -42,8 +43,8 @@ class App extends Component {
     }
 
     render() {
-
-        // TODO consider implemente the private route from [Restricting unauthorized access]
+        // TODO: Rewrite the entire render implementation
+        // TODO consider implement the private route from [Restricting unauthorized access]
         // http://v1k45.com/blog/modern-django-part-4-adding-authentication-to-react-spa-using-drf/
         let routes = (
             <Switch>
@@ -60,10 +61,10 @@ class App extends Component {
         );
 
         // TODO update this two routes into one
-        if (this.props.isAuthenticated) {
+        if (!this.props.isAuthenticated) {
             routes = (
                 <Switch>
-                    <Route path="/logout" component={Logout} />
+                    {/*<Route path="/logout" component={Logout} />*/}
                     <Route path="/auth" component={asyncAuth} />
                     <Route path="/" exact component={Home} />
                     <Redirect to="/" />
@@ -86,7 +87,8 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         // the state.auth.token is from the reducer mapping, the auth is the authReducer
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.isAuthenticated,
+        authToken : state.auth.authToken
 
     };
 };

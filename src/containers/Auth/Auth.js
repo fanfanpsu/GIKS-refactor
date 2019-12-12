@@ -43,7 +43,38 @@ class Auth extends Component {
         this.state = updateObject(this.state, {activeTab: 'signup'});
     }
 
-    state = { }
+    state = {
+        controls: {
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Email Address'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                },
+                valid: false,
+                touched: false
+            },
+            password: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'password',
+                    placeholder: 'Password'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 6
+                },
+                valid: false,
+                touched: false
+            }
+        }
+    }
 
     componentDidMount() {
         if (/*!this.props.buildingManagement && */ this.props.authRedirectPath !== '/') {
@@ -130,7 +161,7 @@ class Auth extends Component {
         }
 
         return (
-
+            //TODO remember to make this into a component
             <Fragment>
                 {authRedirect}
                 <Jumbotron>
@@ -219,9 +250,9 @@ const mapStateToProps = state => {
     return {
         isLoading: state.auth.isLoading,
         error: state.auth.error,
-        isAuthenticated: state.auth.isAuthenticated, //state.auth.token !== null,
+        isAuthenticated: state.auth.isAuthenticated,
         authRedirectPath: state.auth.authRedirectPath,
-        token: localStorage.getItem("token"),
+        authToken: localStorage.getItem("authToken"), //TODO Do we really need this?
         testing: state.auth.testing
     };
 };
