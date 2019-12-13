@@ -37,6 +37,13 @@ const authReducer = (state=initialState, action) => {
             localStorage.setItem("authToken", action.data.authToken);
             return updateAuthSuccess(state, action);
 
+        case 'AUTH_LOGOUT':
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('authExpirationDate');
+            localStorage.removeItem('authUserId');
+            return logoutAuth(state, action);
+
+
         case 'AUTHENTICATION_ERROR':
         case 'LOGIN_FAILED':
         case 'REGISTRATION_FAILED':

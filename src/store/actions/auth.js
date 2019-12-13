@@ -38,15 +38,6 @@ export const authFail = (error) => {
     };
 };
 
-export const logout = () => {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('authExpirationDate');
-    localStorage.removeItem('authUserId');
-    return {
-        type: actionTypes.AUTH_LOGOUT
-    };
-};
-
 export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
@@ -55,6 +46,7 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
+//todo This function need to be more meaningful like authSignInSignUp
 export const auth = (email, password, isSignup) => {
     return dispatch => {
         dispatch(authStart());
@@ -218,8 +210,23 @@ export const register = (username, password) => {
     }
 }
 
+
+export const logout = () => {
+    //TODO Revise this block?
+    return (dispatch, getState) => {
+        if(getState.auth.isAuthenticated){
+            dispatch(logoutUser());
+        } else {
+            return {
+                type: actionTypes.AUTH_LOGOUT
+            };
+        }
+    }
+};
+
 export const logoutUser = () => {
     return (dispatch, getState) => {
+
         let headers = {"Content-Type": "application/json"};
 
         return fetch("/api/auth/logout/", {headers, body: "", method: "POST"})

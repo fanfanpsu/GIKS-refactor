@@ -46,16 +46,21 @@ class App extends Component {
         // TODO: Rewrite the entire render implementation
         // TODO consider implement the private route from [Restricting unauthorized access]
         // http://v1k45.com/blog/modern-django-part-4-adding-authentication-to-react-spa-using-drf/
+
+
+
+
         let routes = (
+            // TODO <BrowserRouter>?
             <Switch>
-                <Route path="/" exact component={Home}/>
+                <Route path="/logout" component={Logout} />
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Route path="/experiment" component={Experiment}/>
                 <Route path="/article" component={Article}/>
                 <Route path="/graph" component={Graph}/>
-
                 <Route path="/demo" component={Demo}/>
+                <Route path="/" exact component={Home}/>
                 <Redirect to="/"/>
             </Switch>
         );
@@ -64,14 +69,13 @@ class App extends Component {
         if (!this.props.isAuthenticated) {
             routes = (
                 <Switch>
-                    {/*<Route path="/logout" component={Logout} />*/}
                     <Route path="/auth" component={asyncAuth} />
                     <Route path="/" exact component={Home} />
                     <Redirect to="/" />
                 </Switch>
             );
         }
-
+        routes.push()
         return (
             <Fragment>
                 <Navigation />
@@ -87,9 +91,6 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         // the state.auth.token is from the reducer mapping, the auth is the authReducer
-        isAuthenticated: state.auth.isAuthenticated,
-        authToken : state.auth.authToken
-
     };
 };
 

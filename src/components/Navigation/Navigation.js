@@ -34,7 +34,6 @@ class NavBar extends Component {
     }
 
     render() {
-        console.log((this.props.isAuthenticated))
         return (
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="home">GIKS</Navbar.Brand>
@@ -57,8 +56,8 @@ const mapStateToProps = state => {
     return {
         // the state.auth.token is from the reducer mapping, the auth is the authReducer
         isAuthenticated: state.auth.isAuthenticated,
+        // TODO: This may not needed in navigation, and consider use state.user instead of isAuthenticated
         authToken : state.auth.authToken
-
     };
 };
 

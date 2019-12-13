@@ -36,6 +36,7 @@ const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
+// TODO: This <BrowserRouter> should be inside app or not?
 const app = (
     <Provider store={store}>
         <BrowserRouter>
