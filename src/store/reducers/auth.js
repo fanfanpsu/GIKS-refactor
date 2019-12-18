@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../../shared/utility';
+import {updateObject} from '../../shared/utility';
 
 
 const initialState = {
@@ -8,19 +8,31 @@ const initialState = {
     isLoading: true,
     user: null,
     errors: {},
-     testing: "Testing reading from auth reducer"
+    testing: "Testing reading from auth reducer",
+    authRedirectPath: "/auth"
 };
 
-const updateAuthSuccess = ( state, action ) => {
+const updateAuthSuccess = (state, action) => {
     const updatedState = {
         isAuthenticated: true,
         isLoading: false,
         errors: null
     }
-    return updateObject( state, updatedState );
+    return updateObject(state, updatedState);
 };
 
-const authReducer = (state=initialState, action) => {
+
+const logoutAuth = (state, action) => {
+    const updatedState = {
+        isAuthenticated: true,
+        isLoading: false,
+        errors: null
+    }
+    return updateObject(state, updatedState);
+};
+
+
+const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
         // from ponynote
@@ -50,8 +62,10 @@ const authReducer = (state=initialState, action) => {
         case 'LOGOUT_SUCCESSFUL':
             localStorage.removeItem("authToken");
             //TODO This needs to be updated.
-            return {...state, errors: action.data, authToken: null, user: null,
-                isAuthenticated: false, isLoading: false};
+            return {
+                ...state, errors: action.data, authToken: null, user: null,
+                isAuthenticated: false, isLoading: false
+            };
 
         default:
             return state;

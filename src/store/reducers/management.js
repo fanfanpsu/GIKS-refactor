@@ -1,11 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import raw_experiments from '../../assets/rawdata/rawdata'
-import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer'
+import {raw_experiments} from '../../assets/rawdata/rawdata'
 
 
 const initialState = {
-    experiments: raw_experiments_fewer,
+    experiments: [],
     loading: true,
     didInvalidate: true,
     lastUpdated: 'xxxxxxx'
@@ -38,7 +37,6 @@ const setExperiments = (state, action) => {
 export const fetchExperiments = () => {
     return (dispatch, getState) => {
         let headers = {"Content-Type": "application/json"};
-        // TODO This could be the issue for failed management experiment fetching
         let {token} = getState().auth;
 
         if (token) {

@@ -1,4 +1,4 @@
-const raw_experiments = {
+export const raw_experiments = {
     experiments: [
         {
             "_id": "5ab45a196a7028e7a9a845be",
@@ -138,11 +138,6 @@ const raw_experiments = {
     lastUpdated: ''
 };
 
-const raw_article = {
+export const raw_article = {
     title: "no title"
-};
-
-export default {
-    raw_experiments,
-    raw_article
 };

@@ -19,19 +19,12 @@ class Management extends Component {
         // this.state = {...};
     }
 
-    state = {
-        experiments: [],
-        loading: true,
-        didInvalidate: true,
-        lastUpdated: 'xxxxxxx'
-    }
-
     componentDidMount() {
         // this.state.experiments = raw_experiments_fewer;
     }
 
     componentWillMount(){
-        this.props.onManagementLoad(this.state.experiments);
+        this.props.onManagementLoad();
     }
 
     render() {
@@ -54,21 +47,15 @@ class Management extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // username : state.nav.username
-        // internal : external
         experiments: state.managementBuilder.experiments,
         authRedirectPath: state.auth.authRedirectPath
-        // isAuthenticated: state.auth.token !== null
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onManagementLoad: () => dispatch(actions.initManagementExpPanels())
-        // onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
-        // onInitIngredients: () => dispatch(actions.initIngredients()),
-        // onInitPurchase: () => dispatch(actions.purchaseInit()),
-        // onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+
     }
 }
 

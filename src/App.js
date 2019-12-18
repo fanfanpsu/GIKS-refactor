@@ -19,14 +19,6 @@ import Demo from './containers/Demo/Demo';
 
 import * as actions from './store/actions/index';
 
-const asyncCheckout = asyncComponent(() => {
-    return import('./containers/Checkout/Checkout');
-});
-
-const asyncOrders = asyncComponent(() => {
-    return import('./containers/Orders/Orders');
-});
-
 // 这个asyncComponent 函数接受一个importComponent 的参数，importComponent 调用时候将动态引入给定的组件。
 const asyncAuth = asyncComponent(() => {
     return import('./containers/Auth/Auth');
@@ -43,17 +35,10 @@ class App extends Component {
     }
 
     render() {
-        // TODO: Rewrite the entire render implementation
-        // TODO consider implement the private route from [Restricting unauthorized access]
-        // http://v1k45.com/blog/modern-django-part-4-adding-authentication-to-react-spa-using-drf/
-
-
-
 
         let routes = (
             // TODO <BrowserRouter>?
             <Switch>
-                <Route path="/logout" component={Logout} />
                 <Route path="/auth" component={asyncAuth} />
                 <Route path="/management" component={Management}/>
                 <Route path="/experiment" component={Experiment}/>
@@ -61,12 +46,16 @@ class App extends Component {
                 <Route path="/graph" component={Graph}/>
                 <Route path="/demo" component={Demo}/>
                 <Route path="/" exact component={Home}/>
+
+                <Route path="/logout" component={Logout} />
+
                 <Redirect to="/"/>
             </Switch>
         );
 
         // TODO update this two routes into one
-        if (!this.props.isAuthenticated) {
+        // https://reacttraining.com/react-router/web/example/route-config
+        if (this.props.isAuthenticated) {
             routes = (
                 <Switch>
                     <Route path="/auth" component={asyncAuth} />
@@ -75,7 +64,7 @@ class App extends Component {
                 </Switch>
             );
         }
-        routes.push()
+
         return (
             <Fragment>
                 <Navigation />
@@ -97,7 +86,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignup: () => dispatch(actions.authCheckState())
-
     };
 };
 

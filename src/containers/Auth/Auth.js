@@ -124,6 +124,7 @@ class Auth extends Component {
     }
 
     render() {
+        //TODO: figure out what is this
         const formElementsArray = [];
         for (let key in this.state.controls) {
             formElementsArray.push({
@@ -161,7 +162,8 @@ class Auth extends Component {
         }
 
         return (
-            //TODO remember to make this into a component
+            // TODO remember to make this into a component
+            // TODO 实现这个嵌套路由： https://reacttraining.com/react-router/web/example/nesting
             <Fragment>
                 {authRedirect}
                 <Jumbotron>

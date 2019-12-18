@@ -63,9 +63,7 @@ export const auth = (email, password, isSignup) => {
         if (localmock) {
             dispatch(authSuccess("localmockup-token", "localmockup-id"));
             dispatch(checkAuthTimeout("localmockup-exp-time"));
-
         } else {
-
             axios.post(url, authData)
                 .then(response => {
                     const authExpirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
@@ -76,7 +74,6 @@ export const auth = (email, password, isSignup) => {
 
                     dispatch(authSuccess(response.data.idToken, response.data.localId));
                     dispatch(checkAuthTimeout(response.data.expiresIn));
-
                 })
                 .catch(err => {
                     dispatch(authFail(err.response.data.error));
@@ -210,11 +207,10 @@ export const register = (username, password) => {
     }
 }
 
-
 export const logout = () => {
     //TODO Revise this block?
     return (dispatch, getState) => {
-        if(getState.auth.isAuthenticated){
+        if (getState.auth.isAuthenticated) {
             dispatch(logoutUser());
         } else {
             return {
