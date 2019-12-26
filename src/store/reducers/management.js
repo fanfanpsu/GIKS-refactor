@@ -72,10 +72,13 @@ const reducer = (state = initialState, action) => {
             return fetchExperimentsStart(state, action);
         case actionTypes.FETCH_EXPERIMENTS:
             return fetchExperiments(state, action);
+
         case actionTypes.FETCH_EXPERIMENTS_SUCCESS:
             return fetchExperimentsSuccess(state, action);
+
         case actionTypes.FETCH_EXPERIMENTS_FAIL:
             return fetchExperimentsFail(null, action);
+
         case actionTypes.SET_EXPERIMENTS:
             return setExperiments(state, action);
         default:

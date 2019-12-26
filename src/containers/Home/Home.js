@@ -15,8 +15,7 @@ import demo_logo from '../../assets/images/demo.png'; // Import using relative p
 
 import Management from "../ManagementBuilder/Management";
 import classes from './Home.css'
-import {Container, Card, CardDeck, CardImg, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import Jumbotron from "react-bootstrap/Jumbotron";
+import {Container, Jumbotron} from "react-bootstrap";
 
 class Home extends Component {
     state = {}

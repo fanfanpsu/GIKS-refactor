@@ -3,38 +3,31 @@ import {updateObject} from '../../shared/utility';
 import raw_experiments from '../../assets/rawdata/rawdata'
 import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer'
 
-
+// TODO find how to nest initial state
 const initialState = {
-    experiments: raw_experiments_fewer,
-    loading: true,
-    didInvalidate: true,
-    lastUpdated: 'xxxxxxx'
+    experiment: null,
+    loading: false
 };
 
-const fetchExperimentsInit = (state, action) => {
+const createExperimentsStart = (state, action) => {
     return updateObject(state, {loading: true});
 };
 
-const fetchExperimentsStart = (state, action) => {
-    return updateObject(state, {loading: true});
-};
-
-const fetchExperimentsSuccess = (state, action) => {
-
+const createExperimentsSuccess = (state, action) => {
     return updateObject(state, {
         loading: false,
-        //experiments:  action.experiments
+        experiment: action.experiment   // TODO Update this mechanism
     });
 };
 
-const fetchExperimentsFail = (state, action) => {
-    return updateObject(state, {loading: false});
+const createExperimentsFail = (state, action) => {
+    return updateObject(state, {
+        loading: false,
+        error:action.error  //TODO Update how the error is returned and set
+    });
 };
 
-const setExperiments = (state, action) => {
-    return updateObject(state, {experiments: action.experiments});
-};
-
+// TODO 实际的restfulcall应该放在action还是reducer里？
 export const fetchExperiments = () => {
     return (dispatch, getState) => {
         let headers = {"Content-Type": "application/json"};
@@ -68,17 +61,12 @@ export const fetchExperiments = () => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
-        case actionTypes.FETCH_EXPERIMENTS_START:
-            return fetchExperimentsStart(state, action);
-        case actionTypes.FETCH_EXPERIMENTS:
-            return fetchExperiments(state, action);
-        case actionTypes.FETCH_EXPERIMENTS_SUCCESS:
-            return fetchExperimentsSuccess(state, action);
-        case actionTypes.FETCH_EXPERIMENTS_FAIL:
-            return fetchExperimentsFail(null, action);
-        case actionTypes.SET_EXPERIMENTS:
-            return setExperiments(state, action);
+        case actionTypes.CREATE_EXPERIMENTS_START:
+            return createExperimentsStart(state, action);
+        case actionTypes.CREATE_EXPERIMENTS_SUCCESS:
+            return createExperimentsSuccess(state, action);
+        case actionTypes.CREATE_EXPERIMENTS_FAIL:
+            return createExperimentsFail(state, action);
         default:
             return state;
     }

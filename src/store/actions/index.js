@@ -15,8 +15,6 @@ export {
     logout,
     setAuthRedirectPath,
     authCheckState,
-
-    // added 06.26.19
     logoutUser,
     register,
     loginUser,
@@ -24,9 +22,16 @@ export {
 } from './auth';
 
 export {
+    createExperimentFail,
+    createExperimentStart,
+    createExperimentSuccess,
+    createExperiment
+} from './experimentDispatcher';
+
+export {
     setManagementExperiments,
     fetchManagementExperimentsFailed,
-    initManagementExpPanels
+    loadUserExperiments
 } from './managementDispatcher';
 
 export {

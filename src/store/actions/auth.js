@@ -46,7 +46,7 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-//todo This function need to be more meaningful like authSignInSignUp
+//TODO This function need to be more meaningful like authSignInSignUp
 export const auth = (email, password, isSignup) => {
     return dispatch => {
         dispatch(authStart());

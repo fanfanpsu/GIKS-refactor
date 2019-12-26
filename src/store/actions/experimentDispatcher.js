@@ -1,35 +1,48 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-address';
 
+const localmock = true
+let create_experiment_url = `/api/experiment/create/`;  //TODO Consider use restful rule instead of url
 
-// set exp panels after success retrieved exps
-export const setManagementExperiments = (experiments) => {
+export const createExperimentStart = () => {
     return {
-        type: actionTypes.SET_EXPERIMENTS,
-        experiments: experiments
+        type: actionTypes.CREATE_EXPERIMENTS_START
     };
 };
 
-export const onLoadExperiment = () => {
+export const createExperimentSuccess = () => {
     return {
-        type: actionTypes.LOAD_EXPERIMENTS,
+        type: actionTypes.CREATE_EXPERIMENTS_SUCCESS
     };
 };
 
-export const fetchManagementExperimentsFailed = () => {
+export const createExperimentFail = (error) => {
     return {
-        type: actionTypes.FETCH_EXPERIMENTS_FAIL
+        error: error,
+        type: actionTypes.CREATE_EXPERIMENTS_FAIL
     };
 };
 
-export const initExperimentCreationPanel = () => {
+export const createExperiment = (title, description, amountOfParticipant) => {
     return dispatch => {
-        axios.get('https://giks-firebase.firebaseio.com/experiments.json')
-            .then(response => {
-                dispatch(setManagementExperiments(response.data));
-            })
-            .catch(error => {
-                dispatch(fetchManagementExperimentsFailed());
-            });
+        dispatch(createExperimentStart());
+        const experimentCreationData = {
+            title: title,
+            description: description,
+            amountOfParticipant: amountOfParticipant,
+            user: this.auth.user   //TODO Find a way to globally set the axios.post's user
+        };
+
+        if (localmock) {
+            dispatch(createExperimentSuccess("localmockup-token", "localmockup-id"));
+        } else {
+            axios.post(create_experiment_url, experimentCreationData)
+                .then(response => {
+                    dispatch(createExperimentSuccess(response.data.idToken, response.data.localId));
+                })
+                .catch(err => {
+                    dispatch(createExperimentFail(err.response.data.error));
+                });
+        }
     };
 };

@@ -24,13 +24,13 @@ export const fetchManagementExperimentsFailed = () => {
     };
 };
 
-export const initManagementExpPanels = () => {
+export const loadUserExperiments = () => {
     return dispatch => {
 
         dispatch(fetchExperimentsStart());
 
-        dispatch(setManagementExperiments(raw_user_experiments_fewer));
-
+        dispatch(setManagementExperiments(raw_user_experiments));
+        // TODO move the fetchExperiments to management reducer
         // axios.get('https://giks-firebase.firebaseio.com/experiments.json')
         //     .then(response => {
         //         dispatch(setManagementExperiments(response.data));

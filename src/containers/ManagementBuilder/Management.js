@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {updateObject} from "../../shared/utility";
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -11,7 +10,6 @@ import Expcards from "../../components/Expcard/ExpCards";
 
 // this css aligns the layout of all cards with same height
 import classes from "./management.css"
-import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer.js';
 
 class Management extends Component {
     constructor(props) {
@@ -54,8 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onManagementLoad: () => dispatch(actions.initManagementExpPanels())
-
+        onManagementLoad: () => dispatch(actions.loadUserExperiments())
     }
 }
 

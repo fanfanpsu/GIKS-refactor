@@ -1,4 +1,4 @@
-export const raw_experiments = {
+export const raw_user_experiments = {
     experiments: [
         {
             "_id": "5ab45a196a7028e7a9a845be",
