@@ -29,10 +29,7 @@ export {
 } from './experimentDispatcher';
 
 export {
-    createExperimentFail,
-    createExperimentStart,
-    createExperimentSuccess,
-    createExperiment
+
 } from './articleDispatcher';
 
 export {

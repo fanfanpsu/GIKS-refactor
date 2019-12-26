@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
 import {
     Col,
     Button,
@@ -14,17 +13,6 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
 import classnames from 'classnames';
-
-import Login from "./Login/Login"
-import Register from "./Register/Register"
-
-
-let AuthRoutes = (
-    <Switch>
-        <Route exact path="/register" component={Register}/>
-        <Route exact path="/login" component={Login}/>
-    </Switch>
-);
 
 class ExperimentForm extends Component {
     constructor(props) {
@@ -92,6 +80,7 @@ class ExperimentForm extends Component {
     }
 
     render() {
+
         //TODO: figure out what is this for experiment creation
         const formElementsArray = [];
         for (let key in this.state.controls) {
@@ -125,33 +114,33 @@ class ExperimentForm extends Component {
         }
 
         let authRedirect = null;
-        if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.authRedirectPath}/>
-        }
+        // if (this.props.isAuthenticated) {
+        //     authRedirect = <Redirect to={this.props.authRedirectPath}/>
+        // }
 
         return (
             <Fragment>
                 {authRedirect}
                 <Form onSubmit={this.submitCreateExperimentHandler}>
                     <FormGroup row>
-                        <Label for="signupEmail" sm={5}>Email</Label>
+                        <Label for="signupEmail" sm={5}>Experiment Title</Label>
                         <Col sm={7}>
-                            <Input type="email" name="email" id="signupEmail"
-                                   placeholder="Email as user name"/>
+                            <Input type="text" name="experiment_title" id="signupEmail"
+                                   placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="signupPassword" sm={5}>Password</Label>
+                        <Label for="signupPassword" sm={5}>Experiment Description</Label>
                         <Col sm={7}>
-                            <Input type="password" name="password" id="signupPassword"
-                                   placeholder="Enter your password"/>
+                            <Input type="text" name="experiment_description" id="signupPassword"
+                                   placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="signupPasswordConfirm" sm={5}>Retype Password</Label>
+                        <Label for="signupPasswordConfirm" sm={5}>Amount of participants</Label>
                         <Col sm={7}>
-                            <Input type="password" name="password" id="signupPasswordConfirm"
-                                   placeholder="Confirm your password"/>
+                            <Input type="text" name="amount_of_participant" id="signupPasswordConfirm"
+                                   placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup check row>

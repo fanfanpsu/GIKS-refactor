@@ -1,12 +1,12 @@
 import React, {Component, Fragment} from 'react';
-import {Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {Row, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 import {connect} from 'react-redux';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-address';
 
 // this css aligns the layout of all cards with same height
-import ExperimentForm from "../../components/Experiment/experimentCreationForm"
+import ExperimentCreationForm from "../../components/Experiment/ExperimentCreationForm"
 
 class ExperimentBuilder extends Component {
     constructor(props) {
@@ -17,17 +17,15 @@ class ExperimentBuilder extends Component {
 
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
     }
 
     render() {
-        let ExperimentForm = ExperimentForm;
-
         return (
             <Fragment>
                 <Row>
-                    {ExperimentForm}
+                    <ExperimentCreationForm></ExperimentCreationForm>
                 </Row>
             </Fragment>
         );
@@ -42,9 +40,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ExperimentBuilder, axios));
