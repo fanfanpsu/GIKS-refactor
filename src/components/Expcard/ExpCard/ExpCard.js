@@ -1,25 +1,23 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
 
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-} from 'reactstrap';
-
-
+import {Card, Button} from "react-bootstrap";
+import classes from "./ExpCard.css"
 
 
 class ExpCard extends Component {
 
     render() {
         return (<Fragment>
-            <Card >
-                <CardBody>
-                    <CardTitle>{this.props.title}</CardTitle>
-                    <CardSubtitle>{this.props.subtitle}</CardSubtitle>
-                    <CardText>{this.props.cardcontent}</CardText>
+            <Card className={"Card"}>
+                <Card.Body>
+                    <Card.Title>{this.props.title}</Card.Title>
+                    <Card.Subtitle>{this.props.subtitle}</Card.Subtitle>
+                    <Card.Text>{this.props.cardcontent}</Card.Text>
+                </Card.Body>
+                <Card.Footer>
                     <Button>Go</Button>
-                </CardBody>
+                </Card.Footer>
             </Card>
         </Fragment>)
     }
@@ -30,3 +28,4 @@ ExpCard.propTypes = {
 };
 
 export default ExpCard;
+

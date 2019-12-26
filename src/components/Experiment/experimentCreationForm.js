@@ -168,7 +168,6 @@ class ExperimentForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoading: state.auth.isLoading,    // TODO Do we really need to pass in any state value?
         error:state.error
     };
 };

@@ -1,35 +1,42 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-address';
 
+const localmock = true
+let create_article_url = `/api/article/create/`;  //TODO Consider use restful rule instead of url
 
-// set exp panels after success retrieved exps
-export const setManagementExperiments = (experiments) => {
+export const createArticlesStart = () => {
     return {
-        type: actionTypes.SET_EXPERIMENTS,
-        experiments: experiments
+        type: actionTypes.CREATE_ARTICLE_START
     };
 };
 
-export const onLoadExperiment = () => {
+export const createArticlesSuccess = () => {
     return {
-        type: actionTypes.LOAD_EXPERIMENTS,
+        type: actionTypes.CREATE_ARTICLE_SUCCESS
     };
 };
 
-export const fetchManagementExperimentsFailed = () => {
+export const createArticlesFail = (error) => {
     return {
-        type: actionTypes.FETCH_EXPERIMENTS_FAIL
+        error: error,
+        type: actionTypes.CREATE_ARTICLE_FAIL
     };
 };
 
-export const initExperimentCreationPanel = () => {
+export const createArticles = (articleCollection) => {
     return dispatch => {
-        axios.get('https://giks-firebase.firebaseio.com/experiments.json')
-            .then(response => {
-                dispatch(setManagementExperiments(response.data));
-            })
-            .catch(error => {
-                dispatch(fetchManagementExperimentsFailed());
-            });
+        dispatch(createArticlesStart());
+
+        if (localmock) {
+            dispatch(createArticlesSuccess());
+        } else {
+            axios.post(create_article_url, articleCollection)
+                .then(response => {
+                    dispatch(createArticlesSuccess(response.data.TODO));
+                })
+                .catch(err => {
+                    dispatch(createArticlesFail(err.response.data.error));
+                });
+        }
     };
 };
