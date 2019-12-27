@@ -26,6 +26,7 @@ class ExpCards extends Component {
                             <Card.Title>
                                 <Link to="/experiment">
                                     <Button>Create new exp</Button>
+                                    <span>&#43;</span>
                                 </Link>
 
                             </Card.Title>

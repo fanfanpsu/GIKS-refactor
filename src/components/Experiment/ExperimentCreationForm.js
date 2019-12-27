@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+
 import {
     Col,
     Button,
@@ -114,9 +116,9 @@ class ExperimentForm extends Component {
         }
 
         let authRedirect = null;
-        // if (this.props.isAuthenticated) {
-        //     authRedirect = <Redirect to={this.props.authRedirectPath}/>
-        // }
+        if (!this.props.isAuthenticated) {
+            authRedirect = <Redirect to={this.props.authRedirectPath}/>
+        }
 
         return (
             <Fragment>

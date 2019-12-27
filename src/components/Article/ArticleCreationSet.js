@@ -96,7 +96,7 @@ class ArticleCreationForm extends Component {
                         <Form.Label>Article Title</Form.Label>
                         <Form.Control type="text" placeholder="" />
                     </Form.Group>
-
+                    
                     <Form.Group controlId="articleCreationForm.article_content">
                         <Form.Label>Article Content</Form.Label>
                         <Form.Control as="textarea" rows="3" />
