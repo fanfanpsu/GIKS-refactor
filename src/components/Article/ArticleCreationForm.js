@@ -94,17 +94,17 @@ class ArticleCreationForm extends Component {
                 <Form onSubmit={this.submitCreateArticlesHandler}>
                     <Form.Group controlId="articleCreationForm.article_title">
                         <Form.Label>Article Title</Form.Label>
-                        <Form.Control type="text" placeholder="" />
+                        <Form.Control type="text" placeholder=""/>
                     </Form.Group>
 
                     <Form.Group controlId="articleCreationForm.article_content">
                         <Form.Label>Article Content</Form.Label>
-                        <Form.Control as="textarea" rows="3" />
+                        <Form.Control as="textarea" rows="3"/>
                     </Form.Group>
 
                     <Form.Group controlId="articleCreationForm.article_node">
                         <Form.Label>Node</Form.Label>
-                        <Form.Control as="textarea" rows="3" />
+                        <Form.Control as="textarea" rows="3"/>
                     </Form.Group>
 
 
@@ -117,7 +117,7 @@ class ArticleCreationForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        error:state.error   // TODO remember to set the nested state for reducer
+        error: state.error   // TODO remember to set the nested state for reducer
     };
 };
 
