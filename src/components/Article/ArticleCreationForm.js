@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
+import ArticleCreationTemplate from "./ArticleCreationTemplate.js"
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
 
@@ -92,20 +93,7 @@ class ArticleCreationForm extends Component {
             <Fragment>
                 {authRedirect}
                 <Form onSubmit={this.submitCreateArticlesHandler}>
-                    <Form.Group controlId="articleCreationForm.article_title">
-                        <Form.Label>Article Title</Form.Label>
-                        <Form.Control type="text" placeholder=""/>
-                    </Form.Group>
-
-                    <Form.Group controlId="articleCreationForm.article_content">
-                        <Form.Label>Article Content</Form.Label>
-                        <Form.Control as="textarea" rows="3"/>
-                    </Form.Group>
-
-                    <Form.Group controlId="articleCreationForm.article_node">
-                        <Form.Label>Node</Form.Label>
-                        <Form.Control as="textarea" rows="3"/>
-                    </Form.Group>
+                    <ArticleCreationTemplate></ArticleCreationTemplate>
 
 
                 </Form>
