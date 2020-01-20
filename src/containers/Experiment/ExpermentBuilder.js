@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Row, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Row, Col, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 import {connect} from 'react-redux';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -25,7 +25,9 @@ class ExperimentBuilder extends Component {
         return (
             <Fragment>
                 <Row>
-                    <ExperimentCreationForm></ExperimentCreationForm>
+                    <Col xs={0} lg="2"></Col>
+                    <Col xs={12} lg={8}><ExperimentCreationForm></ExperimentCreationForm></Col>
+                    <Col xs={0} lg="2"></Col>
                 </Row>
             </Fragment>
         );

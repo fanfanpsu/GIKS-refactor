@@ -12,6 +12,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import ArticleCreationTemplate from "./ArticleCreationTemplate.js"
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
+import GraphBuilder from "../../containers/GraphBuilder/GraphBuilder";
 
 
 class ArticleCreationForm extends Component {
@@ -93,9 +94,13 @@ class ArticleCreationForm extends Component {
             <Fragment>
                 {authRedirect}
                 <Form onSubmit={this.submitCreateArticlesHandler}>
+                    {/*create button to add new/remove old ArticleCreationTemplate or
+                    we can stay with one article for now? */}
                     <ArticleCreationTemplate></ArticleCreationTemplate>
 
+                    <GraphBuilder></GraphBuilder>
 
+                    <Button>Submit</Button>
                 </Form>
                 {errorMessage}
             </Fragment>
@@ -112,7 +117,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         // All the dynamic article creation will happened in the component, so no need to dispatch anything.
-        submitCreateArticlesHandler: (a, b, c) => dispatch(actions.auth(a, b, c)),
+        onCreateArticles: (a, b, c) => dispatch(actions.auth(a, b, c)),
     };
 };
 

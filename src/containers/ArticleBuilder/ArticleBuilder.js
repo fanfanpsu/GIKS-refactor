@@ -8,6 +8,7 @@ import axios from '../../axios-address';
 
 // this css aligns the layout of all cards with same height
 import ArticleCreationForm from "../../components/Article/ArticleCreationForm"
+import GraphBuilder from "../GraphBuilder/GraphBuilder";
 
 class ExperimentBuilder extends Component {
     constructor(props) {

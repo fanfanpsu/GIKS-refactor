@@ -20,10 +20,6 @@ class ArticleCreationTemplate extends Component {
     }
 
     render() {
-
-        // textarea
-        // nodes, and Synonyms
-        // Graph
         return (
             <Fragment>
 

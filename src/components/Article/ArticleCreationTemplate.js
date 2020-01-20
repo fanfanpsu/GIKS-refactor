@@ -40,7 +40,7 @@ class ArticleCreationTemplate extends Component {
 
                 <Form.Group controlId="articleCreationForm.article_node">
                     <Form.Label>Node</Form.Label>
-                    <Form.Control as="textarea" rows="3"/>
+                    <Form.Control as="text"/>
                 </Form.Group>
 
             </Fragment>
@@ -56,7 +56,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        submitCreateArticlesHandler: (a, b, c) => dispatch(actions.auth(a, b, c)),
+
     };
 };
 

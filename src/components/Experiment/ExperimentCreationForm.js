@@ -122,7 +122,7 @@ class ExperimentForm extends Component {
 
         return (
             <Fragment>
-                {authRedirect}
+                {/*{authRedirect}*/}
                 <Form onSubmit={this.submitCreateExperimentHandler}>
                     <FormGroup row>
                         <Label for="signupEmail" sm={5}>Experiment Title</Label>
@@ -147,7 +147,7 @@ class ExperimentForm extends Component {
                     </FormGroup>
                     <FormGroup check row>
                         <Col sm={{size: 12}}>
-                            <Button>Submit</Button>
+                            <Button as="input" type="submit" value="Submit" />
                         </Col>
                     </FormGroup>
                 </Form>
