@@ -5,10 +5,6 @@ import classes from './Navigation.css'
 import * as actions from "../../store/actions";
 import {connect} from "react-redux";
 
-/**
- * this is a purely display only component
- */
-
 function UserGreeting(isAuthenticated) {
     return <Fragment>Welcome back: <a href="#login"></a></Fragment>;
 }

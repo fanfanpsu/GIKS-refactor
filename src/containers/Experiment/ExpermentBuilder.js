@@ -25,9 +25,11 @@ class ExperimentBuilder extends Component {
         return (
             <Fragment>
                 <Row>
-                    <Col xs={0} lg="2"></Col>
-                    <Col xs={12} lg={8}><ExperimentCreationForm></ExperimentCreationForm></Col>
-                    <Col xs={0} lg="2"></Col>
+                    <Col xs={0} lg={2}></Col>
+                    <Col xs={12} lg={8}>
+                        <ExperimentCreationForm></ExperimentCreationForm>
+                    </Col>
+                    <Col xs={0} lg={2}></Col>
                 </Row>
             </Fragment>
         );

@@ -38,7 +38,7 @@ export const createExperiment = (title, description, amountOfParticipant) => {
         } else {
             axios.post(create_experiment_url, experimentCreationData)
                 .then(response => {
-                    dispatch(createExperimentSuccess(response.data.idToken, response.data.localId));
+                    dispatch(createExperimentSuccess(response.data.experimentID));
                 })
                 .catch(err => {
                     dispatch(createExperimentFail(err.response.data.error));

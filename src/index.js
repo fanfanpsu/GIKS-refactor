@@ -16,9 +16,8 @@ import managementReducer from './store/reducers/management';
 import matrixReducer from './store/reducers/matrixReducer';
 import graphReducer from './store/reducers/graphReducer';
 import cellReducer from "./store/reducers/cellReducer";
-
 import experimentReducer from "./store/reducers/experimentReducer";
-
+import articleReducer from "./store/reducers/articleReducer"
 
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const composeEnhancers = compose;
@@ -31,7 +30,8 @@ const rootReducer = combineReducers({
     matrixReducer: matrixReducer,
     graphReducer: graphReducer,
     cellReducer: cellReducer,
-    experimentReducer: experimentReducer
+    experimentReducer: experimentReducer,
+    articleReducer: articleReducer
 
 });
 

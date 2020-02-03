@@ -11,6 +11,7 @@ import {
     Input
 } from 'reactstrap';
 
+
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
@@ -76,9 +77,9 @@ class ExperimentForm extends Component {
 
     submitCreateExperimentHandler = (event) => {
         event.preventDefault();
-        // TODO: update this with separate the sign up and sign on functions.
         alert("submitCreateExperimentHandler");
-        this.props.submitCreateExperimentHandler(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
+        //TODO Update this to a more general react form submission
+        this.props.onCreateExperiment();
     }
 
     render() {
@@ -125,29 +126,29 @@ class ExperimentForm extends Component {
                 {/*{authRedirect}*/}
                 <Form onSubmit={this.submitCreateExperimentHandler}>
                     <FormGroup row>
-                        <Label for="signupEmail" sm={5}>Experiment Title</Label>
+                        <Label for="experiment_title" sm={5}>Experiment Title</Label>
                         <Col sm={7}>
-                            <Input type="text" name="experiment_title" id="signupEmail"
+                            <Input type="text" name="experiment_title" id="experiment_title"
                                    placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="signupPassword" sm={5}>Experiment Description</Label>
+                        <Label for="experiment_description" sm={5}>Experiment Description</Label>
                         <Col sm={7}>
-                            <Input type="text" name="experiment_description" id="signupPassword"
+                            <Input type="area" name="experiment_description" id="experiment_description"
                                    placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="signupPasswordConfirm" sm={5}>Amount of participants</Label>
+                        <Label for="amount_of_participant" sm={5}>Amount of participants</Label>
                         <Col sm={7}>
-                            <Input type="text" name="amount_of_participant" id="signupPasswordConfirm"
+                            <Input type="text" name="amount_of_participant" id="amount_of_participant"
                                    placeholder=""/>
                         </Col>
                     </FormGroup>
                     <FormGroup check row>
                         <Col sm={{size: 12}}>
-                            <Button as="input" type="submit" value="Submit" />
+                            <Button as="input" type="submit" value="Submit"/>
                         </Col>
                     </FormGroup>
                 </Form>
@@ -159,13 +160,13 @@ class ExperimentForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        error:state.error
+        error: state.error
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCreateExperiment: (a, b, c) => dispatch(actions.createExperiment(a, b, c)),
+        onCreateExperiment: () => dispatch(actions.createExperiment("","","")),
     };
 };
 

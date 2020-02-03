@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
-import {Card, CardColumns, CardDeck, Button} from "react-bootstrap";
+import {Card, CardDeck} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-import Octicon, {Plus} from '@primer/octicons-react'
+// import Octicon, {Plus} from '@primer/octicons-react'
 
 import Expcard from "./ExpCard/ExpCard";
 
@@ -23,11 +23,12 @@ class ExpCards extends Component {
 
         return (
             <Fragment>
-                <CardDeck >
+                <CardDeck>
                     <Card className={"Card"}>
                         <Card.Body>
                             <Card.Title>
                                 <Link to="/experiment">
+                                    + sign
                                     {/*<Octicon icon={Plus} size='large' verticalAlign='middle' />*/}
                                 </Link>
                             </Card.Title>

@@ -11,9 +11,7 @@ class Layout extends Component {
         return (
             <Fragment>
                 <main className={"container-fluid" }>
-                    {/*consider delete this and see what happens?*/}
                     {this.props.children}
-
                 </main>
             </Fragment>
         )

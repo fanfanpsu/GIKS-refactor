@@ -1,10 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import raw_article from '../../assets/rawdata/rawdata'
 
 
 const initialState = {
-    article: raw_article,
     loading: true
 };
 

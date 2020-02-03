@@ -6,7 +6,8 @@ import {
     Button,
     Form,
     FormGroup,
-} from 'react-bootstrap';
+    Container
+} from 'reactstrap';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ArticleCreationTemplate from "./ArticleCreationTemplate.js"
@@ -47,7 +48,7 @@ class ArticleCreationForm extends Component {
         // TODO: update this with separate the sign up and sign on functions.
         alert("submitCreateArticlesHandler");
         // TODO understand how the states were set
-        this.props.onCreateArticles(this.state.controls.email.value);
+        this.props.onCreateArticles();
     }
 
     render() {
@@ -93,16 +94,21 @@ class ArticleCreationForm extends Component {
         return (
             <Fragment>
                 {authRedirect}
-                <Form onSubmit={this.submitCreateArticlesHandler}>
-                    {/*create button to add new/remove old ArticleCreationTemplate or
-                    we can stay with one article for now? */}
-                    <ArticleCreationTemplate></ArticleCreationTemplate>
+                <Container>
+                    <Form onSubmit={this.submitCreateArticlesHandler}>
+                        {/*For now let's start with only one article and nodes*/}
+                        <ArticleCreationTemplate>
 
-                    <GraphBuilder></GraphBuilder>
+                        </ArticleCreationTemplate>
 
-                    <Button>Submit</Button>
-                </Form>
-                {errorMessage}
+                        <GraphBuilder>
+
+                        </GraphBuilder>
+
+                        <Button>Submit</Button>
+                    </Form>
+                    {errorMessage}
+                </Container>
             </Fragment>
         );
     }

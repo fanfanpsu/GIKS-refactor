@@ -5,7 +5,7 @@ import {} from 'react-bootstrap';
 
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
-import {Form} from "react-bootstrap";
+import {Form, FormGroup, Label} from "reactstrap";
 
 
 class ArticleCreationTemplate extends Component {
@@ -21,28 +21,19 @@ class ArticleCreationTemplate extends Component {
     }
 
     render() {
-
-        // textarea
-        // nodes, and Synonyms
-        // Graph
         return (
             <Fragment>
-                <span>Test ArticleCreationTemplate</span>
-                <Form.Group controlId="articleCreationForm.article_title">
-                    <Form.Label>Article Title</Form.Label>
-                    <Form.Control type="text" placeholder=""/>
-                </Form.Group>
+                <Form>
+                    <span>Article Creation Template</span>
+                    <FormGroup controlId="articleCreationForm.article_title">
+                        <Label>Article Title</Label>
+                    </FormGroup>
 
-                <Form.Group controlId="articleCreationForm.article_content">
-                    <Form.Label>Article Content</Form.Label>
-                    <Form.Control as="textarea" rows="3"/>
-                </Form.Group>
+                    <FormGroup controlId="articleCreationForm.article_content">
+                        <Label>Article Content</Label>
+                    </FormGroup>
 
-                <Form.Group controlId="articleCreationForm.article_node">
-                    <Form.Label>Node</Form.Label>
-                    <Form.Control as="text"/>
-                </Form.Group>
-
+                </Form>
             </Fragment>
         );
     }
@@ -55,9 +46,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleCreationTemplate);

@@ -1,4 +1,3 @@
-/* global _ */
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -15,22 +14,13 @@ import demo_logo from '../../assets/images/demo.png'; // Import using relative p
 
 import Management from "../ManagementBuilder/Management";
 import classes from './Home.css'
-import {Container, Jumbotron} from "react-bootstrap";
+import {Container, Jumbotron} from "reactstrap";
 
 class Home extends Component {
+
     state = {}
 
-    // componentDidMount() {}
     render() {
-        const classes1 = `home-header`;
-        const classes2 = `home-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center`;
-
-        let routes = (
-            <Switch>
-                <Route path="/management" component={Management}/>
-                <Redirect to="/"/>
-            </Switch>
-        );
         return (
             <Fragment>
                 <Jumbotron className = {"text-center"}>
@@ -41,48 +31,6 @@ class Home extends Component {
                             knowledge gaps and/or misconceptions</p>
                     </Container>
                 </Jumbotron>
-
-                {/*<Container>*/}
-                {/*    <CardDeck>*/}
-
-                {/*        <Card>*/}
-                {/*            <Link to="/management">*/}
-                {/*                <CardImg top width="100%"*/}
-                {/*                         src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                         alt="Card image cap"/>*/}
-                {/*            </Link>*/}
-                {/*            <Card.Body>*/}
-                {/*                <Card.Text>This is a wider card with supporting text below as a natural lead-in to*/}
-                {/*                    additional*/}
-                {/*                    content. This content is a little bit longer.</Card.Text>*/}
-                {/*            </Card.Body>*/}
-
-                {/*        </Card>*/}
-
-                {/*        <Card>*/}
-                {/*            <CardImg top width="100%"*/}
-                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                     alt="Card image cap"/>*/}
-                {/*            <Card.Body>*/}
-                {/*                <Card.Text>This card has supporting text below as a natural lead-in to additional*/}
-                {/*                    content.</Card.Text>*/}
-                {/*            </Card.Body>*/}
-                {/*        </Card>*/}
-                {/*        <Card>*/}
-                {/*            <CardImg top width="100%"*/}
-                {/*                     src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"*/}
-                {/*                     alt="Card image cap"/>*/}
-                {/*            <Card.Body>*/}
-                {/*                <Card.Text>This is a wider card with supporting text below as a natural lead-in to*/}
-                {/*                    additional*/}
-                {/*                    content. This card has even longer content than the first to show that equal height*/}
-                {/*                    action.</Card.Text>*/}
-                {/*            </Card.Body>*/}
-                {/*        </Card>*/}
-                {/*    </CardDeck>*/}
-                {/*</Container>*/}
-                {/*/!*<Footer/>*!/*/}
-
             </Fragment>
         );
     }
