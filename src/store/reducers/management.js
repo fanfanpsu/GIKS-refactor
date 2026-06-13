@@ -1,6 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import {raw_experiments} from '../../assets/rawdata/rawdata'
 
 
 const initialState = {
@@ -8,10 +7,6 @@ const initialState = {
     loading: true,
     didInvalidate: true,
     lastUpdated: 'xxxxxxx'
-};
-
-const fetchExperimentsInit = (state, action) => {
-    return updateObject(state, {loading: true});
 };
 
 const fetchExperimentsStart = (state, action) => {

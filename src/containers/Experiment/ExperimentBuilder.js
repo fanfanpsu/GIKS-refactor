@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Row, Col, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Row, Col} from 'reactstrap';
 import {connect} from 'react-redux';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -9,9 +9,6 @@ import axios from '../../axios-address';
 import ExperimentCreationForm from "../../components/Experiment/ExperimentCreationForm"
 
 class ExperimentBuilder extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
 

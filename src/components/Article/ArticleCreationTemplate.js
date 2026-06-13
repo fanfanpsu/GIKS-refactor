@@ -1,18 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {} from 'react-bootstrap';
 
-import * as actions from '../../store/actions/index';
-import {updateObject, checkValidity} from '../../shared/utility';
 import {Form, FormGroup, Label} from "reactstrap";
 
 
 class ArticleCreationTemplate extends Component {
-    constructor(props) {
-        super(props);
-        //this.state = updateObject(this.state, {});  // Maybe no need to update any states
-    }
 
     state = {}
 

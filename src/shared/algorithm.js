@@ -28,14 +28,6 @@ export const matrixHeaderBuilder = (nodes) =>{
 }
 
 export const nodeMatrixRowGeneration = ( nodes ) =>{
-    const data = [{
-        name: 'Tanner Linsley',
-        age: 26,
-        friend: {
-            name: 'Jason Maurer',
-            age: 23,
-        }
-    }];
 
     let rows = [];
     for (let i = 0; i < nodes.length; i++) {

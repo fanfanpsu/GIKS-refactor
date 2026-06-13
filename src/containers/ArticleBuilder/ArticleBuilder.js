@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {Row, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Row} from 'reactstrap';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-address';
@@ -9,9 +8,6 @@ import axios from '../../axios-address';
 import ArticleCreationForm from "../../components/Article/ArticleCreationForm"
 
 class ExperimentBuilder extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
 
@@ -22,13 +18,6 @@ class ExperimentBuilder extends Component {
     }
 
     render() {
-
-        let articleRedirect = null;
-        // TODO the ! is for testing only
-        if (!this.props.isAuthenticated) {
-            articleRedirect = <Redirect to={this.props.authRedirectPath}/>
-        }
-
         return (
             <Fragment>
                 <Row>

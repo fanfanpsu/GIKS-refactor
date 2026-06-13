@@ -1,15 +1,12 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {
-    Col,
     Button,
     Form,
-    FormGroup,
     Container
 } from 'reactstrap';
 
-import Spinner from '../../components/UI/Spinner/Spinner';
 import ArticleCreationTemplate from "./ArticleCreationTemplate.js"
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
@@ -52,31 +49,6 @@ class ArticleCreationForm extends Component {
     }
 
     render() {
-
-        //TODO: figure out what is this for experiment creation
-        const formElementsArray = [];
-        for (let key in this.state.controls) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
-            });
-        }
-
-        let form = formElementsArray.map(formElement => (
-            <input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
-        ));
-
-        if (this.props.loading) {
-            form = <Spinner/>
-        }
 
         let errorMessage = null;
         if (this.props.error) {

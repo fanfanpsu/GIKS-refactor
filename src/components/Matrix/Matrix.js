@@ -1,15 +1,9 @@
-import React, {Component, Fragment} from 'react';
-import {Table, Container, Row, Col, CardDeck} from 'reactstrap';
+import React, {Component} from 'react';
+import {Table} from 'reactstrap';
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 
-import Header from "./Cell/Header";
-import Cell from "./Cell/Cell";
-
-import graph_config from "../Graph/graph_config";
 import {connect} from "react-redux";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import axios from "../../axios-address";
 
 // this class used to build up the table to visualize the table of distance
 class Matrix extends Component {
@@ -51,8 +45,6 @@ class Matrix extends Component {
     };
 
     render() {
-        const {matrixColumnHeaders} = this.props;
-
         //TODO: get the react-table config updated
         if(this.props.matrixColumnHeaders !== undefined
             && this.props.matrixRowValues !== undefined) {

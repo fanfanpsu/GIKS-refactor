@@ -1,12 +1,12 @@
 import React, {Component, Fragment} from 'react';
-import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
-import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from "react-bootstrap";
-import classes from './Navigation.css'
+import {withRouter} from 'react-router-dom';
+import {Navbar} from "react-bootstrap";
+import './Navigation.css'
 import * as actions from "../../store/actions";
 import {connect} from "react-redux";
 
 function UserGreeting(isAuthenticated) {
-    return <Fragment>Welcome back: <a href="#login"></a></Fragment>;
+    return <Fragment>Welcome back: <a href="#login">Profile</a></Fragment>;
 }
 
 function GuestGreeting(isAuthenticated) {
@@ -24,10 +24,6 @@ function Greeting(props) {
 }
 
 class NavBar extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

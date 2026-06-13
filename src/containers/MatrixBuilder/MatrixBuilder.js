@@ -5,10 +5,6 @@ import Matrix from "../../components/Matrix/Matrix";
 import graph_config from '../../components/Graph/graph_config';
 
 class MatrixBuilder extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {...};
-    }
 
     state = {
         distances: []

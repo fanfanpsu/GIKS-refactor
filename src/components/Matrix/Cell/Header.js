@@ -1,8 +1,4 @@
-import React, {Component, Fragment} from 'react';
-import PropTypes from "prop-types";
-import graph_config from "../../Graph/graph_config";
-import * as actions from "../../../store/actions";
-import {connect} from "react-redux";
+import React from 'react';
 
 //
 // class Cell extends Component {
@@ -57,7 +53,7 @@ function Header({content, header,}) {
             {content}
         </th>
     ) : (
-        <td scope="row">
+        <td>
             {content}
         </td>
     );

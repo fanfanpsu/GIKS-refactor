@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
@@ -15,10 +15,6 @@ class Graph extends React.Component {
         height: 'calc(100vh - 150px)',
         border: '1px solid #ddd'
     };
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.initGraph(this.props.graphID, graph_config);

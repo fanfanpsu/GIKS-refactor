@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import BuildControls from '../../components/Graph/BuildControls/BuildControls';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -8,9 +7,6 @@ import axios from '../../axios-address';
 import Graph from "../../components/Graph/Graph";
 
 class GraphBuilder extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     state = {}
 
@@ -34,7 +30,7 @@ class GraphBuilder extends Component {
                     return Math.sqrt( xs*xs + ys*ys );
                 }).jsons()
                     .filter((element)=>{
-                        return (element.group == "edges");
+                        return (element.group === "edges");
                     }).map((element)=>{
                     this.props.cy.edges('[id = "'+ element.data.id +'"]').style('opacity', 1);
                     return element.data.id;

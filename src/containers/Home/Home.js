@@ -1,19 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import * as actions from '../../store/actions/index';
 
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import axios from '../../axios-address';
-
-import Footer from "../Footer/Footer";
-import researcher_logo from '../../assets/images/researcher.png'; // Import using relative path
-import student_logo from '../../assets/images/student.png'; // Import using relative path
-import demo_logo from '../../assets/images/demo.png'; // Import using relative path
-
-import Management from "../ManagementBuilder/Management";
-import classes from './Home.css'
 import {Container, Jumbotron} from "reactstrap";
 
 class Home extends Component {
@@ -36,18 +22,4 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated
-    };
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-
-    }
-}
-
 export default Home;
-
-// export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Home, axios));

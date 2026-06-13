@@ -1,21 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import {Row} from 'reactstrap';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios-address';
 import Expcards from "../../components/Expcard/ExpCards";
 
-// this css aligns the layout of all cards with same height
-import classes from "./management.css"
+import "./management.css"
 
 class Management extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {...};
-    }
 
     componentDidMount() {
         // this.state.experiments = raw_experiments_fewer;
@@ -26,12 +20,6 @@ class Management extends Component {
     }
 
     render() {
-
-        let authRedirect = null;
-        if (!this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.authRedirectPath}/>
-        }
-
         return (
             <Fragment>
                 <Row className={"row-eq-height"}>

@@ -42,7 +42,6 @@ export {
 
 export {
     initGraph,
-    updateGraph,
     graphUpdated
 } from './graphDispatcher';
 

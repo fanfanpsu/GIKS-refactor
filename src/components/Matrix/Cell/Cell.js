@@ -1,14 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import {Table, Container, Row, Col, CardDeck} from 'reactstrap';
-import { useReactTable } from 'react-table'
-
+import React from 'react';
 import {connect} from "react-redux";
 
 class Cell extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
     }

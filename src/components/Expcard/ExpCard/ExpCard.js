@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from "prop-types";
 
 import {Card, Button} from "react-bootstrap";
-import classes from "./ExpCard.css"
+import "./ExpCard.css"
 
 
 class ExpCard extends Component {

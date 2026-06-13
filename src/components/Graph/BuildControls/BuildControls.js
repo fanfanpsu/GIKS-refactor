@@ -1,14 +1,6 @@
 import React, {Fragment} from 'react';
 
-import classes from './BuildControls.css';
-import BuildControl from './BuildControl/BuildControl';
-
-const controls = [
-    {label: 'Salad', type: 'salad'},
-    {label: 'Bacon', type: 'bacon'},
-    {label: 'Cheese', type: 'cheese'},
-    {label: 'Meat', type: 'meat'},
-];
+import './BuildControls.css';
 
 const buildControls = (props) => (
     <Fragment>

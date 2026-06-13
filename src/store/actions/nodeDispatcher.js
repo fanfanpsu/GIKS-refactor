@@ -24,7 +24,7 @@ export const fetchManagementExperimentsFailed = () => {
 
 export const initExperimentCreationPanel = () => {
     return dispatch => {
-        axios.get('https://giks-firebase.firebaseio.com/experiments.json')
+        axios.get('/experiments.json')
             .then(response => {
                 dispatch(setManagementExperiments(response.data));
             })

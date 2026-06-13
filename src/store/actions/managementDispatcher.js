@@ -1,8 +1,6 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-address';
 
 import {raw_user_experiments} from '../../assets/rawdata/rawdata'
-import raw_user_experiments_fewer from '../../assets/rawdata/rawdata_fewer'
 
 export const fetchExperimentsStart = () => {
     return {

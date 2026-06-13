@@ -6,10 +6,6 @@ const initialState = {
     loading: true
 };
 
-const fetchArticleInit = (state, action) => {
-    return updateObject(state, {loading: true});
-};
-
 const fetchArticleStart = (state, action) => {
     return updateObject(state, {loading: true});
 };

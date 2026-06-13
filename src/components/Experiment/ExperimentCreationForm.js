@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {
@@ -12,10 +11,8 @@ import {
 } from 'reactstrap';
 
 
-import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
-import classnames from 'classnames';
 
 class ExperimentForm extends Component {
     constructor(props) {
@@ -84,41 +81,11 @@ class ExperimentForm extends Component {
 
     render() {
 
-        //TODO: figure out what is this for experiment creation
-        const formElementsArray = [];
-        for (let key in this.state.controls) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
-            });
-        }
-
-        let form = formElementsArray.map(formElement => (
-            <Input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
-        ));
-
-        if (this.props.loading) {
-            form = <Spinner/>
-        }
-
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
                 <p>{this.props.error.message}</p>
             );
-        }
-
-        let authRedirect = null;
-        if (!this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
 
         return (

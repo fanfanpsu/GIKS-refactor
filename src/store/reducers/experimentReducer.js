@@ -1,7 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import raw_experiments from '../../assets/rawdata/rawdata'
-import raw_experiments_fewer from '../../assets/rawdata/rawdata_fewer'
 
 // TODO find how to nest initial state
 const initialState = {

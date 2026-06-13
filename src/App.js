@@ -10,7 +10,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Logout from './containers/Auth/Logout/Logout';
 import Home from './containers/Home/Home';
 import Management from './containers/ManagementBuilder/Management';
-import Experiment from './containers/Experiment/ExpermentBuilder'
+import Experiment from './containers/Experiment/ExperimentBuilder'
 import Article from './containers/ArticleBuilder/ArticleBuilder'
 import Graph from './containers/GraphBuilder/GraphBuilder'
 

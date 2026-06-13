@@ -1,4 +1,3 @@
-import React from 'react';
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 import {nodeMatrixheaderGeneration, nodeMatrixRowGeneration} from "../../shared/algorithm";
@@ -51,7 +50,7 @@ const updateMatrix = (state, action) => {
         matrixRowValues: updateArray(array, target)
     }
 
-    if(updateArray == undefined || updateArray == null){
+    if(updateArray === undefined || updateArray === null){
         return state;
     }
 

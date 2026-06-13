@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {
     Jumbotron,
     TabContent,
@@ -16,22 +16,10 @@ import {
     Input
 } from 'reactstrap';
 
-import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import {updateObject, checkValidity} from '../../shared/utility';
 import classnames from 'classnames';
 
-import Login from "./Login/Login"
-import Register from "./Register/Register"
-
-
-let AuthRoutes = (
-    <Switch>
-        {/*<PrivateRoute exact path="/" component={PonyNote} />*/}
-        <Route exact path="/register" component={Register}/>
-        <Route exact path="/login" component={Login}/>
-    </Switch>
-);
 
 class Auth extends Component {
     constructor(props) {
@@ -121,31 +109,6 @@ class Auth extends Component {
     }
 
     render() {
-        //TODO: figure out what is this
-        const formElementsArray = [];
-        for (let key in this.state.controls) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
-            });
-        }
-
-        let form = formElementsArray.map(formElement => (
-            <Input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
-        ));
-
-        if (this.props.loading) {
-            form = <Spinner/>
-        }
-
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
