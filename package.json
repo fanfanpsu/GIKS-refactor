@@ -107,6 +107,6 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "terser-webpack-plugin": "^4.2.3"
+    "terser-webpack-plugin": "^5.6.1"
   }
 }
