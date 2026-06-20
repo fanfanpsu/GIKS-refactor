@@ -56,7 +56,7 @@
     "url-loader": "^4.1.1",
     "vis-react": "0.4.3",
     "webpack": "^4.47.0",
-    "webpack-dev-server": "^3.11.3",
+    "webpack-dev-server": "^5.2.5",
     "webpack-manifest-plugin": "^2.2.0",
     "whatwg-fetch": "2.0.3"
   },
